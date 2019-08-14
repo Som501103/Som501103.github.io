@@ -113,6 +113,11 @@
               <br/>
               <progress value="0" max="100" id="uploader">0%</progress>
             <img id="thumbnil" style="width:50%; margin-top:10px;"  src="jpg.png" alt="image" />
+            <script>
+              const fileInput = document.getElementById('fileButton');
+
+              fileInput.addEventListener('change', (e) => doSomethingWithFiles(e.target.files));
+            </script>
             <br/>
           </div>
           <script>

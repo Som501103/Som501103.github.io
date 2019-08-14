@@ -106,11 +106,13 @@ function validateForm() {
         load_G1: load_G,
         detail1: detail,
         lat1: lat,
-        lon1: lon
+        lon1: lon,
+        storageRef1: storageRef
         // img1: img
     })
         .then(function(docs) {
             console.log(docs.data());
+        location.replace("https://www.w3schools.com")
         })
         .catch(function(error) {
             console.error("Error adding document: ", error);

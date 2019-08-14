@@ -112,7 +112,7 @@ function validateForm() {
     })
         .then(function(docs) {
             console.log(docs.data());
-        location.replace("https://www.w3schools.com")
+        window.location.replace("http://www.w3schools.com");
         })
         .catch(function(error) {
             console.error("Error adding document: ", error);

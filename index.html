@@ -108,7 +108,8 @@
         <div class="row">
           <div class="col-md-7">
             <br/>
-            <input type="file" value="upload" accept=".jpg"  id="fileButton" onchange="showMyImage(this)" placeholder="39880.jpg" />
+            <input type="file" value="upload" accept=".jpg"  id="fileButton" onchange="showMyImage(this)" capture/>
+            <input type="file" accept="image/*" capture="user">
 
               <br/>
               <progress value="0" max="100" id="uploader">0%</progress>

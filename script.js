@@ -46,8 +46,8 @@ function validateForm() {
     console.log(myObj);
     console.log("datehappen");
     console.log(datehappen);
-    console.log(document.getElementById("lon").value)
-    console.log(document.getElementById("lat").value)
+    console.log(document.getElementById("lon").value);
+    console.log(document.getElementById("lat").value);
 
     // console.log("img");
     // console.log(img);
@@ -106,13 +106,13 @@ function validateForm() {
         load_G1: load_G,
         detail1: detail,
         lat1: lat,
-        lon1: lon,
-        storageRef1: storageRef
+        lon1: lon
+        // storageRef1: storageRef
         // img1: img
     })
         .then(function(docs) {
             console.log(docs.data());
-        window.location.replace("http://www.w3schools.com");
+
         })
         .catch(function(error) {
             console.error("Error adding document: ", error);

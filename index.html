@@ -245,6 +245,12 @@
                 })
               });
 
+              var geolocation = new ol.Geolocation({
+                tracking: true
+              });
+              // bind the view's projection
+              geolocation.bindTo('projection', view)
+
               geolocation.on('change:position', function() {
               var coordinate = geolocation.getPosition();
               view.setCenter(coordinate);

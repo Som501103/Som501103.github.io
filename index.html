@@ -245,6 +245,12 @@
                 })
               });
 
+              geolocation.on('change:position', function() {
+              var coordinate = geolocation.getPosition();
+              view.setCenter(coordinate);
+              trackFeature.getGeometry().appendCoordinate(coordinate);
+              });
+
               function addMarker(lon, lat) {
                 console.log('lon:', lon);
                 console.log('lat:', lat);

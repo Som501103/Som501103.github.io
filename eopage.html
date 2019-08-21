@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ระบบบันทึกเหตุการณ์ไฟฟ้าขัดข้อง สำหรับ EO</title>
+
+    <!-- update the version number as needed -->
+    <script src="script.js" charset="utf-8" type="text/javascript"></script>
+    <script defer src="/__/firebase/6.3.5/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/6.3.5/firebase-auth.js"></script>
+    <script defer src="/__/firebase/6.3.5/firebase-database.js"></script>
+    <script defer src="/__/firebase/6.3.5/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/6.3.5/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase.js"></script>
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script defer src="/__/firebase/init.js"></script>
+    <link rel="stylesheet" href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+
+  </head>
+  <body>
+    <div class="container">
+      <div class="col-md-5"><h5>ระบบแจ้งกระแสไฟฟ้าขัดข้อง สำหรับ EO</h5></div>
+      <form name="myForm" onsubmit="return validateForm()" method="post" runat="server">
+        <div class="row">
+          <div class="col-md-5">วันที่เกิดเหตุ (ex. 15/08/2562):&nbsp;<input type="date" name="datehappen" id="datehappen" ></div>
+          <div class="col-md-5">เวลาที่เกิดเหตุ (ex. 13:00): &nbsp;<input type="time" name="timehappen"></div>
+          <div class="col-md-5">วันที่จ่ายคืน (ex. 15/08/2562): &nbsp;<input type="date" name="daterestore"></div>
+          <div class="col-md-5">เวลาที่จ่ายไฟคืน (ex. 13:00): &nbsp;<input type="time" name="timerestore"></div>
+        </div>
+        <fieldset>
+        <div class="row">
+          <div class="col-md-5">รหัสอุปกรณ์/PEA No.&nbsp;: <input type="text" name="equipcode"></div>
+          <div class="col-sm">Trip :
+                &nbsp;&nbsp;<input type="radio" id="trip_TL" name="trip" value="D/F" checked >&nbsp;D/F
+                &nbsp;&nbsp;&nbsp;<input type="radio" id="trip_TR" name="trip" value="Meter">&nbsp;Meter
+                &nbsp;&nbsp;&nbsp;<input type="radio" id="trip_T" name="trip" value="Transformer">&nbsp;Transformer
+          </div>
+        </div>
+        </fieldset>
+        <!-- <div class="row">
+          <div class="col-md-5">สาเหตุ :
+           <select name="course" id="course" required="" >
+              <option value="0">เลือกสาเหตุ</option>
+              <option value="TC001">ต้นไม้</option>
+              <option value="TC002">อุปกรณ์</option>
+              <option value="TC003">พนักงาน กฟภ.</option>
+              <option value="TC004">บุคคลภายนอก</option>
+              <option value="TC005">สัตว์</option>
+              <option value="TC006">ยานพาหนะ</option>
+              <option value="TC007">วัสดุแปลกปลอม</option>
+              <option value="TC008">สภาพแวดล้อม</option>
+              <option value="TC009">ภัยธรรมชาติ</option>
+              <option value="TC010">สงคราม/จลาจล</option>
+              <option value="TC011">จ่ายเกินพิกัด</option>
+              <option value="TC012">อื่นๆ</option>
+            </select>
+          </div>
+          <div class="col-md-5">เวลาที่คาดว่าจะแก้ไขเสร็จ :
+              <input type="time" name="timeexpect">
+          </div>
+          <div class="col-md-5">Relay :
+            <select name="relay" id="relay" required="" >
+               <option value="0">เลือกประเภท</option>
+               <option value="50">Overcurrent Relay</option>
+               <option value="87B">Bus Differential Relay</option>
+               <option value="87T">Transformer Differential</option>
+               <option value="21">Distance Relay</option>
+             </select>
+          </div>
+        </div>-->
+        <fieldset>
+        <div class="row">
+          <div class="col-md-5">
+            Phase
+              &nbsp;<input type="checkbox" id="phase" name="group[]" value="A" placeholder="A">&nbsp;A
+              &nbsp;<input type="checkbox" id="phase" name="group[]" value="B" placeholder="B">&nbsp;B
+              &nbsp;<input type="checkbox" id="phase" name="group[]" value="C" placeholder="C">&nbsp;C
+              <!-- &nbsp;<input type="checkbox" id="phase" name="group[]" value="G" placeholder="G">&nbsp;G -->
+            </div>
+          <!-- <div class="col-md-5">
+            Load <input type="text" name="load" id="load" placeholder="0">MW
+          </div> -->
+        </div>
+      </fieldset>
+        <!-- <div class="row">
+          <div class="col-md-3"> ค่ากระแส (หน่วย A)
+            <div class="col-sm"> A <input type="text" name="load_A" id="load_A" placeholder="0" ></div>
+            <div class="col-sm"> B <input type="text" name="load_B" id="load_B" placeholder="0" ></div>
+            <div class="col-sm"> C <input type="text" name="load_C" id="load_C" placeholder="0" ></div>
+            <div class="col-sm"> G <input type="text" name="load_G" id="load_G" placeholder="0" ></diV>
+          </div>
+        </div> -->
+        <diV class="row">
+          <div class="col-md-1">
+            รายละเอียด
+          </div>
+          <div class="col-md-7">
+            <textarea class="form-control" rows="3" name="detail" id="detail"></textarea>
+          </div>
+        </div>
+        <!-- <div class="row">
+          <div class="col-md-7">
+            <br/>
+            <input type="file" value="upload" id="fileButton" onchange="showMyImage(this)" accept="image/*" capture="user">
+              <br/>
+              <progress value="0" max="100" id="uploader">0%</progress>
+            <img id="thumbnil" style="width:50%; margin-top:10px;"  src="jpg.png" alt="image" />
+            <script>
+              const fileInput = document.getElementById('fileButton');
+
+              fileInput.addEventListener('change', (e) => doSomethingWithFiles(e.target.files));
+            </script>
+            <br/>
+          </div> -->
+          <script>
+          const firebaseConfig = {
+            apiKey: "AIzaSyBqJlCpP6S8N8OwYX1XktkckQ_Xr3rhJzE",
+            authDomain: "rc2line-1cba3.firebaseapp.com",
+            databaseURL: "https://rc2line-1cba3.firebaseio.com",
+            projectId: "rc2line-1cba3",
+            storageBucket: "rc2line-1cba3.appspot.com",
+            messagingSenderId: "243364442431",
+            appId: "1:243364442431:web:b706a94ce8113804"
+          };
+                // Initialize Firebase
+                firebase.initializeApp(firebaseConfig);
+
+          </script>
+
+          <!-- <script type="text/javascript">
+
+              // firebase bucket name
+              // REPLACE WITH THE ONE YOU CREATE
+              // ALSO CHECK STORAGE RULES IN FIREBASE CONSOLE
+              var fbBucketName = 'images';
+
+              // get elements
+              var uploader = document.getElementById('uploader');
+              var fileButton = document.getElementById('fileButton');
+              // var filename = document.getElementById('fileButton').files[0].name;
+
+              // listen for file selection
+              fileButton.addEventListener('change', function (e) {
+
+                  // what happened
+                  console.log('file upload event', e);
+
+                  // get file
+                  var file = e.target.files[0];
+
+                  // create a storage ref
+                  // var storageRef = firebase.storage().ref('id_rcxxxx'); //# >>> name
+                  var timestamp = Date.now();
+                  var storageRef = firebase.storage().ref("rc"+timestamp);
+
+                  // upload file
+                  var uploadTask = storageRef.put(file);
+
+                  // The part below is largely copy-pasted from the 'Full Example' section from
+                  // https://firebase.google.com/docs/storage/web/upload-files
+
+                  // update progress bar
+                  uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, // or 'state_changed'
+                      function (snapshot) {
+                          // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+                          var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                          uploader.value = progress;
+                          console.log('Upload is ' + progress + '% done');
+                          switch (snapshot.state) {
+                              case firebase.storage.TaskState.PAUSED: // or 'paused'
+                                  console.log('Upload is paused');
+                                  break;
+                              case firebase.storage.TaskState.RUNNING: // or 'running'
+                                  console.log('Upload is running');
+                                  break;
+                          }
+                      }, function (error) {
+
+                          // A full list of error codes is available at
+                          // https://firebase.google.com/docs/storage/web/handle-errors
+                          switch (error.code) {
+                              case 'storage/unauthorized':
+                                  // User doesn't have permission to access the object
+                                  break;
+
+                              case 'storage/canceled':
+                                  // User canceled the upload
+                                  break;
+
+                              case 'storage/unknown':
+                                  // Unknown error occurred, inspect error.serverResponse
+                                  break;
+                          }
+                      }, function () {
+                          // Upload completed successfully, now we can get the download URL
+                          // save this link somewhere, e.g. put it in an input field
+                          var downloadURL = uploadTask.snapshot.downloadURL;
+                          console.log('downloadURL', downloadURL);
+                      });
+
+              });
+
+
+          </script>
+
+        </div> -->
+        </br>
+        <div class="row">
+          <div class="col-md-10">บริเวณที่คาดว่าเกิดเหตุไฟฟ้าขัดข้อง</div>
+        </br>
+          <div id="lat" type="hidden"></div>
+          <div id="lon" type="hidden"></div>
+          <div id="map" class="map">
+            <script type="text/javascript">
+              const markerSource = new ol.source.Vector();
+              var markerStyle = new ol.style.Style({
+                image: new ol.style.Icon( /** @type {olx.style.IconOptions} */ ({
+                  anchor: [0.5, 46],
+                  anchorXUnits: 'fraction',
+                  anchorYUnits: 'pixels',
+                  opacity: 0.75,
+                  src: 'https://openlayers.org/en/v5.3.0/examples/data/icon.png'
+                }))
+              });
+
+              let map = new ol.Map({
+                target: 'map',
+                layers: [
+                  new ol.layer.Tile({
+                    source: new ol.source.OSM(),
+                  }),
+                  new ol.layer.Vector({
+                    source: markerSource,
+                    style: markerStyle,
+                  }),
+                ],
+                view: new ol.View({
+                  center: ol.proj.fromLonLat([100.66, 14.80]),
+                  zoom: 15,
+                })
+              });
+
+              // var geolocation = new ol.Geolocation({
+              //   tracking: true
+              // });
+              // // bind the view's projection
+              // geolocation.bindTo('projection', view);
+              //
+              // geolocation.on('change:position', function() {
+              // var coordinate = geolocation.getPosition();
+              // view.setCenter(coordinate);
+              // trackFeature.getGeometry().appendCoordinate(coordinate);
+              // });
+
+              function addMarker(lon, lat) {
+                console.log('lon:', lon);
+                console.log('lat:', lat);
+
+                // TODO : Edit code for POST data to backend
+                document.getElementById("lat").value = lat;
+                document.getElementById('lon').value = lon;
+
+
+                var iconFeatures = [];
+
+                var iconFeature = new ol.Feature({
+                  geometry: new ol.geom.Point(ol.proj.transform([lon, lat], 'EPSG:4326',
+                    'EPSG:3857')),
+                  name: 'Null Island',
+                  population: 4000,
+                  rainfall: 500
+                });
+
+                markerSource.addFeature(iconFeature);
+              }
+
+              map.on('singleclick', function(event) {
+                var lonLat = ol.proj.toLonLat(event.coordinate);
+                addMarker(lonLat[0], lonLat[1]);
+              });
+            </script>
+          </div>
+        </div>
+      </br>
+        <div class="row">
+          <div class="col-md-5">
+          </br><input type="submit" value="Submit" class="file-submit">
+          </div>
+        </br>
+        </br>
+        </div>
+      </form>
+  </div>
+
+  </body>
+</html>

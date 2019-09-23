@@ -28,9 +28,10 @@
     <div class="head w-clearfix">
       <div class="logo1"><img src="images/rc2-logo1-01.png" srcset="images/rc2-logo1-01-p-500.png 500w, images/rc2-logo1-01-p-800.png 800w, images/rc2-logo1-01-p-1080.png 1080w, images/rc2-logo1-01-p-1600.png 1600w, images/rc2-logo1-01-p-2000.png 2000w, images/rc2-logo1-01.png 2206w" sizes="100px" alt="" class="image-3"></div>
       <div class="name">
+        <h4 class="heading-2">รหัสพนักงาน</h4><input type="text" class="box-fill w-input" maxlength="256" for="name-2" id="staffid" oninput="FunctionIDinput()">
         <h4 class="heading-2">ชื่อพนักงาน</h4><label for="name-2" class="field-label" id="staffname"></label>
         <h4 class="heading-2 _2">สังกัด</h4><label for="name-2" class="field-label" id="staffdept"></label>
-        <h4 class="heading-2 _2">เบอร์โทรศัพท์ภายใน</h4><label for="name-2" class="field-label" id="stafftel"></label>
+
       </div>
     </div>
     <h2 class="heading">ข้อมูลเหตุการไฟฟ้าดับ</h2>
@@ -62,22 +63,11 @@
             <div class="w-row">
               <div class="column-5 w-col w-col-6">
                 <label for="email-3" class="field-label">สถานีไฟฟ้า</label>
-                <!-- <input type="text" class="box-fill half w-input" maxlength="256" name="peacode" data-name="Email 2" id="peacode" > -->
-                <select id="country" required="" maxlength="256" class="box-fill w-input" name="peacode" id="peacode" data-name="Email 2" oninput="FunctionAutoweather()" >
+                <input type="text" class="box-fill half w-input" maxlength="256" name="peacode" data-name="Email 2" id="peacode" oninput="FunctionAutoweather()">
+                <!-- <select id="country" required="" maxlength="256" class="box-fill w-input" name="peacode" id="peacode" data-name="Email 2" oninput="FunctionAutoweather()" >
                   <option value="0">เลือกสาเหตุ</option>
-                  <option value="TC001">ต้นไม้</option>
-                  <option value="TC002">อุปกรณ์</option>
-                  <option value="TC003">พนักงาน กฟภ.</option>
-                  <option value="TC004">บุคคลภายนอก</option>
-                  <option value="TC005">สัตว์</option>
-                  <option value="TC006">ยานพาหนะ</option>
-                  <option value="TC007">วัสดุแปลกปลอม</option>
-                  <option value="TC008">สภาพแวดล้อม</option>
-                  <option value="TC009">ภัยธรรมชาติ</option>
-                  <option value="TC010">สงคราม/จลาจล</option>
-                  <option value="TC011">จ่ายเกินพิกัด</option>
-                  <option value="TC012">อื่นๆ</option>
-                </select>
+
+                </select> -->
                 <label for="email-3" class="field-label">อุปกรณ์ที่ทำงาน</label>
                 <input type="text" class="box-fill half w-input" maxlength="256" name="equipcode" data-name="Email 2" id="equipcode" oninput="FunctionAutoinput()">
               </div>
@@ -128,12 +118,14 @@
               <div class="w-col w-col-4"><label for="name-4" class="field-label">BK</label><input type="text" class="box-fill three w-input" maxlength="256" name="bk" data-name="Name 4" id="bk">
                                         <label for="name-3" class="field-label">รวม/R</label><input type="text" class="box-fill three w-input" maxlength="256" name="r" data-name="Name 3" id="r">
               </div>
-              <div class="w-col w-col-4"><label for="name-6" class="field-label">เฟส A</label><input type="text" class="box-fill three w-input" maxlength="256" name="load_A" data-name="Name" id="load_A">
-                                        <label for="name-5" class="field-label">เฟส B</label><input type="text" class="box-fill three w-input" maxlength="256" name="load_B" data-name="Name 5" id="load_B">
+              <div class="w-col w-col-4"><label for="name-6" class="field-label">เฟส A</label><input type="text" class="box-fill three w-input" maxlength="256" name="load_A" data-name="Name" id="load_A" onkeyup='functionpredict()' value="0">
+                                        <label for="name-5" class="field-label">เฟส B</label><input type="text" class="box-fill three w-input" maxlength="256" name="load_B" data-name="Name 5" id="load_B" onkeyup='functionpredict()' value="0">
               </div>
-              <div class="w-col w-col-4"><label for="name-2" class="field-label">เฟส C</label><input type="text" class="box-fill three w-input" maxlength="256" name="load_C" data-name="Name 6" id="load_C">
-                                         <label for="name-7" class="field-label">เฟส G</label><input type="text" class="box-fill three w-input" maxlength="256" name="load_G" data-name="Name 6" id="load_G">
+              <div class="w-col w-col-4"><label for="name-2" class="field-label">เฟส C</label><input type="text" class="box-fill three w-input" maxlength="256" name="load_C" data-name="Name 6" id="load_C" onkeyup='functionpredict()' value="0">
+                                         <label for="name-7" class="field-label">เฟส G</label><input type="text" class="box-fill three w-input" maxlength="256" name="load_G" data-name="Name 6" id="load_G" onkeyup='functionpredict()' value="0">
+                                         <input type="text" class="box-fill three w-input" maxlength="256" name="hide" data-name="Name 6" id="hide"  value="0">
               </div>
+
             </div>
             <div class="w-row">
               <div class="w-col w-col-6"><label for="email-3" class="field-label">โหลดหาย (MW)</label><input type="text" class="box-fill half w-input" maxlength="256" name="load" data-name="Email 2" id="load" ></div>
@@ -202,7 +194,7 @@
             <!-- <input type="text" class="box-fill w-input" maxlength="256" name="causetype" data-name="Name 2" id="causetype"> -->
             <label for="name-7" class="field-label subhead _2">อุปกรณ์ต้นเหตุ</label>
             <label for="name-7" class="field-label">รายละเอียดสาเหตุ</label>
-            <input type="text" class="box-fill w-input" maxlength="256" name="detail" data-name="Name 2" id="detail">
+            <input type="text" class="box-fill w-input" maxlength="100" name="detail" data-name="Name 2" id="detail">
             <input type="submit" value="Submit" data-wait="Please wait..." class="submit-button-2 w-button">
       </form>
           <div class="w-form-done">

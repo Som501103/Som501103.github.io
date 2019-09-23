@@ -30,6 +30,42 @@ jQuery.ajax({
       };
     })
 
+function FunctionIDinput(){
+  var staffid = document.getElementById("staffid").value;
+  jQuery.ajax({
+    url: "http://127.0.0.1:8000/api/getpeaid/",
+    // url: "https://hookb.in/3OynwLEapdhKeKj2MjmJ",
+    type: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    dataType: 'json',
+    data: JSON.stringify({
+      // 'staffid' : "U649ce5cbe448b470e9a8eb4557952a3b"
+      "staffid" : document.getElementById("staffid").value
+      })
+    })
+    .done(function(data, textStatus, jqXHR) {
+        console.log("HTTP Request Succeeded: " + jqXHR.status);
+        console.log(data); //Return Data
+        if (jqXHR.status == 200) {
+
+            var staffname = data['obj']['FirstName'];
+            var stafflastname = data['obj']['LastName'];
+            var staffdept = data['obj']['DepartmentShort'];
+            var stafftel = data['obj']['DepartmentShort'];
+            var subregion = data['obj']['SubRegionCode'];
+
+            console.log(staffname);
+            document.getElementById('staffname').innerHTML = staffname + "  " + stafflastname;
+            document.getElementById('staffdept').innerHTML = staffdept;
+            // document.getElementById('stafftel').innerHTML = stafftel;
+
+
+        };
+      })
+
+}
 
 function validateForm() {
 
@@ -166,7 +202,7 @@ function showMyImage(fileInput) {
     {display: "อื่นๆ", value: "CC03006"}];
     var TC004 = [{
     display: "คนตัดต้นไม้",value: "CC04001"},
-    {display: "คนงานพาดสายโทรศัพท์ู",value: "CC04002"},
+    {display: "คนงานพาดสายโทรศัพท์",value: "CC04002"},
     { display: "คนยิงลูกถ้วย",value: "CC04003"},
     {display: "คนลักไฟใช้", value: "CC04004"},
     {display: "อื่นๆ", value: "CC04005"}];
@@ -312,6 +348,8 @@ function showMyImage(fileInput) {
               description = "เมฆเยอะ"
             }else if(des=="broken clouds"){
               description = "เมฆบางส่วน"
+            }else if(des=="few clouds"){
+              description = "เมฆน้อย"
             }
 
             document.getElementById("weather").value = description;
@@ -322,5 +360,46 @@ function showMyImage(fileInput) {
 
         return false;
 
+  }
 
+  function functionpredict(){
+    var intA =document.getElementById('load_A').value;
+    var intB =document.getElementById('load_B').value;
+    var intC =document.getElementById('load_C').value;
+    var intG =document.getElementById('load_G').value;
+    var nA = parseInt(intA);
+    var nB = parseInt(intB);
+    var nC = parseInt(intC);
+    var nG = parseInt(intG);
+    var show=document.getElementById('hide');
+    var result = 0;
+    var weather = document.getElementById("weather").value;
+
+    result = nA+nB+nC+nG;
+    show.value= result;
+
+    if(weather=="ฝนตกบางเบา"){
+        if(result>=1000){
+          document.getElementById("country").value = "TC002";
+          document.getElementById("city").value = "CC02001";
+        }
+        else if(result<1000){
+          // document.getElementById('country').options[document.getElementById('country').selectedIndex].value = "TC004";
+          document.getElementById("country").value = "TC004";
+          document.getElementById("city").value = "CC04003";
+        }
+      }
+      // document.getElementById('country').options[document.getElementById('country').selectedIndex].value = "TC005";
+    else if(weather=="ฝนตกหนัก"){
+      if(result>=1000){
+        document.getElementById("country").value = "TC001";
+        document.getElementById("city").value = "CC01001";
+      }
+    }else{
+      document.getElementById("country").value = "TC004";
+      document.getElementById("city").value = "CC01004";
+    }
+
+
+    console.log(result);
   }

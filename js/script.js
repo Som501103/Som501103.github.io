@@ -30,6 +30,7 @@ jQuery.ajax({
       };
     })
 
+
 function FunctionIDinput(){
   var staffid = document.getElementById("staffid").value;
   jQuery.ajax({
@@ -55,12 +56,70 @@ function FunctionIDinput(){
             var staffdept = data['obj']['DepartmentShort'];
             var stafftel = data['obj']['DepartmentShort'];
             var subregion = data['obj']['SubRegionCode'];
+            var region = data['region']['label'];
+            var pea = data['pea']['label'];
 
             console.log(staffname);
+            console.log(pea);
+
+            var obj = region;
+            var i, x,j,y = "";
+            // console.log(obj);
+              for (i in obj) {
+                          x += "<option value=\""+obj[i][0]+"\">"+obj[i][1]+"</option>";
+                          // console.log(x);
+                        }
+              for (i in pea){
+                y += "<option value=\""+pea[i][0]+"\">"+pea[i][1]+"</option>";
+              }
             document.getElementById('staffname').innerHTML = staffname + "  " + stafflastname;
             document.getElementById('staffdept').innerHTML = staffdept;
-            // document.getElementById('stafftel').innerHTML = stafftel;
+            // document.getElementById('peacode').innerHTML = region;
+            // document.getElementById('peacode').innerHTML = x;
+            $('#peacode').append(x);
+            $('#happenarea').append(y);
+            var w = document.getElementById("peacode").value;
+            jQuery.ajax({
+              url: "http://127.0.0.1:8000/api/scada/",
+              // url: "https://hookb.in/3OynwLEapdhKeKj2MjmJ",
+              type: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              dataType: 'json',
+              data: JSON.stringify({
+                "peacode" : document.forms["myForm"]["peacode"].value
 
+              })
+
+            })
+            .done(function(data, textStatus, jqXHR) {
+                console.log("HTTP Request Succeeded: " + jqXHR.status);
+                console.log(data); //Return Data
+                if (jqXHR.status == 200) {
+                  var des = data['description'];
+
+                  if (des=="light rain") {
+                    description = "ฝนตกบางเบา"
+                  }else if (des=="very heavy rain") {
+                    description = "ฝนตกหนัก"
+                  }else if(des=="overcast clouds"){
+                    description = "เมฆเยอะ"
+                  }else if(des=="broken clouds"){
+                    description = "เมฆบางส่วน"
+                  }else if(des=="few clouds"){
+                    description = "เมฆน้อย"
+                  }else{
+                    description = "เมฆกระจายตัว"
+                  }
+
+                  document.getElementById("weather").value = description;
+
+                };
+              })
+
+
+              return false;
 
         };
       })
@@ -149,7 +208,7 @@ function validateForm() {
 
       //   //window.location = "p11searchp.html"
 
-       window.location.replace("file:///Users/som501103/Downloads/rc2-test2/login.html")
+       window.location.replace("file:///Users/som501103/Downloads/rc2-test2/index.html")
 
       };
     })
@@ -312,13 +371,13 @@ function showMyImage(fileInput) {
     }
     });
 
-  function FunctionAutoinput() {
+function FunctionAutoinput() {
       var x = document.getElementById("equipcode").value;
       document.getElementById("equipstrat").value = x;
   }
 
 
-  function FunctionAutoweather() {
+function FunctionAutoweather() {
       var w = document.getElementById("peacode").value;
       jQuery.ajax({
         url: "http://127.0.0.1:8000/api/scada/",
@@ -362,20 +421,22 @@ function showMyImage(fileInput) {
 
   }
 
-  function functionpredict(){
+function functionpredict(){
     var intA =document.getElementById('load_A').value;
     var intB =document.getElementById('load_B').value;
     var intC =document.getElementById('load_C').value;
     var intG =document.getElementById('load_G').value;
+    var intload =document.getElementById('load').value;
     var nA = parseInt(intA);
     var nB = parseInt(intB);
     var nC = parseInt(intC);
     var nG = parseInt(intG);
+    var nload = parseInt(load);
     var show=document.getElementById('hide');
     var result = 0;
     var weather = document.getElementById("weather").value;
 
-    result = nA+nB+nC+nG;
+    result = nA+nB+nC+nG+nload;
     show.value= result;
 
     if(weather=="ฝนตกบางเบา"){
@@ -395,11 +456,44 @@ function showMyImage(fileInput) {
         document.getElementById("country").value = "TC001";
         document.getElementById("city").value = "CC01001";
       }
-    }else{
-      document.getElementById("country").value = "TC004";
-      document.getElementById("city").value = "CC01004";
-    }
-
+      }else{
+        document.getElementById("country").value = "TC005";
+        document.getElementById("city").value = "CC05001";
+      }
 
     console.log(result);
   }
+
+function functionRelation(){
+  var happenarea = document.getElementById("happenarea").value;
+  jQuery.ajax({
+    url: "http://127.0.0.1:8000/api/getsubpeacode/",
+    // url: "https://hookb.in/3OynwLEapdhKeKj2MjmJ",
+    type: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    dataType: 'json',
+    data: JSON.stringify({
+      "happenarea" : document.forms["myForm"]["happenarea"].value
+      })
+    })
+    .done(function(data, textStatus, jqXHR) {
+        console.log("HTTP Request Succeeded: " + jqXHR.status);
+        console.log(data); //Return Data
+
+        if (jqXHR.status == 200) {
+
+            var subarea = data['subpea']['label'];
+            console.log(subarea);
+            $("#subhappenarea").empty();
+            var i,y = "";
+            for (i in subarea){
+              y += "<option value=\""+subarea[i][0]+"\">"+subarea[i][1]+"</option>";
+            }
+
+            $('#subhappenarea').append(y);
+
+        };
+      })
+}

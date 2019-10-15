@@ -1,9 +1,10 @@
 jQuery.ajax({
-  url: "http://127.0.0.1:8000/api/getpeaid/",
+  url: "https://rc2backend.herokuapp.com/api/getpeaid/",
   // url: "https://hookb.in/3OynwLEapdhKeKj2MjmJ",
   type: "POST",
   headers: {
     "Content-Type": "application/json",
+    "Authorization":"token 9ab29c78d402b6539c64ffb498fb7b77ca96cf85"
   },
   dataType: 'json',
   data: JSON.stringify({
@@ -33,12 +34,19 @@ jQuery.ajax({
 
 function FunctionIDinput(){
   var staffid = document.getElementById("staffid").value;
+  if(isNaN(staffid)){
+    // document.getElementById("bk").value.match(numbers);
+    alert('เฉพาะตัวเลขเท่านั้น');
+    document.myForm.staffid.focus();
+    return false;
+  }
   jQuery.ajax({
-    url: "http://127.0.0.1:8000/api/getpeaid/",
+    url: "https://rc2backend.herokuapp.com/api/getpeaid/",
     // url: "https://hookb.in/3OynwLEapdhKeKj2MjmJ",
     type: "POST",
     headers: {
       "Content-Type": "application/json",
+      "Authorization":"token 9ab29c78d402b6539c64ffb498fb7b77ca96cf85",
     },
     dataType: 'json',
     data: JSON.stringify({
@@ -80,11 +88,12 @@ function FunctionIDinput(){
             $('#happenarea').append(y);
             var w = document.getElementById("peacode").value;
             jQuery.ajax({
-              url: "http://127.0.0.1:8000/api/scada/",
+              url: "https://rc2backend.herokuapp.com/api/scada/",
               // url: "https://hookb.in/3OynwLEapdhKeKj2MjmJ",
               type: "POST",
               headers: {
                 "Content-Type": "application/json",
+                "Authorization":"token 9ab29c78d402b6539c64ffb498fb7b77ca96cf85",
               },
               dataType: 'json',
               data: JSON.stringify({
@@ -159,7 +168,7 @@ function validateForm() {
 
 
   jQuery.ajax({
-    url: "http://127.0.0.1:8000/api/lineliff/",
+    url: "https://rc2backend.herokuapp.com/api/lineliff/",
     // url: "https://hookb.in/3OynwLEapdhKeKj2MjmJ",
     type: "POST",
     headers: {
@@ -380,11 +389,12 @@ function FunctionAutoinput() {
 function FunctionAutoweather() {
       var w = document.getElementById("peacode").value;
       jQuery.ajax({
-        url: "http://127.0.0.1:8000/api/scada/",
+        url: "https://rc2backend.herokuapp.com/api/scada/",
         // url: "https://hookb.in/3OynwLEapdhKeKj2MjmJ",
         type: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Authorization":"token 9ab29c78d402b6539c64ffb498fb7b77ca96cf85",
         },
         dataType: 'json',
         data: JSON.stringify({
@@ -467,11 +477,12 @@ function functionpredict(){
 function functionRelation(){
   var happenarea = document.getElementById("happenarea").value;
   jQuery.ajax({
-    url: "http://127.0.0.1:8000/api/getsubpeacode/",
+    url: "https://rc2backend.herokuapp.com/api/getsubpeacode/",
     // url: "https://hookb.in/3OynwLEapdhKeKj2MjmJ",
     type: "POST",
     headers: {
       "Content-Type": "application/json",
+      "Authorization":"token 9ab29c78d402b6539c64ffb498fb7b77ca96cf85"
     },
     dataType: 'json',
     data: JSON.stringify({
@@ -496,4 +507,45 @@ function functionRelation(){
 
         };
       })
+}
+
+function Checknumber(){
+      var numbers = /^[0-9]+$/;
+      var text = document.getElementById("bk").value;
+
+      if(isNaN(document.myForm.bk.value)){
+        // document.getElementById("bk").value.match(numbers);
+        alert('เฉพาะตัวเลขเท่านั้น');
+        document.myForm.bk.focus();
+        return false;
+      }else if(isNaN(document.myForm.r.value)){
+        alert('เฉพาะตัวเลขเท่านั้น');
+        document.myForm.r.focus();
+        return false
+      }else if(isNaN(document.myForm.load_A.value)){
+        alert('เฉพาะตัวเลขเท่านั้น');
+        document.myForm.load_A.focus();
+        return false
+      }else if(isNaN(document.myForm.load_B.value)){
+        alert('เฉพาะตัวเลขเท่านั้น');
+        document.myForm.load_B.focus();
+        return false
+      }else if(isNaN(document.myForm.load_C.value)){
+        alert('เฉพาะตัวเลขเท่านั้น');
+        document.myForm.load_C.focus();
+        return false
+      }else if(isNaN(document.myForm.load_G.value)){
+        alert('เฉพาะตัวเลขเท่านั้น');
+        document.myForm.load_G.focus();
+        return false
+      }else if(isNaN(document.myForm.load.value)){
+        alert('เฉพาะตัวเลขเท่านั้น');
+        document.myForm.load.focus();
+        return false
+      }else if(isNaN(document.myForm.distance.value)){
+        alert('เฉพาะตัวเลขเท่านั้น');
+        document.myForm.distance.focus();
+        return false
+      }
+
 }

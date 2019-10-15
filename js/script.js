@@ -4,7 +4,7 @@ jQuery.ajax({
   type: "POST",
   headers: {
     "Content-Type": "application/json",
-    "Authorization":"token 9ab29c78d402b6539c64ffb498fb7b77ca96cf85"
+    "Authorization":"token 5a5410bf249b5ad186c80a015a8b93abaef18349"
   },
   dataType: 'json',
   data: JSON.stringify({
@@ -46,7 +46,7 @@ function FunctionIDinput(){
     type: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Authorization":"token 9ab29c78d402b6539c64ffb498fb7b77ca96cf85",
+      "Authorization":"token 5a5410bf249b5ad186c80a015a8b93abaef18349",
     },
     dataType: 'json',
     data: JSON.stringify({
@@ -93,7 +93,7 @@ function FunctionIDinput(){
               type: "POST",
               headers: {
                 "Content-Type": "application/json",
-                "Authorization":"token 9ab29c78d402b6539c64ffb498fb7b77ca96cf85",
+                "Authorization":"token 5a5410bf249b5ad186c80a015a8b93abaef18349",
               },
               dataType: 'json',
               data: JSON.stringify({
@@ -394,7 +394,7 @@ function FunctionAutoweather() {
         type: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization":"token 9ab29c78d402b6539c64ffb498fb7b77ca96cf85",
+          "Authorization":"token 5a5410bf249b5ad186c80a015a8b93abaef18349",
         },
         dataType: 'json',
         data: JSON.stringify({
@@ -482,7 +482,7 @@ function functionRelation(){
     type: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Authorization":"token 9ab29c78d402b6539c64ffb498fb7b77ca96cf85"
+      "Authorization":"token 5a5410bf249b5ad186c80a015a8b93abaef18349"
     },
     dataType: 'json',
     data: JSON.stringify({

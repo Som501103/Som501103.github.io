@@ -4,6 +4,7 @@ jQuery.ajax({
   type: "POST",
   headers: {
     "Content-Type": "application/json",
+    "Authorization":"token 9ab29c78d402b6539c64ffb498fb7b77ca96cf85"
   },
   dataType: 'json',
   data: JSON.stringify({
@@ -30,6 +31,109 @@ jQuery.ajax({
       };
     })
 
+
+function FunctionIDinput(){
+  var staffid = document.getElementById("staffid").value;
+  if(isNaN(staffid)){
+    // document.getElementById("bk").value.match(numbers);
+    alert('เฉพาะตัวเลขเท่านั้น');
+    document.myForm.staffid.focus();
+    return false;
+  }
+  jQuery.ajax({
+    url: "http://127.0.0.1:8000/api/getpeaid/",
+    // url: "https://hookb.in/3OynwLEapdhKeKj2MjmJ",
+    type: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization":"token 9ab29c78d402b6539c64ffb498fb7b77ca96cf85",
+    },
+    dataType: 'json',
+    data: JSON.stringify({
+      // 'staffid' : "U649ce5cbe448b470e9a8eb4557952a3b"
+      "staffid" : document.getElementById("staffid").value
+      })
+    })
+    .done(function(data, textStatus, jqXHR) {
+        console.log("HTTP Request Succeeded: " + jqXHR.status);
+        console.log(data); //Return Data
+        if (jqXHR.status == 200) {
+
+            var staffname = data['obj']['FirstName'];
+            var stafflastname = data['obj']['LastName'];
+            var staffdept = data['obj']['DepartmentShort'];
+            var stafftel = data['obj']['DepartmentShort'];
+            var subregion = data['obj']['SubRegionCode'];
+            var region = data['region']['label'];
+            var pea = data['pea']['label'];
+
+            console.log(staffname);
+            console.log(pea);
+
+            var obj = region;
+            var i, x,j,y = "";
+            // console.log(obj);
+              for (i in obj) {
+                          x += "<option value=\""+obj[i][0]+"\">"+obj[i][1]+"</option>";
+                          // console.log(x);
+                        }
+              for (i in pea){
+                y += "<option value=\""+pea[i][0]+"\">"+pea[i][1]+"</option>";
+              }
+            document.getElementById('staffname').innerHTML = staffname + "  " + stafflastname;
+            document.getElementById('staffdept').innerHTML = staffdept;
+            // document.getElementById('peacode').innerHTML = region;
+            // document.getElementById('peacode').innerHTML = x;
+            $('#peacode').append(x);
+            $('#happenarea').append(y);
+            var w = document.getElementById("peacode").value;
+            jQuery.ajax({
+              url: "http://127.0.0.1:8000/api/scada/",
+              // url: "https://hookb.in/3OynwLEapdhKeKj2MjmJ",
+              type: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                "Authorization":"token 9ab29c78d402b6539c64ffb498fb7b77ca96cf85",
+              },
+              dataType: 'json',
+              data: JSON.stringify({
+                "peacode" : document.forms["myForm"]["peacode"].value
+
+              })
+
+            })
+            .done(function(data, textStatus, jqXHR) {
+                console.log("HTTP Request Succeeded: " + jqXHR.status);
+                console.log(data); //Return Data
+                if (jqXHR.status == 200) {
+                  var des = data['description'];
+
+                  if (des=="light rain") {
+                    description = "ฝนตกบางเบา"
+                  }else if (des=="very heavy rain") {
+                    description = "ฝนตกหนัก"
+                  }else if(des=="overcast clouds"){
+                    description = "เมฆเยอะ"
+                  }else if(des=="broken clouds"){
+                    description = "เมฆบางส่วน"
+                  }else if(des=="few clouds"){
+                    description = "เมฆน้อย"
+                  }else{
+                    description = "เมฆกระจายตัว"
+                  }
+
+                  document.getElementById("weather").value = description;
+
+                };
+              })
+
+
+              return false;
+
+        };
+      })
+
+}
 
 function validateForm() {
 
@@ -113,7 +217,7 @@ function validateForm() {
 
       //   //window.location = "p11searchp.html"
 
-       window.location.replace("file:///Users/som501103/Downloads/rc2-test2/login.html")
+       window.location.replace("file:///Users/som501103/Downloads/rc2-test2/index.html")
 
       };
     })
@@ -166,7 +270,7 @@ function showMyImage(fileInput) {
     {display: "อื่นๆ", value: "CC03006"}];
     var TC004 = [{
     display: "คนตัดต้นไม้",value: "CC04001"},
-    {display: "คนงานพาดสายโทรศัพท์ู",value: "CC04002"},
+    {display: "คนงานพาดสายโทรศัพท์",value: "CC04002"},
     { display: "คนยิงลูกถ้วย",value: "CC04003"},
     {display: "คนลักไฟใช้", value: "CC04004"},
     {display: "อื่นๆ", value: "CC04005"}];
@@ -276,13 +380,13 @@ function showMyImage(fileInput) {
     }
     });
 
-  function FunctionAutoinput() {
+function FunctionAutoinput() {
       var x = document.getElementById("equipcode").value;
       document.getElementById("equipstrat").value = x;
   }
 
 
-  function FunctionAutoweather() {
+function FunctionAutoweather() {
       var w = document.getElementById("peacode").value;
       jQuery.ajax({
         url: "http://127.0.0.1:8000/api/scada/",
@@ -290,6 +394,7 @@ function showMyImage(fileInput) {
         type: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Authorization":"token 9ab29c78d402b6539c64ffb498fb7b77ca96cf85",
         },
         dataType: 'json',
         data: JSON.stringify({
@@ -312,6 +417,8 @@ function showMyImage(fileInput) {
               description = "เมฆเยอะ"
             }else if(des=="broken clouds"){
               description = "เมฆบางส่วน"
+            }else if(des=="few clouds"){
+              description = "เมฆน้อย"
             }
 
             document.getElementById("weather").value = description;
@@ -322,5 +429,123 @@ function showMyImage(fileInput) {
 
         return false;
 
-
   }
+
+function functionpredict(){
+    var intA =document.getElementById('load_A').value;
+    var intB =document.getElementById('load_B').value;
+    var intC =document.getElementById('load_C').value;
+    var intG =document.getElementById('load_G').value;
+    var intload =document.getElementById('load').value;
+    var nA = parseInt(intA);
+    var nB = parseInt(intB);
+    var nC = parseInt(intC);
+    var nG = parseInt(intG);
+    var nload = parseInt(load);
+    var show=document.getElementById('hide');
+    var result = 0;
+    var weather = document.getElementById("weather").value;
+
+    result = nA+nB+nC+nG+nload;
+    show.value= result;
+
+    if(weather=="ฝนตกบางเบา"){
+        if(result>=1000){
+          document.getElementById("country").value = "TC002";
+          document.getElementById("city").value = "CC02001";
+        }
+        else if(result<1000){
+          // document.getElementById('country').options[document.getElementById('country').selectedIndex].value = "TC004";
+          document.getElementById("country").value = "TC004";
+          document.getElementById("city").value = "CC04003";
+        }
+      }
+      // document.getElementById('country').options[document.getElementById('country').selectedIndex].value = "TC005";
+    else if(weather=="ฝนตกหนัก"){
+      if(result>=1000){
+        document.getElementById("country").value = "TC001";
+        document.getElementById("city").value = "CC01001";
+      }
+      }else{
+        document.getElementById("country").value = "TC005";
+        document.getElementById("city").value = "CC05001";
+      }
+
+    console.log(result);
+  }
+
+function functionRelation(){
+  var happenarea = document.getElementById("happenarea").value;
+  jQuery.ajax({
+    url: "http://127.0.0.1:8000/api/getsubpeacode/",
+    // url: "https://hookb.in/3OynwLEapdhKeKj2MjmJ",
+    type: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization":"token 9ab29c78d402b6539c64ffb498fb7b77ca96cf85"
+    },
+    dataType: 'json',
+    data: JSON.stringify({
+      "happenarea" : document.forms["myForm"]["happenarea"].value
+      })
+    })
+    .done(function(data, textStatus, jqXHR) {
+        console.log("HTTP Request Succeeded: " + jqXHR.status);
+        console.log(data); //Return Data
+
+        if (jqXHR.status == 200) {
+
+            var subarea = data['subpea']['label'];
+            console.log(subarea);
+            $("#subhappenarea").empty();
+            var i,y = "";
+            for (i in subarea){
+              y += "<option value=\""+subarea[i][0]+"\">"+subarea[i][1]+"</option>";
+            }
+
+            $('#subhappenarea').append(y);
+
+        };
+      })
+}
+
+function Checknumber(){
+      var numbers = /^[0-9]+$/;
+      var text = document.getElementById("bk").value;
+
+      if(isNaN(document.myForm.bk.value)){
+        // document.getElementById("bk").value.match(numbers);
+        alert('เฉพาะตัวเลขเท่านั้น');
+        document.myForm.bk.focus();
+        return false;
+      }else if(isNaN(document.myForm.r.value)){
+        alert('เฉพาะตัวเลขเท่านั้น');
+        document.myForm.r.focus();
+        return false
+      }else if(isNaN(document.myForm.load_A.value)){
+        alert('เฉพาะตัวเลขเท่านั้น');
+        document.myForm.load_A.focus();
+        return false
+      }else if(isNaN(document.myForm.load_B.value)){
+        alert('เฉพาะตัวเลขเท่านั้น');
+        document.myForm.load_B.focus();
+        return false
+      }else if(isNaN(document.myForm.load_C.value)){
+        alert('เฉพาะตัวเลขเท่านั้น');
+        document.myForm.load_C.focus();
+        return false
+      }else if(isNaN(document.myForm.load_G.value)){
+        alert('เฉพาะตัวเลขเท่านั้น');
+        document.myForm.load_G.focus();
+        return false
+      }else if(isNaN(document.myForm.load.value)){
+        alert('เฉพาะตัวเลขเท่านั้น');
+        document.myForm.load.focus();
+        return false
+      }else if(isNaN(document.myForm.distance.value)){
+        alert('เฉพาะตัวเลขเท่านั้น');
+        document.myForm.distance.focus();
+        return false
+      }
+
+}

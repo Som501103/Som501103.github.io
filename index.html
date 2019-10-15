@@ -114,21 +114,21 @@
           <!-- <form id="email-form-2" name="email-form-2" data-name="Email Form 2"> -->
             <label for="name-2" class="field-label subhead">เคาร์เตอร์ของอุปกรณ์</label>
             <div class="box-2 w-row">
-              <div class="w-col w-col-4"><label for="name-4" class="field-label">BK</label><input type="text" class="box-fill three w-input" maxlength="256" name="bk" data-name="Name 4" id="bk">
-                                        <label for="name-3" class="field-label">รวม/R</label><input type="text" class="box-fill three w-input" maxlength="256" name="r" data-name="Name 3" id="r">
+              <div class="w-col w-col-4"><label for="name-4" class="field-label">BK</label><input type="text" class="box-fill three w-input" maxlength="256" name="bk" data-name="Name 4" id="bk" onkeypress="return Checknumber()" placeholder="0">
+                                        <label for="name-3" class="field-label">รวม/R</label><input type="text" class="box-fill three w-input" maxlength="256" name="r" data-name="Name 3" id="r" onkeypress="return Checknumber()" placeholder="0">
               </div>
-              <div class="w-col w-col-4"><label for="name-6" class="field-label">เฟส A</label><input type="text" class="box-fill three w-input" maxlength="256" name="load_A" data-name="Name" id="load_A" onkeyup='functionpredict()' value="0">
-                                        <label for="name-5" class="field-label">เฟส B</label><input type="text" class="box-fill three w-input" maxlength="256" name="load_B" data-name="Name 5" id="load_B" onkeyup='functionpredict()' value="0">
+              <div class="w-col w-col-4"><label for="name-6" class="field-label">เฟส A</label><input type="text" class="box-fill three w-input" maxlength="256" name="load_A" data-name="Name" id="load_A" onkeyup="functionpredict()" onkeypress="return Checknumber()" placeholder="0">
+                                        <label for="name-5" class="field-label">เฟส B</label><input type="text" class="box-fill three w-input" maxlength="256" name="load_B" data-name="Name 5" id="load_B" onkeypress="return Checknumber()" onkeyup="functionpredict()" placeholder="0">
               </div>
-              <div class="w-col w-col-4"><label for="name-2" class="field-label">เฟส C</label><input type="text" class="box-fill three w-input" maxlength="256" name="load_C" data-name="Name 6" id="load_C" onkeyup='functionpredict()' value="0">
-                                         <label for="name-7" class="field-label">เฟส G</label><input type="text" class="box-fill three w-input" maxlength="256" name="load_G" data-name="Name 6" id="load_G" onkeyup='functionpredict()' value="0">
+              <div class="w-col w-col-4"><label for="name-2" class="field-label">เฟส C</label><input type="text" class="box-fill three w-input" maxlength="256" name="load_C" data-name="Name 6" id="load_C" onkeyup="functionpredict()" onkeypress="return Checknumber()" placeholder="0">
+                                         <label for="name-7" class="field-label">เฟส G</label><input type="text" class="box-fill three w-input" maxlength="256" name="load_G" data-name="Name 6" id="load_G" onkeyup="functionpredict()" onkeypress="return Checknumber()" placeholder="0">
                                          <input type="hidden" class="box-fill three w-input" maxlength="256" name="hide" data-name="Name 6" id="hide"  value="0">
               </div>
 
             </div>
             <div class="w-row">
-              <div class="w-col w-col-6"><label for="email-3" class="field-label">โหลดหาย (MW)</label><input type="text" class="box-fill half w-input" maxlength="256" name="load" data-name="Name 6" id="load" value="0"></div>
-              <div class="w-col w-col-6"><label for="email-3" class="field-label">ระยะทาง (km)</label><input type="text" class="box-fill half w-input" maxlength="256" name="distance" data-name="Email 2" id="distance" value="0"></div>
+              <div class="w-col w-col-6"><label for="email-3" class="field-label">โหลดหาย (MW)</label><input type="text" class="box-fill half w-input" maxlength="256" name="load" data-name="Name 6" id="load" placeholder="0" onkeyup="return Checknumber()"></div>
+              <div class="w-col w-col-6"><label for="email-3" class="field-label">ระยะทาง (km)</label><input type="text" class="box-fill half w-input" maxlength="256" name="distance" data-name="Email 2" id="distance" placeholder="0" onkeyup="return Checknumber()"></div>
             </div>
             <fieldset>
               <label for="name-7" class="field-label subhead">สาเหตุไฟดับ</label>

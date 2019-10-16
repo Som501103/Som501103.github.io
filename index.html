@@ -28,7 +28,7 @@
     <div class="head w-clearfix">
       <div class="logo1"><img src="images/rc2-logo1-01.png" srcset="images/rc2-logo1-01-p-500.png 500w, images/rc2-logo1-01-p-800.png 800w, images/rc2-logo1-01-p-1080.png 1080w, images/rc2-logo1-01-p-1600.png 1600w, images/rc2-logo1-01-p-2000.png 2000w, images/rc2-logo1-01.png 2206w" sizes="100px" alt="" class="image-3"></div>
       <div class="name">
-        <h4 class="heading-2">รหัสพนักงาน</h4><input type="text" class="box-fill w-input" maxlength="256" for="name-2" id="staffid" oninput="FunctionIDinput()">
+        <h4 class="heading-2">รหัสพนักงาน</h4><input type="text" class="box-fill w-input" maxlength="6" size="6" for="name-2" id="staffid" oninput="FunctionIDinput()">
         <h4 class="heading-2">ชื่อพนักงาน</h4><label for="name-2" class="field-label" id="staffname"></label>
         <h4 class="heading-2 _2">สังกัด</h4><label for="name-2" class="field-label" id="staffdept"></label>
       </div>
@@ -160,15 +160,19 @@
                   <option value="สายส่ง">สายส่ง</option>
                 </select>
               </div>
-            </div><label for="email-3" class="field-label">กฟภ.รับผิดชอบในจุดเกิดเหตุ</label>
+            </div>
+              <label for="email-3" class="field-label">กฟภ.รับผิดชอบในจุดเกิดเหตุ</label>
                   <select class="box-fill w-input" maxlength="256" name="happenarea" data-name="Email 2" id="happenarea" onchange="functionRelation()">
                     <option value="0">กรุณาเลือก</option>
 
                   </select>
                   <select class="box-fill w-input" maxlength="256" name="subhappenarea" data-name="Email 2" id="subhappenarea" >
                     <option value="0">กรุณาเลือก</option>
-
                   </select>
+              <label for="email-3" class="field-label">พนักงานที่รับผิดชอบในจุดเกิดเหตุ</label>
+                <div class="w-col w-col-6"><label for="email-3" class="field-label">รหัสพนักงาน</label>
+                  <input type="text" class="box-fill half w-input" maxlength="256" name="electricianID" data-name="Email 2" id="electricianID" ></div>
+
           <!-- </form> -->
           <div class="w-form-done"></div>
           <div class="w-form-fail"></div>

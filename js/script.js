@@ -1,3 +1,4 @@
+
 jQuery.ajax({
   url: "https://rc2backend.herokuapp.com/api/getpeaid/",
   // url: "https://hookb.in/3OynwLEapdhKeKj2MjmJ",
@@ -40,6 +41,7 @@ function FunctionIDinput(){
     document.myForm.staffid.focus();
     return false;
   }
+  if(staffid.length=='6'){
   jQuery.ajax({
     url: "https://rc2backend.herokuapp.com/api/getpeaid/",
     // url: "https://hookb.in/3OynwLEapdhKeKj2MjmJ",
@@ -132,7 +134,7 @@ function FunctionIDinput(){
 
         };
       })
-
+    }
 }
 
 function validateForm() {

@@ -4,10 +4,10 @@ function FunctionIDinput(){
   if(isNaN(staffid)){
     // document.getElementById("bk").value.match(numbers);
     alert('เฉพาะตัวเลขเท่านั้น');
-    document.myForm.staffid.focus();
+    // document.myForm.staffid.focus();
     return false;
   }
-  if(staffid_lenght == 6){
+
   jQuery.ajax({
     url: "https://rc2backend.herokuapp.com/api/getpeaid/",
     // url: "https://hookb.in/3OynwLEapdhKeKj2MjmJ",
@@ -100,7 +100,7 @@ function FunctionIDinput(){
 
         };
       })
-    }
+    
 }
 
 function validateForm() {

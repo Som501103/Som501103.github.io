@@ -1,38 +1,3 @@
-
-// jQuery.ajax({
-//   url: "https://rc2backend.herokuapp.com/api/getpeaid/",
-//   // url: "https://hookb.in/3OynwLEapdhKeKj2MjmJ",
-//   type: "POST",
-//   headers: {
-//     "Content-Type": "application/json",
-//     "Authorization":"token 5a5410bf249b5ad186c80a015a8b93abaef18349"
-//   },
-//   dataType: 'json',
-//   data: JSON.stringify({
-//     'uid' : "U649ce5cbe448b470e9a8eb4557952a3b"
-//     })
-//   })
-//   .done(function(data, textStatus, jqXHR) {
-//       console.log("HTTP Request Succeeded: " + jqXHR.status);
-//       console.log(data); //Return Data
-//       if (jqXHR.status == 200) {
-//
-//           var staffname = data['obj']['FirstName'];
-//           var stafflastname = data['obj']['LastName'];
-//           var staffdept = data['obj']['DepartmentShort'];
-//           var stafftel = data['obj']['DepartmentShort'];
-//           var subregion = data['obj']['SubRegionCode'];
-//
-//           console.log(staffname);
-//           document.getElementById('staffname').innerHTML = staffname + "  " + stafflastname;
-//           document.getElementById('staffdept').innerHTML = staffdept;
-//           document.getElementById('stafftel').innerHTML = stafftel;
-//
-//
-//       };
-//     })
-
-
 function FunctionIDinput(){
   var staffid = document.getElementById("staffid").value;
   var staffid_lenght = document.getElementById("staffid").innerHTML.length;

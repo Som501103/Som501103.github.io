@@ -1,13 +1,15 @@
 function FunctionIDinput(){
   var staffid = document.getElementById("staffid").value;
-  var staffid_lenght = document.getElementById("staffid").innerHTML.length;
+  var staffid_inner = document.getElementById("staffid").innerHTML;
+  var staffid_lenght = staffid_inner.length;
+
   if(isNaN(staffid)){
     // document.getElementById("bk").value.match(numbers);
     alert('เฉพาะตัวเลขเท่านั้น');
     // document.myForm.staffid.focus();
     return false;
   }
- if(staffid_lenght == 6){
+ if(staffid_lenght === 6){
    console.log(staffid_lenght);
  }else{
    console.log(staffid_lenght);

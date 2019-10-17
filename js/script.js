@@ -1,7 +1,7 @@
 function FunctionIDinput(){
   var staffid = document.getElementById("staffid").value;
-  var staffid_inner = document.getElementById("staffid").innerHTML;
-  var staffid_lenght = staffid_inner.length;
+  var staffid_inner = document.getElementById('staffid');
+
 
   if(isNaN(staffid)){
     // document.getElementById("bk").value.match(numbers);
@@ -9,10 +9,11 @@ function FunctionIDinput(){
     // document.myForm.staffid.focus();
     return false;
   }
- if(staffid_lenght === 6){
-   console.log(staffid_lenght);
+ if(staffid_inner.innerHTML.length === 6){
+   console.log(staffid);
+
  }else{
-   console.log(staffid_lenght);
+   console.log(staffid);
  }
   jQuery.ajax({
     url: "https://rc2backend.herokuapp.com/api/getpeaid/",

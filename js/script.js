@@ -10,7 +10,8 @@ function FunctionIDinput(){
     return false;
   }
  if(staffid_inner.innerHTML.length === 6){
-   console.log(staffid);
+   var staff_lenght = staffid_inner.innerHTML.length;
+   console.log(staff_lenght);
 
  }else{
    console.log(staffid);

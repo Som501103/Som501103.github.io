@@ -147,6 +147,7 @@ function validateForm() {
     type: "POST",
     headers: {
       "Content-Type": "application/json",
+      "Authorization":"token 5a5410bf249b5ad186c80a015a8b93abaef18349",
     },
     dataType: 'json',
     data: JSON.stringify({
@@ -172,7 +173,8 @@ function validateForm() {
       "maincause": maincause,
       "weather": document.forms["myForm"]["weather"].value,
       "area": document.forms["myForm"]["area"].value,
-      "trip": trip
+      "trip": trip,
+      "electrician": document.forms["myForm"]["electricianID"].value
 
     })
 

@@ -35,13 +35,14 @@ jQuery.ajax({
 
 function FunctionIDinput(){
   var staffid = document.getElementById("staffid").value;
+  var staffid_lenght = document.getElementById("staffid").innerHTML.length;
   if(isNaN(staffid)){
     // document.getElementById("bk").value.match(numbers);
     alert('เฉพาะตัวเลขเท่านั้น');
     document.myForm.staffid.focus();
     return false;
   }
-  if(staffid.length=='6'){
+  if(staffid_lenght == 6){
   jQuery.ajax({
     url: "https://rc2backend.herokuapp.com/api/getpeaid/",
     // url: "https://hookb.in/3OynwLEapdhKeKj2MjmJ",

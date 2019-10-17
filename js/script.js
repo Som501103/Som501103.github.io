@@ -51,9 +51,9 @@ function FunctionIDinput(){
                           x += "<option value=\""+obj[i][0]+"\">"+obj[i][1]+"</option>";
                           // console.log(x);
                         }
-              for (i in pea){
-                y += "<option value=\""+pea[i][0]+"\">"+pea[i][1]+"</option>";
-              }
+              // for (i in pea){
+              //   y += "<option value=\""+pea[i][0]+"\">"+pea[i][1]+"</option>";
+              // }
             document.getElementById('staffname').innerHTML = staffname + "  " + stafflastname;
             document.getElementById('staffdept').innerHTML = staffdept;
             // document.getElementById('peacode').innerHTML = region;

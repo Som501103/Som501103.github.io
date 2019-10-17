@@ -7,7 +7,11 @@ function FunctionIDinput(){
     // document.myForm.staffid.focus();
     return false;
   }
-
+ if(staffid_lenght == 6){
+   console.log(staffid_lenght);
+ }else{
+   console.log(staffid_lenght);
+ }
   jQuery.ajax({
     url: "https://rc2backend.herokuapp.com/api/getpeaid/",
     // url: "https://hookb.in/3OynwLEapdhKeKj2MjmJ",
@@ -100,7 +104,7 @@ function FunctionIDinput(){
 
         };
       })
-    
+
 }
 
 function validateForm() {

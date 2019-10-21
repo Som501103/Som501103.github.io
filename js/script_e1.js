@@ -5,7 +5,7 @@ var id = urlParams.get('id')
 console.log(id);
 
 jQuery.ajax({
-  url: "https://rc2backend.herokuapp.com/api/getdatae1",
+  url: "https://rc2backend.herokuapp.com/api/getdatae1/",
   // url: "https://hookb.in/3OynwLEapdhKeKj2MjmJ",
   type: "POST",
   headers: {
@@ -23,7 +23,7 @@ jQuery.ajax({
     console.log("HTTP Request Succeeded: " + jqXHR.status);
     console.log(data); //Return Data
     if (jqXHR.status == 200) {
-      
+
 
     };
   })

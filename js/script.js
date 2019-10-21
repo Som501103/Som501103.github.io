@@ -172,7 +172,7 @@ function validateForm() {
     },
     dataType: 'json',
     data: JSON.stringify({
-      "created_by": document.forms["myForm"]["staffid"].value,
+      "created_by": document.getElementById("staffid").value,
       "datehappen" : document.forms["myForm"]["datehappen"].value,
       "timehappen" : document.forms["myForm"]["timehappen"].value,
       "daterestore" : document.forms["myForm"]["daterestore"].value,

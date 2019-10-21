@@ -80,7 +80,17 @@ function FunctionIDinput(){
                 console.log("HTTP Request Succeeded: " + jqXHR.status);
                 console.log(data); //Return Data
                 if (jqXHR.status == 200) {
+                  var id = data['id'];
+                  var main = data['main']
                   var des = data['description'];
+                  var temp = data['temp'];
+                  var pressure = data['pressure'];
+                  var humidity = data['humidity'];
+                  var main_temp_min = data['min'];
+                  var main_temp_max = data['max'];
+                  var wind = data['wind'];
+                  var clouds =data['clouds'];
+                  var dt_weather = data['localDT'];
 
                   if (des=="light rain") {
                     description = "ฝนตกบางเบา"
@@ -96,7 +106,18 @@ function FunctionIDinput(){
                     description = "เมฆกระจายตัว"
                   }
 
+                  document.getElementById("weather_id").value = id;
                   document.getElementById("weather").value = description;
+                  document.getElementById("temp").value = temp;
+                  document.getElementById("weather_main").value = main;
+                  document.getElementById("main_pressure").value = pressure;
+                  document.getElementById("main_humidity").value = humidity;
+                  document.getElementById("main_temp_min").value  = main_temp_min;
+                  document.getElementById("main_temp_max").value = main_temp_max;
+                  document.getElementById("wind").value = wind;
+                  document.getElementById("clouds").value = clouds;
+                  document.getElementById("dt_weather").value = dt_weather;
+
 
                 };
               })
@@ -151,12 +172,14 @@ function validateForm() {
     },
     dataType: 'json',
     data: JSON.stringify({
-
+      "created_by": document.forms["myForm"]["staffid"].value,
       "datehappen" : document.forms["myForm"]["datehappen"].value,
+      "timehappen" : document.forms["myForm"]["timehappen"].value,
       "daterestore" : document.forms["myForm"]["daterestore"].value,
-      "course": document.forms["myForm"]["course"].value,
-      "equipcode": document.forms["myForm"]["equipcode"].value,
+      "timerestore" : document.forms["myForm"]["timerestore"].value,
+      "trip": trip,
       "peacode": document.forms["myForm"]["peacode"].value,
+      "equipcode": document.forms["myForm"]["equipcode"].value,
       "fedder": document.forms["myForm"]["fedder"].value,
       "fedderwork": document.forms["myForm"]["fedderwork"].value,
       "relay": document.forms["myForm"]["relay"].value,
@@ -171,11 +194,24 @@ function validateForm() {
       "load_G": document.forms["myForm"]["load_G"].value,
       "distance": document.forms["myForm"]["distance"].value,
       "maincause": maincause,
+      "course": document.forms["myForm"]["course"].value,
       "weather": document.forms["myForm"]["weather"].value,
-      "area": document.forms["myForm"]["area"].value,
-      "trip": trip,
-      "electrician": document.forms["myForm"]["electricianID"].value
-
+      "temp": document.forms["myForm"]["temp"].value,
+      "weather_id": document.forms["myForm"]["weather_id"].value,
+      "weather_main": document.forms["myForm"]["weather_main"].value,
+      "main_pressure": document.forms["myForm"]["main_pressure"].value,
+      "main_humidity": document.forms["myForm"]["main_humidity"].value,
+      "main_temp_min": document.forms["myForm"]["main_temp_min"].value,
+      "main_temp_max": document.forms["myForm"]["main_temp_max"].value,
+      "wind": document.forms["myForm"]["wind"].value,
+      "clouds": document.forms["myForm"]["clouds"].value,
+      "dt_weather": document.forms["myForm"]["dt_weather"].value,
+      "area": document.forms["myForm"]["happenarea"].value,
+      "subhappenarea": document.forms["myForm"]["subhappenarea"].value,
+      "electrician": document.forms["myForm"]["electricianID"].value,
+      "causetype": document.forms["myForm"]["country"].value,
+      "subcause": document.forms["myForm"]["city"].value,
+      "detail": document.forms["myForm"]["detail"].value
     })
 
   })

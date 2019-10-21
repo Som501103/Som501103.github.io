@@ -112,7 +112,7 @@
       <div class="w-col w-col-4">
         <div class="w-form">
           <!-- <form id="email-form-2" name="email-form-2" data-name="Email Form 2"> -->
-            <label for="name-2" class="field-label subhead">เคาร์เตอร์ของอุปกรณ์</label>
+            <label for="name-2" class="field-label subhead">เคาน์เตอร์ของอุปกรณ์</label>
             <div class="box-2 w-row">
               <div class="w-col w-col-4"><label for="name-4" class="field-label">BK</label><input type="text" class="box-fill three w-input" maxlength="256" name="bk" data-name="Name 4" id="bk" onkeypress="return Checknumber()" placeholder="0">
                                         <label for="name-3" class="field-label">รวม/R</label><input type="text" class="box-fill three w-input" maxlength="256" name="r" data-name="Name 3" id="r" onkeypress="return Checknumber()" placeholder="0">
@@ -149,7 +149,19 @@
                   </select>
               <!-- <input type="email" class="box-fill w-input" maxlength="256" name="email-2" data-name="Email 2" id="email-2" required=""> -->
             <div class="w-row">
-              <div class="w-col w-col-6"><label for="email-3" class="field-label">สภาพอากาศ</label><input type="text" class="box-fill half w-input" maxlength="256" name="weather" data-name="Email 2" id="weather" ></div>
+              <div class="w-col w-col-6"><label for="email-3" class="field-label">สภาพอากาศ</label><input type="text" class="box-fill half w-input" maxlength="256" name="weather" data-name="Email 2" id="weather" readonly></div>
+              <div class="w-col w-col-6"><label for="email-3" class="field-label">อุณหภูมิ (C)</label><input type="text" class="box-fill half w-input" maxlength="256" name="temp" data-name="Email 2" id="temp" readonly></div>
+              <hidden id="weather_id" name="weather_id"></hidden>
+              <hidden id="weather_main" name="weather_main"></hidden>
+              <hidden id="main_pressure" name="main_pressure"></hidden>
+              <hidden id="main_humidity" name="main_humidity"></hidden>
+              <hidden id="main_temp_min" name="main_temp_min"></hidden>
+              <hidden id="main_temp_max" name="main_temp_max"></hidden>
+              <hidden id="wind" name="wind"></hidden>
+              <hidden id="clouds" name="clouds"></hidden>
+              <hidden id="dt_weather" name="dt_weather"></hidden>
+
+
               <div class="w-col w-col-6"><label for="email-3" class="field-label">เกิดขึ้นในส่วน</label>
                 <select id="area" name="area" class="box-fill half w-input">
                   <option value="inComing">inComing</option>
@@ -183,7 +195,7 @@
           <!-- <form id="email-form-3" name="email-form-3" data-name="Email Form 3"> -->
             <label for="name-7" class="field-label subhead">สาเหตุของเหตุการณ์</label>
             <label for="name-7" class="field-label">ตัวกระทำ</label>
-                <select id="country" required="" maxlength="256" class="box-fill w-input" name="country" data-name="Email 2" >
+                <select id="country" name="country" required="" maxlength="256" class="box-fill w-input" name="country" data-name="Email 2" >
                   <option value="0">เลือกสาเหตุ</option>
                   <option value="TC001">ต้นไม้</option>
                   <option value="TC002">อุปกรณ์</option>

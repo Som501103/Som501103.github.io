@@ -197,7 +197,7 @@ function validateForm() {
       "course": document.forms["myForm"]["course"].value,
       "weather": document.forms["myForm"]["weather"].value,
       "temp": document.forms["myForm"]["temp"].value,
-      "weather_id": document.forms["myForm"]["weather_id"].value,
+      "weather_id": document.getElementById("weather_id").value,
       "weather_main": document.forms["myForm"]["weather_main"].value,
       "main_pressure": document.forms["myForm"]["main_pressure"].value,
       "main_humidity": document.forms["myForm"]["main_humidity"].value,

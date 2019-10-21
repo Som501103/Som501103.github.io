@@ -32,7 +32,6 @@ function FunctionIDinput(){
         console.log("HTTP Request Succeeded: " + jqXHR.status);
         console.log(data); //Return Data
         if (jqXHR.status == 200) {
-
             var staffname = data['obj']['FirstName'];
             var stafflastname = data['obj']['LastName'];
             var staffdept = data['obj']['DepartmentShort'];
@@ -41,26 +40,36 @@ function FunctionIDinput(){
             var region = data['region']['label'];
             var pea = data['pea']['label'];
 
+
+            $('#happenarea').empty();
             console.log(staffname);
             console.log(pea);
 
-            var obj = region;
+            // var obj = region;
             var i, x,j,y = "";
             // console.log(obj);
-              for (i in obj) {
-                          x += "<option value=\""+obj[i][0]+"\">"+obj[i][1]+"</option>";
-                          // console.log(x);
+
+            for (i in region) {
+                          x += "<option value=\""+region[i][0]+"\">"+region[i][1]+"</option>";
+                          console.log(x);
                         }
-              for (i in pea){
-                y += "<option value=\""+pea[i][0]+"\">"+pea[i][1]+"</option>";
-              }
+            // $('#peacode').empty();
+            $('#peacode').append(x);
+
+            for (j in pea){
+                          y += "<option value=\""+pea[j][0]+"\">"+pea[j][1]+"</option>";
+                          // console.log(y);
+                        }
+            $('#happenarea').append(y);
             document.getElementById('staffname').innerHTML = staffname + "  " + stafflastname;
             document.getElementById('staffdept').innerHTML = staffdept;
             // document.getElementById('peacode').innerHTML = region;
             // document.getElementById('peacode').innerHTML = x;
-            $('#peacode').append(x);
-            $('#happenarea').append(y);
-            var w = document.getElementById("peacode").value;
+            // $('#peacode').empty();
+
+
+
+            // var w = document.getElementById("peacode").value;
             jQuery.ajax({
               url: "https://rc2backend.herokuapp.com/api/scada/",
               // url: "https://hookb.in/3OynwLEapdhKeKj2MjmJ",
@@ -71,7 +80,7 @@ function FunctionIDinput(){
               },
               dataType: 'json',
               data: JSON.stringify({
-                "peacode" : document.forms["myForm"]["peacode"].value
+                "peacode" : document.getElementById("peacode").value
 
               })
 
@@ -122,12 +131,12 @@ function FunctionIDinput(){
                 };
               })
 
-
               return false;
 
-        };
-      })
-    }
+            };
+          })
+          
+        }
 }
 
 function validateForm() {

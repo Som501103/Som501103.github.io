@@ -51,9 +51,9 @@ function FunctionIDinput(){
                           x += "<option value=\""+obj[i][0]+"\">"+obj[i][1]+"</option>";
                           // console.log(x);
                         }
-              // for (i in pea){
-              //   y += "<option value=\""+pea[i][0]+"\">"+pea[i][1]+"</option>";
-              // }
+              for (i in pea){
+                y += "<option value=\""+pea[i][0]+"\">"+pea[i][1]+"</option>";
+              }
             document.getElementById('staffname').innerHTML = staffname + "  " + stafflastname;
             document.getElementById('staffdept').innerHTML = staffdept;
             // document.getElementById('peacode').innerHTML = region;
@@ -198,14 +198,14 @@ function validateForm() {
       "weather": document.forms["myForm"]["weather"].value,
       "temp": document.forms["myForm"]["temp"].value,
       "weather_id": document.getElementById("weather_id").value,
-      "weather_main": document.forms["myForm"]["weather_main"].value,
-      "main_pressure": document.forms["myForm"]["main_pressure"].value,
-      "main_humidity": document.forms["myForm"]["main_humidity"].value,
-      "main_temp_min": document.forms["myForm"]["main_temp_min"].value,
-      "main_temp_max": document.forms["myForm"]["main_temp_max"].value,
-      "wind": document.forms["myForm"]["wind"].value,
-      "clouds": document.forms["myForm"]["clouds"].value,
-      "dt_weather": document.forms["myForm"]["dt_weather"].value,
+      "weather_main": document.getElementById("weather_main").value,
+      "main_pressure": document.getElementById("main_pressure").value,
+      "main_humidity": document.getElementById("main_humidity").value,
+      "main_temp_min": document.getElementById("main_temp_min").value,
+      "main_temp_max": document.getElementById("main_temp_max").value,
+      "wind": document.getElementById("wind").value,
+      "clouds": document.getElementById("clouds").value,
+      "dt_weather": document.getElementById("dt_weather").value,
       "area": document.forms["myForm"]["happenarea"].value,
       "subhappenarea": document.forms["myForm"]["subhappenarea"].value,
       "electrician": document.forms["myForm"]["electricianID"].value,
@@ -488,6 +488,7 @@ function functionpredict(){
 
 function functionRelation(){
   var happenarea = document.getElementById("happenarea").value;
+  console.log(happenarea);
   jQuery.ajax({
     url: "https://rc2backend.herokuapp.com/api/getsubpeacode/",
     // url: "https://hookb.in/3OynwLEapdhKeKj2MjmJ",

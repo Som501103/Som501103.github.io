@@ -32,41 +32,44 @@
     <div class="head w-clearfix">
       <div class="logo1"><img src="images/rc2-logo1-01.png" srcset="images/rc2-logo1-01-p-500.png 500w, images/rc2-logo1-01-p-800.png 800w, images/rc2-logo1-01-p-1080.png 1080w, images/rc2-logo1-01-p-1600.png 1600w, images/rc2-logo1-01-p-2000.png 2000w, images/rc2-logo1-01.png 2206w" sizes="100px" alt="" class="image-3"></div>
       <div class="name">
-        <h4 class="heading-2">ชื่อพนักงาน</h4>
-        <h4 class="heading-2 _2">สังกัด</h4>
-        <h4 class="heading-2 _2">เบอร์โทรศัพท์ภายใน</h4>
+        <h4 class="heading-2" id="staffname"></h4>
+        <h4 class="heading-2 _2" id="staffdept"></h4>
       </div>
     </div>
     <h2 class="heading">ข้อมูลเหตุการณ์ไฟฟ้าดับ</h2>
     <div class="step1 w-form">
-      <form id="email-form" name="email-form" data-name="Email Form"  method="post">
+      <form id="form_e1" name="form_e1" data-name="Email Form"  method="post" runat="server" onsubmit="return validateForm()">
         <label for="name" class="field-label subhead">ข้อมูลทั่วไป</label>
-        <label for="node-2" class="field-label">วันที่ไฟฟ้าเริ่มดับ</label><input type="date" maxlength="256" id="node-2" class="box-fill w-input">
-        <label for="node-2" class="field-label">เวลาเริ่มดับ</label><input type="time" maxlength="256" id="node-2" class="box-fill w-input">
-        <label for="node" class="field-label">วันที่เริ่มแก้ไข</label><input type="date" maxlength="256" id="node" class="box-fill w-input">
-        <label for="node-2" class="field-label">เวลาเริ่มแก้ไข</label><input type="time" maxlength="256" id="node-2" class="box-fill w-input">
+        <hidden id="id_record" name="id_record"></hidden>
+        <hidden id="page" name="page" value="e1"></hidden>
+        <hidden id="electrician" name="electrician"></hidden>
+        <label for="node-2" class="field-label">วันที่ไฟฟ้าเริ่มดับ</label><input type="date" maxlength="256" id="datehappen" name="datehappen" class="box-fill w-input">
+        <label for="node-2" class="field-label">เวลาเริ่มดับ</label><input type="time" maxlength="256" id="timehappen" name="timehappen" class="box-fill w-input">
+        <label for="node" class="field-label">วันที่เริ่มแก้ไข</label><input type="date" maxlength="256" id="daterestore" name="daterestore" class="box-fill w-input">
+        <label for="node-2" class="field-label">เวลาเริ่มแก้ไข</label><input type="time" maxlength="256" id="timerestore" name="timerestore" class="box-fill w-input">
         <label for="node-3" class="field-label">รูปถ่าย</label>
           <div class="w-layout-grid grid-2">
 
             <div class="image-upload">
-              <label for="file-input"><img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Image/assets/placeholder.60f9b1840c.svg" id="image1" alt="" class="im1" ></label>
-              <input type="file" maxlength="256" id="file-input" class="box-fill w-input" name="image1" accept="image/*" onchange="loadFile(event)" capture style="display:none">
+              <label for="file-input1"><img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Image/assets/placeholder.60f9b1840c.svg" id="image1" alt="" class="im1" ></label>
+              <input type="file" maxlength="256" id="file-input1" class="box-fill w-input" name="image1" accept="image/*" onchange="loadFile1(event)" capture style="display:none">
             </div>
 
             <div class="image-upload">
-              <label for="file-input"><img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Image/assets/placeholder.60f9b1840c.svg" id="image2" alt="" class="im1" > </label>
-              <input type="file" maxlength="256" id="file-input" class="box-fill w-input" name="image2" accept="image/*" onchange="loadF(this.id)" capture style="display:none">
+              <label for="file-input2"><img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Image/assets/placeholder.60f9b1840c.svg" id="image2" alt="" class="im1" > </label>
+              <input type="file" maxlength="256" id="file-input2" class="box-fill w-input" name="image2" accept="image/*" onchange="loadFile2(event)" capture style="display:none">
             </div>
 
             <div class="image-upload">
-              <label for="file-input"><img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Image/assets/placeholder.60f9b1840c.svg" alt="" class="im1" id="image3"></label>
-              <input type="file" maxlength="256" id="file-input" class="box-fill w-input" name="image3" accept="image/*" onchange="loadFile(event)" capture style="display:none">
+              <label for="file-input3"><img src="https://d3e54v103j8qbb.cloudfront.net/plugins/Image/assets/placeholder.60f9b1840c.svg" alt="" class="im1" id="image3"></label>
+              <input type="file" maxlength="256" id="file-input3" class="box-fill w-input" name="image3" accept="image/*" onchange="loadFile3(event)" capture style="display:none">
             </div>
+
           </div>
           <!-- style="cursor:pointer" -->
           <script>
               // console.log("1"+event.target.name);
-              var loadFile = function(event) {
+              var loadFile1 = function(event) {
               console.log(event);
               console.log("1"+event.target.name);
               console.log(event.target.name)
@@ -77,26 +80,22 @@
           </script>
           <script>
 
-              // var image1 = document.getElementById('image1');
-              //     image1.src = URL.createObjectURL(event.target.files[0]);
-              //     console.log(event);
-              //     console.log("1"+event.target.name);
-              //   };
-              var loadF = function(event) {
+              var loadFile2 = function(event) {
               var image2 = document.getElementById('image2');
                   image2.src = URL.createObjectURL(event.target.files[0]);
                   console.log("2"+event.target.name);
 
+            };
+          </script>
+          <script>
 
-            	// var image1 = document.getElementById('image1');
-              // image1.src = URL.createObjectURL(event.target.files[0]);
+              var loadFile3 = function(event) {
+              var image3 = document.getElementById('image3');
+                  image3.src = URL.createObjectURL(event.target.files[0]);
+                  console.log("3"+event.target.name);
 
             };
           </script>
-
-
-
-
 
         <label for="node-4" class="field-label">แผนที่</label>
 
@@ -136,6 +135,8 @@
                 infoWindow.setPosition(pos);
                 infoWindow.setContent('ตำแหน่งเหตุการณ์กระแสไฟฟ้าขัดข้อง');
                 infoWindow.open(map,marker);
+                console.log(pos.lat);
+                console.log(pos.lng);
                 }, function() {
                 handleLocationError(true, infoWindow, map.getCenter());
               });

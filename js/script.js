@@ -135,7 +135,7 @@ function FunctionIDinput(){
 
             };
           })
-          
+
         }
 }
 
@@ -238,7 +238,7 @@ function validateForm() {
 
       //   //window.location = "p11searchp.html"
 
-       window.location.replace("file:///Users/som501103/Downloads/rc2-test2/index.html")
+       window.location.replace("https://som501103.github.io/")
 
       };
     })

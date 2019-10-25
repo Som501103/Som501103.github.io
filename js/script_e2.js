@@ -26,56 +26,43 @@ jQuery.ajax({
     if (jqXHR.status == 200) {
       var id = data['id'];
       document.getElementById("id_record").value = id
-      var datehappen = data['datehappen'];
-      document.getElementById("datehappen").value = datehappen;
-      var timehappen = data['timehappen'];
-      document.getElementById("timehappen").value = timehappen;
-      var daterestore = data['daterestore'];
-      document.getElementById("daterestore").value = daterestore;
-      var timerestore = data['timerestore'];
-      document.getElementById("timerestore").value = timerestore;
-      var electrician = data['electrician'];
-      document.getElementById("electrician").value = electrician;
-      // var trip = data['trip'];
+
+      var equipcode = data['equipcode'];
+      document.getElementById("equipcode").value = equipcode;
+
+      var fedder = data['fedder'];
+      document.getElementById("fedder").value = fedder;
+
+      var fedderwork = data['fedderwork'];
+      document.getElementById("fedderwork").value = fedderwork;
+
+      var relay = data['relay'];
+      document.getElementById("relay").value = relay;
+
+      document.getElementById("electrician").innerHTML = localStorage.getItem("electrician");
+      document.getElementById("dept").innerHTML = localStorage.getItem("dept");
+
+
+      var triptype = document.getElementById("trip");
+      var trip = "";
+      var i;
+      for (i = 0; i < triptype.length; i++) {
+        if (triptype[i].checked) {
+          trip = trip + triptype[i].value;
+          console.log(trip);
+        }
+      }
       // document.getElementById("trip").value = trip;
-      console.log(electrician);
+      // var i, x = "";
+      // for (i in region) {
+      //               x += "<option value=\""+region[i][0]+"\">"+region[i][1]+"</option>";
+      //               console.log(x);
+      //             }
+      // // $('#peacode').empty();
+      // $('#peacode').append(x);
 
     };
   })
-
-  jQuery.ajax({
-    url: "https://rc2backend.herokuapp.com/api/getpeaid/",
-    // url: "https://hookb.in/3OynwLEapdhKeKj2MjmJ",
-    type: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization":"token 5a5410bf249b5ad186c80a015a8b93abaef18349",
-    },
-    dataType: 'json',
-    data: JSON.stringify({
-      'staffid' : '505391',
-      'electrician' : '501103',
-      'check': 'electrician'
-      })
-    })
-    .done(function(data, textStatus, jqXHR) {
-        console.log("HTTP Request Succeeded: " + jqXHR.status);
-        console.log(data); //Return Data
-        if (jqXHR.status == 200) {
-            var staffname = data['obj']['FirstName'];
-            var stafflastname = data['obj']['LastName'];
-            var staffdept = data['obj']['DepartmentShort'];
-            var stafftel = data['obj']['DepartmentShort'];
-            var subregion = data['obj']['SubRegionCode'];
-            var electrician = staffname + "  " + stafflastname;
-
-            console.log(staffname);
-            localStorage.setItem("electrician", electrician);
-            localStorage.setItem("dept", staffdept);
-
-
-          }
-        })
 
 function validateForm(){
   jQuery.ajax({

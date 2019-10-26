@@ -67,12 +67,18 @@
                   <option value="0">เลือกสถานี</option>
                 </select>
                 <label for="email-3" class="field-label">ฟีดเดอร์</label>
-                <input type="text" class="box-fill half w-input" maxlength="256" name="fedder" data-name="Email 2" id="fedder" >
+                <!-- <input type="text" class="box-fill half w-input" maxlength="256" name="fedder" data-name="Email 2" id="fedder" > -->
+                <select required="" maxlength="256" class="box-fill w-input" name="fedder" id="fedder" data-name="Email 2"  onchange="ComIDfilter()">
+                  <option value="0">เลือก fedder</option>
+                </select>
 
               </div>
               <div class="w-col w-col-6">
                 <label for="email-3" class="field-label">อุปกรณ์ที่ทำงาน</label>
-                <input type="text" class="box-fill half w-input" maxlength="256" name="equipcode" data-name="Email 2" id="equipcode" oninput="FunctionAutoinput()">
+                <!-- <input type="text" class="box-fill half w-input" maxlength="256" name="equipcode1" data-name="Email 2" id="equipcode1" oninput="FunctionAutoinput()"> -->
+                <select required="" maxlength="256" class="box-fill w-input" name="equipcode" id="equipcode" data-name="Email 2"  >
+                  <option value="0">เลือกอุปกรณ์</option>
+                </select>
                 <label for="email-3" class="field-label">การทำงาน</label>
                     <select name="fedderwork" id="fedderwork" class="box-fill w-input" maxlength="256" data-name="Email 2"  >
                        <option value="0">เลือกประเภท</option>
@@ -133,11 +139,11 @@
             <fieldset>
               <label for="name-7" class="field-label subhead">สาเหตุไฟดับ</label>
               <label class="w-checkbox checkbox-field">
-                <input type="radio" id="maincause" name="maincause" data-name="PEA 2" class="w-checkbox-input" checked>
+                <input type="radio" value="1" id="maincause" name="maincause" data-name="PEA 2" class="w-checkbox-input" checked>
                 <span for="PEA-2" class="checkbox-label w-form-label">ทราบสาเหตุ</span>
               </label>
               <label class="w-checkbox checkbox-field">
-                <input type="radio" id="maincause" name="maincause" data-name="PEA 2" class="w-checkbox-input">
+                <input type="radio" value="0" id="maincause" name="maincause" data-name="PEA 2" class="w-checkbox-input">
                 <span for="PEA-3" class="checkbox-label w-form-label">สันนิษฐาน</span>
               </label>
             </fieldset>

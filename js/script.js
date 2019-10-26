@@ -127,6 +127,18 @@ function FunctionIDinput(){
                   document.getElementById("clouds").value = clouds;
                   document.getElementById("dt_weather").value = dt_weather;
 
+                  console.log(peacode);
+                   var fedder = data['fedder']['label'];
+                   console.log(fedder);
+                   $("#fedder").empty();
+                   var i,y = "";
+                   for (i in fedder){
+                     y += "<option value=\""+fedder[i]+"\">"+fedder[i]+"</option>";
+                   }
+
+                   $('#fedder').append(y);
+
+
 
                 };
               })
@@ -405,6 +417,44 @@ function FunctionAutoinput() {
       var x = document.getElementById("equipcode").value;
       document.getElementById("equipstrat").value = x;
   }
+
+function ComIDfilter(){
+  jQuery.ajax({
+    url: "https://rc2backend.herokuapp.com/api/equipeodefilter/",
+    // url: "https://hookb.in/3OynwLEapdhKeKj2MjmJ",
+    type: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization":"token 5a5410bf249b5ad186c80a015a8b93abaef18349",
+    },
+    dataType: 'json',
+    data: JSON.stringify({
+      "fedder" : document.forms["myForm"]["fedder"].value
+
+    })
+
+  })
+  .done(function(data, textStatus, jqXHR) {
+      console.log("HTTP Request Succeeded fedderfilter: " + jqXHR.status);
+      console.log(data); //Return Data
+      if (jqXHR.status == 200) {
+         console.log(fedder);
+          var equipcode = data['equipcode']['label'];
+          console.log(equipcode);
+          $("#equipcode").empty();
+          var i,y = "";
+          for (i in equipcode){
+            y += "<option value=\""+equipcode[i][1]+"\">"+equipcode[i][1]+"</option>";
+          }
+
+          $('#equipcode').append(y);
+
+      };
+    })
+
+    return false;
+
+}
 
 
 function FunctionAutoweather() {

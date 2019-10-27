@@ -76,7 +76,7 @@
               <div class="w-col w-col-6">
                 <label for="email-3" class="field-label">อุปกรณ์ที่ทำงาน</label>
                 <!-- <input type="text" class="box-fill half w-input" maxlength="256" name="equipcode1" data-name="Email 2" id="equipcode1" oninput="FunctionAutoinput()"> -->
-                <select required="" maxlength="256" class="box-fill w-input" name="equipcode" id="equipcode" data-name="Email 2"  >
+                <select required="" maxlength="256" class="box-fill w-input" name="equipcode" id="equipcode" data-name="Email 2" >
                   <option value="0">เลือกอุปกรณ์</option>
                 </select>
                 <label for="email-3" class="field-label">การทำงาน</label>
@@ -101,11 +101,17 @@
               <div class="w-col w-col-6">
                 <label for="email-3" class="field-label">อุปกรณ์ต้นทาง</label>
                 <!-- <label for="email-3" class="field-label" id="equipstrat"></label> -->
-                <input type="text" class="box-fill half w-input" maxlength="256" name="equipstrat" data-name="Email 2" id="equipstrat" >
+                <select required="" maxlength="256" class="box-fill w-input" name="equipstrat" id="equipstrat" data-name="Email 2" >
+                  <option value="0">เลือกอุปกรณ์</option>
+                </select>
+
               </div>
               <div class="w-col w-col-6">
                 <label for="email-3" class="field-label">อุปกรณ์สิ้นสุด</label>
-                <input type="text" class="box-fill half w-input" maxlength="256" name="equipend" data-name="Email 2" id="equipend" >
+                <!-- <input type="text" class="box-fill half w-input" maxlength="256" name="equipend" data-name="Email 2" id="equipend" > -->
+                <select required="" maxlength="256" class="box-fill w-input" name="equipend" id="equipend" data-name="Email 2" >
+                  <option value="0">เลือกอุปกรณ์</option>
+                </select>
               </div>
             </div>
           <!-- </form> -->
@@ -180,6 +186,8 @@
               </div>
             </div>
               <label for="email-3" class="field-label">กฟภ.รับผิดชอบในจุดเกิดเหตุ</label>
+                  <input type="text" name="happenarea1" id="happenarea1" class="box-fill w-input" readonly>
+                  <hidden name="Br_code" id="Br_code" ></hidden>
                   <select class="box-fill w-input" maxlength="256" name="happenarea" data-name="Email 2" id="happenarea" onchange="functionRelation()">
                     <option value="0">กรุณาเลือก</option>
 

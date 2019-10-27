@@ -442,12 +442,63 @@ function ComIDfilter(){
           var equipcode = data['equipcode']['label'];
           console.log(equipcode);
           $("#equipcode").empty();
+          $("#equipstrat").empty();
           var i,y = "";
           for (i in equipcode){
             y += "<option value=\""+equipcode[i][1]+"\">"+equipcode[i][1]+"</option>";
           }
-
           $('#equipcode').append(y);
+          $('#equipstrat').append(y);
+
+          $("#equipend").empty();
+          var i,x = "";
+          for (i in equipcode){
+            x += "<option value=\""+equipcode[i][1]+"\">"+equipcode[i][1]+"</option>";
+          } x += "<option value=\"end\">End</option>";
+          $("#equipend").append(x);
+
+          var peaarea = data['peaarea']['label'][0];
+          console.log(peaarea);
+
+
+          var areaname = data['peaarea']['area'][1];
+          var br_code = data['peaarea']['area'][0];
+          console.log("areaname"+areaname);
+          document.getElementById("happenarea1").value = areaname;
+          document.getElementById("happenarea").value = br_code;
+          document.getElementById("Br_code").value = br_code;
+
+          jQuery.ajax({
+            url: "https://rc2backend.herokuapp.com/api/getsubpeacode/",
+            // url: "https://hookb.in/3OynwLEapdhKeKj2MjmJ",
+            type: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization":"token 5a5410bf249b5ad186c80a015a8b93abaef18349"
+            },
+            dataType: 'json',
+            data: JSON.stringify({
+              "happenarea" : br_code
+              })
+            })
+            .done(function(data, textStatus, jqXHR) {
+                console.log("HTTP Request Succeeded: " + jqXHR.status);
+                console.log(data); //Return Data
+
+                if (jqXHR.status == 200) {
+
+                    var subarea = data['subpea']['label'];
+                    console.log(subarea);
+                    $("#subhappenarea").empty();
+                    var i,y = "";
+                    for (i in subarea){
+                      y += "<option value=\""+subarea[i][0]+"\">"+subarea[i][1]+"</option>";
+                    }
+
+                    $('#subhappenarea').append(y);
+
+                };
+              })
 
       };
     })
@@ -546,7 +597,7 @@ function functionpredict(){
   }
 
 function functionRelation(){
-  var happenarea = document.getElementById("happenarea").value;
+  var happenarea = document.getElementById("happenarea1").value;
   console.log(happenarea);
   jQuery.ajax({
     url: "https://rc2backend.herokuapp.com/api/getsubpeacode/",
@@ -558,7 +609,7 @@ function functionRelation(){
     },
     dataType: 'json',
     data: JSON.stringify({
-      "happenarea" : document.forms["myForm"]["happenarea"].value
+      "happenarea" : document.getElementById("happenarea").value
       })
     })
     .done(function(data, textStatus, jqXHR) {

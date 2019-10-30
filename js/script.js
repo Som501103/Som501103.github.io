@@ -137,9 +137,6 @@ function FunctionIDinput(){
                    }
 
                    $('#fedder').append(y);
-
-
-
                 };
               })
 

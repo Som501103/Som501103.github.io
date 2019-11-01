@@ -4,6 +4,9 @@ var urlParams = new URLSearchParams(window.location.search);
 console.log(urlParams.get('id'));
 var id = urlParams.get('id')
 console.log(id);
+document.getElementById("electrician").innerHTML = localStorage.getItem("electrician");
+document.getElementById("dept").innerHTML = localStorage.getItem("dept");
+
 
 
 jQuery.ajax({
@@ -28,8 +31,8 @@ jQuery.ajax({
       var id = data['id'];
       document.getElementById("id_record").value = id
 
-      var fedderwork = data['fedderwork'];
-      document.getElementById("fedderwork").value = fedderwork;
+      var phase_A = data['Phase_A'];
+      document.getElementById("Phase_A").value = phase_A;
 
       var equipcode = data['equipcode'];
       document.getElementById("equipcode").value = equipcode;
@@ -62,9 +65,7 @@ jQuery.ajax({
       // var pea = data['pea']['label'];
       var electrician1 = staffname + "  " + stafflastname;
       document.getElementById("electrician").innerHTML = electrician1;
-      localStorage.setItem("electrician", electrician1);
       document.getElementById("dept").innerHTML = staffdept;
-      localStorage.setItem("dept", staffdept);
       /////////////////////////////////////////
       var i, x,j,y = "";
       for (i in region) {

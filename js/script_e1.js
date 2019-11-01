@@ -106,14 +106,6 @@ function validateForm(){
       console.log(data); //Return Data
       if (jqXHR.status == 200) {
 
-      //   // TODO: Check condition Comp_type
-      //   // if Comp_type == 1 || Comp_type == 2
-      //   //window.location = "p11searchp.html"
-      //   // else if (Comp_type == 3) {
-      //   //window.location = "p11searchp.html"
-      //   // }
-
-      //   //window.location = "p11searchp.html"
 
        window.location.replace("https://som501103.github.io/tech-step2.html?id="+id)
 

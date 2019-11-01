@@ -630,34 +630,9 @@ function functionRelation(){
 
 function Checknumber(){
       var numbers = /^[0-9]+$/;
-      var text = document.getElementById("bk").value;
+      // var text = document.getElementById("bk").value;
 
-      if(isNaN(document.myForm.bk.value)){
-        // document.getElementById("bk").value.match(numbers);
-        alert('เฉพาะตัวเลขเท่านั้น');
-        document.myForm.bk.focus();
-        return false;
-      }else if(isNaN(document.myForm.r.value)){
-        alert('เฉพาะตัวเลขเท่านั้น');
-        document.myForm.r.focus();
-        return false
-      }else if(isNaN(document.myForm.load_A.value)){
-        alert('เฉพาะตัวเลขเท่านั้น');
-        document.myForm.load_A.focus();
-        return false
-      }else if(isNaN(document.myForm.load_B.value)){
-        alert('เฉพาะตัวเลขเท่านั้น');
-        document.myForm.load_B.focus();
-        return false
-      }else if(isNaN(document.myForm.load_C.value)){
-        alert('เฉพาะตัวเลขเท่านั้น');
-        document.myForm.load_C.focus();
-        return false
-      }else if(isNaN(document.myForm.load_G.value)){
-        alert('เฉพาะตัวเลขเท่านั้น');
-        document.myForm.load_G.focus();
-        return false
-      }else if(isNaN(document.myForm.load.value)){
+      if(isNaN(document.myForm.load.value)){
         alert('เฉพาะตัวเลขเท่านั้น');
         document.myForm.load.focus();
         return false

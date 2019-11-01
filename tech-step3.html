@@ -23,24 +23,65 @@
     <div class="head w-clearfix">
       <div class="logo1"><img src="images/rc2-logo1-01.png" srcset="images/rc2-logo1-01-p-500.png 500w, images/rc2-logo1-01-p-800.png 800w, images/rc2-logo1-01-p-1080.png 1080w, images/rc2-logo1-01-p-1600.png 1600w, images/rc2-logo1-01-p-2000.png 2000w, images/rc2-logo1-01.png 2206w" sizes="100px" alt="" class="image-3"></div>
       <div class="name">
-        <h4 class="heading-2">ชื่อพนักงาน</h4>
-        <h4 class="heading-2 _2">สังกัด</h4>
-        <h4 class="heading-2 _2">เบอร์โทรศัพท์ภายใน</h4>
+        <h4 class="heading-2">ชื่อพนักงาน</h4><label for="name-2" class="field-label" id="electrician" name="electrician"></label>
+        <h4 class="heading-2 _2">สังกัด</h4><label for="name-2" class="field-label" id="dept"></label>
+        <input type="hidden" id="id_record" name="id_record">
+        <input type="hidden" id="page_e3" name="page_e3" value="e3">
       </div>
     </div>
     <h2 class="heading">เคาร์เตอร์ของอุปกรณ์ไฟฟ้า</h2>
     <div class="w-form">
-      <form id="email-form-2" name="email-form-2" data-name="Email Form 2" action="electrician-index.html" method="post"><label for="name-2" class="field-label subhead">เคาร์เตอร์ของอุปกรณ์</label>
+      <form id="form_e3" name="form_e3" data-name="Email Form 2" onsubmit="return validateForm()" method="post">
+        <label for="name-2" class="field-label subhead">เคาร์เตอร์ของอุปกรณ์</label>
         <div class="box-2 w-row">
-          <div class="column-8 w-col w-col-4"><label for="name-4" class="field-label">BK</label><input type="text" class="box-fill w-input" maxlength="256" name="name-4" data-name="Name 4" id="name-4"><label for="name-3" class="field-label">รวม/R</label><input type="text" class="box-fill w-input" maxlength="256" name="name-3" data-name="Name 3" id="name-3"></div>
-          <div class="column-8 w-col w-col-4"><label for="name-6" class="field-label">เฟส A</label><input type="text" class="box-fill w-input" maxlength="256" name="name" data-name="Name" id="name"><label for="name-5" class="field-label">เฟส B</label><input type="text" class="box-fill w-input" maxlength="256" name="name-5" data-name="Name 5" id="name-5"></div>
-          <div class="column-8 w-col w-col-4"><label for="name-2" class="field-label">เฟส C</label><input type="text" class="box-fill w-input" maxlength="256" name="name-6" data-name="Name 6" id="name-6"><label for="name-7" class="field-label">เฟส G</label><input type="text" class="box-fill w-input" maxlength="256" name="name-6" data-name="Name 6" id="name-6"></div>
-        </div><label for="email-3" class="field-label">โหลดหาย (MW)</label><input type="email" class="box-fill w-input" maxlength="256" name="email-2" data-name="Email 2" id="email-2" required=""><label for="email-3" class="field-label">ระยะทาง (km)</label><input type="email" class="box-fill w-input" maxlength="256" name="email-2" data-name="Email 2" id="email-2" required=""><input type="submit" value="Submit" data-wait="Please wait..." class="submit-button-2 w-button"></form>
+          <div class="column-8 w-col w-col-4">
+            <label for="name-4" class="field-label">เฟส A</label>
+              <select name="Phase_A" id="Phase_A" class="box-fill w-input" data-name="Name 4">
+                <option value="0">Time</option>
+                <option value="1">Ins</option>
+              </select>
+              <!-- <input type="text" class="box-fill w-input" maxlength="256" name="BK" data-name="Name 4" id="BK"> -->
+            <label for="name-3" class="field-label">เฟส B</label>
+            <select name="Phase_B" id="Phase_B" class="box-fill w-input" data-name="Name 4">
+              <option value="0">Time</option>
+              <option value="1">Ins</option>
+            </select>
+            <!-- <input type="text" class="box-fill w-input" maxlength="256" name="R" data-name="Name 3" id="R"> -->
+          </div>
+          <div class="column-8 w-col w-col-4">
+            <label for="name-6" class="field-label">เฟส C</label>
+            <select name="Phase_C" id="Phase_C" class="box-fill w-input" data-name="Name 4">
+              <option value="0">Time</option>
+              <option value="1">Ins</option>
+            </select>
+              <!-- <input type="text" class="box-fill w-input" maxlength="256" name="name" data-name="Name" id="name"> -->
+            <label for="name-5" class="field-label">Ground</label>
+            <select name="Phase_G" id="Phase_G" class="box-fill w-input" data-name="Name 4">
+              <option value="0">Time</option>
+              <option value="1">Ins</option>
+            </select>
+            <!-- <input type="text" class="box-fill w-input" maxlength="256" name="name-5" data-name="Name 5" id="name-5"> -->
+          </div>
+          <div class="column-8 w-col w-col-4">
+            <label for="name-2" class="field-label">Zone</label>
+            <!-- <input type="text" class="box-fill w-input" maxlength="256" name="name-6" data-name="Name 6" id="name-6"> -->
+            <select name="Phase_B" id="Phase_B" class="box-fill w-input" data-name="Name 4">
+              <option value="1">Zone 1</option>
+              <option value="2">Zone 2</option>
+              <option value="3">Zone 3</option>
+            </select>
+            <!-- <label for="name-7" class="field-label">เฟส G</label><input type="text" class="box-fill w-input" maxlength="256" name="name-6" data-name="Name 6" id="name-6"> -->
+          </div>
+        </div>
+          <label for="email-3" class="field-label">โหลดหาย (MW)</label><input type="email" class="box-fill w-input" maxlength="256" name="email-2" data-name="Email 2" id="email-2" required="">
+          <label for="email-3" class="field-label">กระแสลัดวงจร (A)</label><input type="email" class="box-fill w-input" maxlength="256" name="email-2" data-name="Email 2" id="email-2" required="">
+        <input type="submit" value="Submit" data-wait="Please wait..." class="submit-button-2 w-button"></form>
       <div class="w-form-done"></div>
       <div class="w-form-fail"></div>
     </div>
   </div>
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.4.1.min.220afd743d.js" type="text/javascript" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="js/script_e3.js" charset="utf-8" type="text/javascript"></script>
   <script src="js/webflow.js" type="text/javascript"></script>
   <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
 </body>

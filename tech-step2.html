@@ -30,22 +30,26 @@
     </div>
     <h2 class="heading">ข้อมูลทั่วไปและอุปกรณ์</h2>
     <div class="w-form">
-      <form id="form_e2" name="form_e2" data-name="Email Form" action="electrician-index.html" method="post">
-        <input type="hidden" id="id_record" name="id_record"/>
-        <input type="hidden" id="page" name="page" value="e2"/>
+      <form id="form_e2" name="form_e2" data-name="Email Form" method="post" runat="server" onsubmit="return validateForm()">
+        <input type="hidden" id="id_record" name="id_record">
+        <input type="hidden" id="page_e2" name="page_e2" value="e2">
         <label for="name-3" class="field-label subhead _2">ข้อมูลรหัสอุปกรณ์</label>
 
-        <fieldset>
+        <!-- <fieldset> -->
           <label for="email-2" class="field-label">รหัสอุปกรณ์</label>
-          <label class="w-checkbox checkbox-field">
-              <input type="radio" id="EGAT" name="trip" data-name="EGAT" class="w-checkbox-input" value="EGAT">
+            <select required="" maxlength="256" class="box-fill w-input" name="trip" id="trip" data-name="Email 2">
+              <option value="EGAT">EGAT</option>
+              <option value="PEA">PEA</option>
+            </select>
+          <!-- <label class="w-checkbox checkbox-field">
+              <input type="radio" id="trip" name="trip" data-name="EGAT" class="w-checkbox-input" value="EGAT">
               <span for="PEA-3" class="checkbox-label w-form-label">EGAT</span>
           </label>
           <label class="w-checkbox checkbox-field">
-              <input type="radio" id="PEA" name="trip" data-name="PEA" class="w-checkbox-input" value="PEA">
+              <input type="radio" id="trip" name="trip" data-name="PEA" class="w-checkbox-input" value="PEA">
               <span for="PEA-3" class="checkbox-label w-form-label">PEA</span>
-          </label>
-        </fieldset>
+          </label> -->
+        <!-- </fieldset> -->
           <div class="column-3 w-col w-col-6"><label for="node" class="field-label">สถานีไฟฟ้า</label>
             <select required="" maxlength="256" class="box-fill w-input" name="peacode" id="peacode" data-name="Email 2" onchange="getFedder()">
               <option value="0">เลือกสถานี</option>

@@ -1,52 +1,26 @@
-jQuery.ajax({
-  url: "http://127.0.0.1:8000/api/getpeaid/",
-  // url: "https://hookb.in/3OynwLEapdhKeKj2MjmJ",
-  type: "POST",
-  headers: {
-    "Content-Type": "application/json",
-    "Authorization":"token 9ab29c78d402b6539c64ffb498fb7b77ca96cf85"
-  },
-  dataType: 'json',
-  data: JSON.stringify({
-    'uid' : "U649ce5cbe448b470e9a8eb4557952a3b"
-    })
-  })
-  .done(function(data, textStatus, jqXHR) {
-      console.log("HTTP Request Succeeded: " + jqXHR.status);
-      console.log(data); //Return Data
-      if (jqXHR.status == 200) {
-
-          var staffname = data['obj']['FirstName'];
-          var stafflastname = data['obj']['LastName'];
-          var staffdept = data['obj']['DepartmentShort'];
-          var stafftel = data['obj']['DepartmentShort'];
-          var subregion = data['obj']['SubRegionCode'];
-
-          console.log(staffname);
-          document.getElementById('staffname').innerHTML = staffname + "  " + stafflastname;
-          document.getElementById('staffdept').innerHTML = staffdept;
-          document.getElementById('stafftel').innerHTML = stafftel;
-
-
-      };
-    })
-
-
 function FunctionIDinput(){
   var staffid = document.getElementById("staffid").value;
+  var staffid_inner = document.getElementById('staffid');
+
+
   if(isNaN(staffid)){
     // document.getElementById("bk").value.match(numbers);
     alert('เฉพาะตัวเลขเท่านั้น');
-    document.myForm.staffid.focus();
+    // document.myForm.staffid.focus();
     return false;
   }
+  var staff_lenght = document.getElementsByName("staffid").length;
+
+ if(staffid.length === 6){
+   console.log(staffid.length);
+
   jQuery.ajax({
-    url: "http://127.0.0.1:8000/api/getpeaid/",
+    url: "https://rc2backend.herokuapp.com/api/getpeaid/",
     // url: "https://hookb.in/3OynwLEapdhKeKj2MjmJ",
     type: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Authorization":"token 9ab29c78d402b6539c64ffb498fb7b77ca96cf85",
+      "Authorization":"token 5a5410bf249b5ad186c80a015a8b93abaef18349",
     },
     dataType: 'json',
     data: JSON.stringify({
@@ -58,7 +32,6 @@ function FunctionIDinput(){
         console.log("HTTP Request Succeeded: " + jqXHR.status);
         console.log(data); //Return Data
         if (jqXHR.status == 200) {
-
             var staffname = data['obj']['FirstName'];
             var stafflastname = data['obj']['LastName'];
             var staffdept = data['obj']['DepartmentShort'];
@@ -67,37 +40,47 @@ function FunctionIDinput(){
             var region = data['region']['label'];
             var pea = data['pea']['label'];
 
+
+            $('#happenarea').empty();
             console.log(staffname);
             console.log(pea);
 
-            var obj = region;
+            // var obj = region;
             var i, x,j,y = "";
             // console.log(obj);
-              for (i in obj) {
-                          x += "<option value=\""+obj[i][0]+"\">"+obj[i][1]+"</option>";
-                          // console.log(x);
+
+            for (i in region) {
+                          x += "<option value=\""+region[i][0]+"\">"+region[i][1]+"</option>";
+                          console.log(x);
                         }
-              for (i in pea){
-                y += "<option value=\""+pea[i][0]+"\">"+pea[i][1]+"</option>";
-              }
+            // $('#peacode').empty();
+            $('#peacode').append(x);
+
+            for (j in pea){
+                          y += "<option value=\""+pea[j][0]+"\">"+pea[j][1]+"</option>";
+                          // console.log(y);
+                        }
+            $('#happenarea').append(y);
             document.getElementById('staffname').innerHTML = staffname + "  " + stafflastname;
             document.getElementById('staffdept').innerHTML = staffdept;
             // document.getElementById('peacode').innerHTML = region;
             // document.getElementById('peacode').innerHTML = x;
-            $('#peacode').append(x);
-            $('#happenarea').append(y);
-            var w = document.getElementById("peacode").value;
+            // $('#peacode').empty();
+
+
+
+            // var w = document.getElementById("peacode").value;
             jQuery.ajax({
-              url: "http://127.0.0.1:8000/api/scada/",
+              url: "https://rc2backend.herokuapp.com/api/scada/",
               // url: "https://hookb.in/3OynwLEapdhKeKj2MjmJ",
               type: "POST",
               headers: {
                 "Content-Type": "application/json",
-                "Authorization":"token 9ab29c78d402b6539c64ffb498fb7b77ca96cf85",
+                "Authorization":"token 5a5410bf249b5ad186c80a015a8b93abaef18349",
               },
               dataType: 'json',
               data: JSON.stringify({
-                "peacode" : document.forms["myForm"]["peacode"].value
+                "peacode" : document.getElementById("peacode").value
 
               })
 
@@ -106,7 +89,17 @@ function FunctionIDinput(){
                 console.log("HTTP Request Succeeded: " + jqXHR.status);
                 console.log(data); //Return Data
                 if (jqXHR.status == 200) {
+                  var id = data['id'];
+                  var main = data['main']
                   var des = data['description'];
+                  var temp = data['temp'];
+                  var pressure = data['pressure'];
+                  var humidity = data['humidity'];
+                  var main_temp_min = data['min'];
+                  var main_temp_max = data['max'];
+                  var wind = data['wind'];
+                  var clouds =data['clouds'];
+                  var dt_weather = data['localDT'];
 
                   if (des=="light rain") {
                     description = "ฝนตกบางเบา"
@@ -122,17 +115,37 @@ function FunctionIDinput(){
                     description = "เมฆกระจายตัว"
                   }
 
+                  document.getElementById("weather_id").value = id;
                   document.getElementById("weather").value = description;
+                  document.getElementById("temp").value = temp;
+                  document.getElementById("weather_main").value = main;
+                  document.getElementById("main_pressure").value = pressure;
+                  document.getElementById("main_humidity").value = humidity;
+                  document.getElementById("main_temp_min").value  = main_temp_min;
+                  document.getElementById("main_temp_max").value = main_temp_max;
+                  document.getElementById("wind").value = wind;
+                  document.getElementById("clouds").value = clouds;
+                  document.getElementById("dt_weather").value = dt_weather;
 
+                  console.log(peacode);
+                   var fedder = data['fedder']['label'];
+                   console.log(fedder);
+                   $("#fedder").empty();
+                   var i,y = "";
+                   for (i in fedder){
+                     y += "<option value=\""+fedder[i]+"\">"+fedder[i]+"</option>";
+                   }
+
+                   $('#fedder').append(y);
                 };
               })
 
-
               return false;
 
-        };
-      })
+            };
+          })
 
+        }
 }
 
 function validateForm() {
@@ -173,33 +186,49 @@ function validateForm() {
     type: "POST",
     headers: {
       "Content-Type": "application/json",
+      "Authorization":"token 5a5410bf249b5ad186c80a015a8b93abaef18349",
     },
     dataType: 'json',
     data: JSON.stringify({
-
+      "created_by": document.getElementById("staffid").value,
       "datehappen" : document.forms["myForm"]["datehappen"].value,
+      "timehappen" : document.forms["myForm"]["timehappen"].value,
       "daterestore" : document.forms["myForm"]["daterestore"].value,
-      "course": document.forms["myForm"]["course"].value,
-      "equipcode": document.forms["myForm"]["equipcode"].value,
+      "timerestore" : document.forms["myForm"]["timerestore"].value,
+      "trip": trip,
       "peacode": document.forms["myForm"]["peacode"].value,
+      "equipcode": document.forms["myForm"]["equipcode"].value,
       "fedder": document.forms["myForm"]["fedder"].value,
       "fedderwork": document.forms["myForm"]["fedderwork"].value,
       "relay": document.forms["myForm"]["relay"].value,
       "load": document.forms["myForm"]["load"].value,
       "equipstrat": document.forms["myForm"]["equipstrat"].value,
       "equipend": document.forms["myForm"]["equipend"].value,
-      "bk": document.forms["myForm"]["bk"].value,
-      "r": document.forms["myForm"]["r"].value,
+      "Zone": document.forms["myForm"]["Zone"].value,
       "load_A": document.forms["myForm"]["load_A"].value,
       "load_B": document.forms["myForm"]["load_B"].value,
       "load_C": document.forms["myForm"]["load_C"].value,
       "load_G": document.forms["myForm"]["load_G"].value,
       "distance": document.forms["myForm"]["distance"].value,
       "maincause": maincause,
+      "course": document.forms["myForm"]["course"].value,
       "weather": document.forms["myForm"]["weather"].value,
-      "area": document.forms["myForm"]["area"].value,
-      "trip": trip
-
+      "temp": document.forms["myForm"]["temp"].value,
+      "weather_id": document.getElementById("weather_id").value,
+      "weather_main": document.getElementById("weather_main").value,
+      "main_pressure": document.getElementById("main_pressure").value,
+      "main_humidity": document.getElementById("main_humidity").value,
+      "main_temp_min": document.getElementById("main_temp_min").value,
+      "main_temp_max": document.getElementById("main_temp_max").value,
+      "wind": document.getElementById("wind").value,
+      "clouds": document.getElementById("clouds").value,
+      "dt_weather": document.getElementById("dt_weather").value,
+      "area": document.forms["myForm"]["happenarea"].value,
+      "subhappenarea": document.forms["myForm"]["subhappenarea"].value,
+      "electrician": document.forms["myForm"]["electricianID"].value,
+      "causetype": document.forms["myForm"]["country"].value,
+      "subcause": document.forms["myForm"]["city"].value,
+      "detail": document.forms["myForm"]["detail"].value
     })
 
   })
@@ -217,7 +246,7 @@ function validateForm() {
 
       //   //window.location = "p11searchp.html"
 
-       window.location.replace("file:///Users/som501103/Downloads/rc2-test2/index.html")
+       window.location.replace("https://som501103.github.io/")
 
       };
     })
@@ -385,16 +414,105 @@ function FunctionAutoinput() {
       document.getElementById("equipstrat").value = x;
   }
 
+function ComIDfilter(){
+  jQuery.ajax({
+    url: "https://rc2backend.herokuapp.com/api/equipeodefilter/",
+    // url: "https://hookb.in/3OynwLEapdhKeKj2MjmJ",
+    type: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization":"token 5a5410bf249b5ad186c80a015a8b93abaef18349",
+    },
+    dataType: 'json',
+    data: JSON.stringify({
+      "fedder" : document.forms["myForm"]["fedder"].value
+
+    })
+
+  })
+  .done(function(data, textStatus, jqXHR) {
+      console.log("HTTP Request Succeeded fedderfilter: " + jqXHR.status);
+      console.log(data); //Return Data
+      if (jqXHR.status == 200) {
+         console.log(fedder);
+          var equipcode = data['equipcode']['label'];
+          console.log(equipcode);
+          $("#equipcode").empty();
+          $("#equipstrat").empty();
+          var i,y = "";
+          for (i in equipcode){
+            y += "<option value=\""+equipcode[i][1]+"\">"+equipcode[i][1]+"</option>";
+          }
+          $('#equipcode').append(y);
+          $('#equipstrat').append(y);
+
+          $("#equipend").empty();
+          var i,x = "";
+          for (i in equipcode){
+            x += "<option value=\""+equipcode[i][1]+"\">"+equipcode[i][1]+"</option>";
+          } x += "<option value=\"end\">End</option>";
+          $("#equipend").append(x);
+
+          var peaarea = data['peaarea']['label'][0];
+          console.log(peaarea);
+
+
+          var areaname = data['peaarea']['area'][1];
+          var br_code = data['peaarea']['area'][0];
+          console.log("areaname"+areaname);
+          document.getElementById("happenarea1").value = areaname;
+          document.getElementById("happenarea").value = br_code;
+          document.getElementById("Br_code").value = br_code;
+
+          jQuery.ajax({
+            url: "https://rc2backend.herokuapp.com/api/getsubpeacode/",
+            // url: "https://hookb.in/3OynwLEapdhKeKj2MjmJ",
+            type: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization":"token 5a5410bf249b5ad186c80a015a8b93abaef18349"
+            },
+            dataType: 'json',
+            data: JSON.stringify({
+              "happenarea" : br_code
+              })
+            })
+            .done(function(data, textStatus, jqXHR) {
+                console.log("HTTP Request Succeeded: " + jqXHR.status);
+                console.log(data); //Return Data
+
+                if (jqXHR.status == 200) {
+
+                    var subarea = data['subpea']['label'];
+                    console.log(subarea);
+                    $("#subhappenarea").empty();
+                    var i,y = "";
+                    for (i in subarea){
+                      y += "<option value=\""+subarea[i][0]+"\">"+subarea[i][1]+"</option>";
+                    }
+
+                    $('#subhappenarea').append(y);
+
+                };
+              })
+
+      };
+    })
+
+    return false;
+
+}
+
 
 function FunctionAutoweather() {
       var w = document.getElementById("peacode").value;
       jQuery.ajax({
-        url: "http://127.0.0.1:8000/api/scada/",
+        url: "https://rc2backend.herokuapp.com/api/scada/",
         // url: "https://hookb.in/3OynwLEapdhKeKj2MjmJ",
         type: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization":"token 9ab29c78d402b6539c64ffb498fb7b77ca96cf85",
+          "Authorization":"token 5a5410bf249b5ad186c80a015a8b93abaef18349",
         },
         dataType: 'json',
         data: JSON.stringify({
@@ -475,18 +593,19 @@ function functionpredict(){
   }
 
 function functionRelation(){
-  var happenarea = document.getElementById("happenarea").value;
+  var happenarea = document.getElementById("happenarea1").value;
+  console.log(happenarea);
   jQuery.ajax({
-    url: "http://127.0.0.1:8000/api/getsubpeacode/",
+    url: "https://rc2backend.herokuapp.com/api/getsubpeacode/",
     // url: "https://hookb.in/3OynwLEapdhKeKj2MjmJ",
     type: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Authorization":"token 9ab29c78d402b6539c64ffb498fb7b77ca96cf85"
+      "Authorization":"token 5a5410bf249b5ad186c80a015a8b93abaef18349"
     },
     dataType: 'json',
     data: JSON.stringify({
-      "happenarea" : document.forms["myForm"]["happenarea"].value
+      "happenarea" : document.getElementById("happenarea").value
       })
     })
     .done(function(data, textStatus, jqXHR) {
@@ -511,34 +630,9 @@ function functionRelation(){
 
 function Checknumber(){
       var numbers = /^[0-9]+$/;
-      var text = document.getElementById("bk").value;
+      // var text = document.getElementById("bk").value;
 
-      if(isNaN(document.myForm.bk.value)){
-        // document.getElementById("bk").value.match(numbers);
-        alert('เฉพาะตัวเลขเท่านั้น');
-        document.myForm.bk.focus();
-        return false;
-      }else if(isNaN(document.myForm.r.value)){
-        alert('เฉพาะตัวเลขเท่านั้น');
-        document.myForm.r.focus();
-        return false
-      }else if(isNaN(document.myForm.load_A.value)){
-        alert('เฉพาะตัวเลขเท่านั้น');
-        document.myForm.load_A.focus();
-        return false
-      }else if(isNaN(document.myForm.load_B.value)){
-        alert('เฉพาะตัวเลขเท่านั้น');
-        document.myForm.load_B.focus();
-        return false
-      }else if(isNaN(document.myForm.load_C.value)){
-        alert('เฉพาะตัวเลขเท่านั้น');
-        document.myForm.load_C.focus();
-        return false
-      }else if(isNaN(document.myForm.load_G.value)){
-        alert('เฉพาะตัวเลขเท่านั้น');
-        document.myForm.load_G.focus();
-        return false
-      }else if(isNaN(document.myForm.load.value)){
+      if(isNaN(document.myForm.load.value)){
         alert('เฉพาะตัวเลขเท่านั้น');
         document.myForm.load.focus();
         return false

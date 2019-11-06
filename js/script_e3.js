@@ -32,19 +32,19 @@ jQuery.ajax({
       document.getElementById("id_record").value = id
 
       var phase_A = data['Phase_A'];
-      document.getElementById("Phase_A").value = phase_A;
+      document.getElementById("load_A").value = phase_A;
 
-      var equipcode = data['equipcode'];
-      document.getElementById("equipcode").value = equipcode;
+      var phase_B = data['phase_B'];
+      document.getElementById("load_B").value = phase_B;
 
-      var equipstrat = data['equipstrat'];
-      document.getElementById("equipstrat").value = equipstrat;
+      var phase_C = data['phase_C'];
+      document.getElementById("load_C").value = phase_C;
 
-      var equipend = data['equipend'];
-      document.getElementById("equipend").value = equipend;
+      var phase_G = data['phase_G'];
+      document.getElementById("load_G").value = phase_G;
 
-      var relay = data['relay'];
-      document.getElementById("relay").value = relay;
+      var zone = data['zone'];
+      document.getElementById("Zone").value = zone;
 
       var fedder = data['fedder_all']['label'];
        document.getElementById("fedder").value = fedder;

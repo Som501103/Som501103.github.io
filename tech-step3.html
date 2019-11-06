@@ -37,28 +37,32 @@
           <div class="column-8 w-col w-col-4">
             <label for="name-4" class="field-label">เฟส A</label>
               <select name="Phase_A" id="Phase_A" class="box-fill w-input" data-name="Name 4">
-                <option value="0">Time</option>
-                <option value="1">Ins</option>
+                <option value="0">None</option>
+                <option value="1">Time</option>
+                <option value="2">Ins</option
               </select>
               <!-- <input type="text" class="box-fill w-input" maxlength="256" name="BK" data-name="Name 4" id="BK"> -->
             <label for="name-3" class="field-label">เฟส B</label>
             <select name="Phase_B" id="Phase_B" class="box-fill w-input" data-name="Name 4">
-              <option value="0">Time</option>
-              <option value="1">Ins</option>
+              <option value="0">None</option>
+              <option value="1">Time</option>
+              <option value="2">Ins</option>
             </select>
             <!-- <input type="text" class="box-fill w-input" maxlength="256" name="R" data-name="Name 3" id="R"> -->
           </div>
           <div class="column-8 w-col w-col-4">
             <label for="name-6" class="field-label">เฟส C</label>
             <select name="Phase_C" id="Phase_C" class="box-fill w-input" data-name="Name 4">
-              <option value="0">Time</option>
-              <option value="1">Ins</option>
+              <option value="0">None</option>
+              <option value="1">Time</option>
+              <option value="2">Ins</option
             </select>
               <!-- <input type="text" class="box-fill w-input" maxlength="256" name="name" data-name="Name" id="name"> -->
             <label for="name-5" class="field-label">Ground</label>
             <select name="Phase_G" id="Phase_G" class="box-fill w-input" data-name="Name 4">
-              <option value="0">Time</option>
-              <option value="1">Ins</option>
+              <option value="0">None</option>
+              <option value="1">Time</option>
+              <option value="2">Ins</option
             </select>
             <!-- <input type="text" class="box-fill w-input" maxlength="256" name="name-5" data-name="Name 5" id="name-5"> -->
           </div>
@@ -69,12 +73,13 @@
               <option value="1">Zone 1</option>
               <option value="2">Zone 2</option>
               <option value="3">Zone 3</option>
+              <option value="0">None</option>
             </select>
             <!-- <label for="name-7" class="field-label">เฟส G</label><input type="text" class="box-fill w-input" maxlength="256" name="name-6" data-name="Name 6" id="name-6"> -->
           </div>
         </div>
-          <label for="email-3" class="field-label">โหลดหาย (MW)</label><input type="email" class="box-fill w-input" maxlength="256" name="email-2" data-name="Email 2" id="email-2" required="">
-          <label for="email-3" class="field-label">กระแสลัดวงจร (A)</label><input type="email" class="box-fill w-input" maxlength="256" name="email-2" data-name="Email 2" id="email-2" required="">
+          <label for="email-3" class="field-label">โหลดหาย (MW)</label><input type="text" class="box-fill half w-input" maxlength="256" name="load" data-name="Name 6" id="load" placeholder="0" onkeyup="return Checknumber()">
+          <label for="email-3" class="field-label">กระแสลัดวงจร (A)</label><input type="text" class="box-fill half w-input" maxlength="256" name="distance" data-name="Email 2" id="distance" placeholder="0" onkeyup="return Checknumber()">
         <input type="submit" value="Submit" data-wait="Please wait..." class="submit-button-2 w-button"></form>
       <div class="w-form-done"></div>
       <div class="w-form-fail"></div>

@@ -107,6 +107,7 @@ function getDate(electrician){
 }
 
 
+
 function validateForm(){
 
   jQuery.ajax({
@@ -144,5 +145,21 @@ function validateForm(){
 
 
     return false;
+
+}
+
+function Checknumber(){
+      var numbers = /^[0-9]+$/;
+      // var text = document.getElementById("bk").value;
+
+      if(isNaN(document.form_e3.load.value)){
+        alert('เฉพาะตัวเลขเท่านั้น');
+        document.form_e3.load.focus();
+        return false
+      }else if(isNaN(document.form_e3.distance.value)){
+        alert('เฉพาะตัวเลขเท่านั้น');
+        document.form_e3.distance.focus();
+        return false
+      }
 
 }

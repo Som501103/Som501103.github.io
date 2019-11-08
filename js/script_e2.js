@@ -58,13 +58,24 @@ jQuery.ajax({
       var stafftel = data['obj']['DepartmentShort'];
       var subregion = data['obj']['SubRegionCode'];
       var region = data['region']['label'];
-
+      var maincause = data['maincause'];
+      var course = data['course'];
+      var weather = data['weather'];
+      var temp = data['temp'];
+      var sitearea = data['sitearea'];
+      var detail = data['detail'];
       // var pea = data['pea']['label'];
       var electrician1 = staffname + "  " + stafflastname;
       document.getElementById("electrician").innerHTML = electrician1;
       localStorage.setItem("electrician", electrician1);
       document.getElementById("dept").innerHTML = staffdept;
       localStorage.setItem("dept", staffdept);
+      localStorage.setItem("maincause",maincause);
+      localStorage.setItem("course",course);
+      localStorage.setItem("weather",weather);
+      localStorage.setItem("temp",temp);
+      localStorage.setItem("sitearea",sitearea);
+      localStorage.setItem("detail",detail);
       /////////////////////////////////////////
       var i, x,j,y = "";
       for (i in region) {
@@ -106,6 +117,8 @@ jQuery.ajax({
       console.log(staffname);
       localStorage.setItem("electrician", electrician1);
       localStorage.setItem("dept", staffdept);
+
+
       ///////////////////////////////////////
       var trip = data['trip'];
       document.getElementById("trip").value = trip;

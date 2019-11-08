@@ -181,7 +181,7 @@ function validateForm() {
 
 
   jQuery.ajax({
-    url: "http://127.0.0.1:8000/api/lineliff/",
+    url: "https://rc2backend.herokuapp.com/api/lineliff/",
     // url: "https://hookb.in/3OynwLEapdhKeKj2MjmJ",
     type: "POST",
     headers: {
@@ -223,6 +223,7 @@ function validateForm() {
       "wind": document.getElementById("wind").value,
       "clouds": document.getElementById("clouds").value,
       "dt_weather": document.getElementById("dt_weather").value,
+      "sitearea":document.forms["myForm"]["sitearea"].value,
       "area": document.forms["myForm"]["happenarea"].value,
       "subhappenarea": document.forms["myForm"]["subhappenarea"].value,
       "electrician": document.forms["myForm"]["electricianID"].value,

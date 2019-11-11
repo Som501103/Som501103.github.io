@@ -8,7 +8,7 @@
 // document.getElementById("dept").innerHTML = localStorage.getItem("dept");
 
 window.onload = function (e) {
-    liff.init({ liffId: "your-liff-id" }).then(() =>{
+    liff.init({ liffId: "1597802238-nV5lBzz4" }).then(() =>{
         initializeApp();
     });
 };

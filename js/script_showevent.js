@@ -1,0 +1,22 @@
+var electrician;
+console.log(window.location.search);
+var urlParams = new URLSearchParams(window.location.search);
+console.log(urlParams.get('id'));
+var id = urlParams.get('id')
+console.log(id);
+document.getElementById("electrician").innerHTML = localStorage.getItem("electrician");
+document.getElementById("dept").innerHTML = localStorage.getItem("dept");
+document.getElementById("maincause").value = localStorage.getItem("maincause");
+document.getElementById("course").value = localStorage.getItem("course");
+document.getElementById("weather").value = localStorage.getItem("weather");
+document.getElementById("temp").value = localStorage.getItem("temp");
+document.getElementById("sitearea").value = localStorage.getItem("sitearea");
+var happenarea = localStorage.getItem("happenarea");
+document.getElementById("happenarea").value = happenarea;
+var subhappenarea = localStorage.getItem("subhappenarea");
+document.getElementById("subhappenarea").value = subhappenarea;
+var country =localStorage.getItem("causetype");
+document.getElementById("country").value = country;
+var subcause = localStorage.getItem("subcause");
+document.getElementById("city").value = subcause;
+// console.log(subcause);

@@ -22,6 +22,9 @@ function initializeApp() {
 
     $(document).ready(function() {
       liff.getProfile().then(function (profile) {
+          alert(
+            "useridprofilefield:"+useridprofilefield;
+          );
           document.getElementById('useridprofilefield').textContent = profile.userId;
           document.getElementById('displaynamefield').textContent = profile.displayName;
         }).catch(function (error) {

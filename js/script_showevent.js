@@ -21,7 +21,7 @@ function initializeApp() {
   document.getElementById('isLoggedIn').textContent = liff.isLoggedIn();
   document.getElementById('deviceOS').textContent = liff.getOS();
   alert(
-    "useridprofilefield:"+useridprofilefield;
+    "useridprofilefield:"useridprofilefield;
   );
 
     $(document).ready(function() {

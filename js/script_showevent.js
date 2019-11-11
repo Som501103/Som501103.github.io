@@ -15,7 +15,7 @@ window.onload = function (e) {
 };
 
 function initializeApp() {
-  alert("uid:");
+
   document.getElementById('browserLanguage').textContent = liff.getLanguage();
   document.getElementById('sdkVersion').textContent = liff.getVersion();
   document.getElementById('isInClient').textContent = liff.isInClient();
@@ -25,6 +25,7 @@ function initializeApp() {
     $(document).ready(function() {
       liff.getProfile().then(function (profile) {
           document.getElementById('useridprofilefield').textContent = profile.userId;
+          alert("uid:"+profile.userId);
           document.getElementById('displaynamefield').textContent = profile.displayName;
         }).catch(function (error) {
             window.alert("Error getting profile: " + error);

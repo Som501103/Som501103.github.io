@@ -15,17 +15,16 @@ window.onload = function (e) {
 };
 
 function initializeApp() {
-
-  document.getElementById('browserLanguage').textContent = liff.getLanguage();
-  document.getElementById('sdkVersion').textContent = liff.getVersion();
-  document.getElementById('isInClient').textContent = liff.isInClient();
-  document.getElementById('isLoggedIn').textContent = liff.isLoggedIn();
-  document.getElementById('deviceOS').textContent = liff.getOS();
+  // document.getElementById('browserLanguage').textContent = liff.getLanguage();
+  // document.getElementById('sdkVersion').textContent = liff.getVersion();
+  // document.getElementById('isInClient').textContent = liff.isInClient();
+  // document.getElementById('isLoggedIn').textContent = liff.isLoggedIn();
+  // document.getElementById('deviceOS').textContent = liff.getOS();
 
       liff.getProfile().then(function (profile) {
-          document.getElementById('useridprofilefield').textContent = profile.userId;
-          getstaffid(profile.userId);
-          document.getElementById('displaynamefield').textContent = profile.displayName;
+          document.getElementById('electrician').value = profile.userId;
+          alert(profile.userId);
+          document.getElementById('dept').value = profile.displayName;
         }).catch(function (error) {
             window.alert("Error getting profile: " + error);
         });

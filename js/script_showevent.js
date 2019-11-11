@@ -23,7 +23,6 @@ function initializeApp() {
   document.getElementById('isLoggedIn').textContent = liff.isLoggedIn();
   document.getElementById('deviceOS').textContent = liff.getOS();
 
-    $(document).ready(function() {
       liff.getProfile().then(function (profile) {
           document.getElementById('useridprofilefield').textContent = profile.userId;
           alert("uid:"+profile.userId);
@@ -31,5 +30,4 @@ function initializeApp() {
         }).catch(function (error) {
             window.alert("Error getting profile: " + error);
         });
-    });
 }

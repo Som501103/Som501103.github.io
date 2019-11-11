@@ -10,6 +10,7 @@
 window.onload = function (e) {
     liff.init({ liffId: "1597802238-nV5lBzz4" }).then(() =>{
         initializeApp();
+
     });
 };
 
@@ -19,12 +20,12 @@ function initializeApp() {
   document.getElementById('isInClient').textContent = liff.isInClient();
   document.getElementById('isLoggedIn').textContent = liff.isLoggedIn();
   document.getElementById('deviceOS').textContent = liff.getOS();
+  alert(
+    "useridprofilefield:"+useridprofilefield;
+  );
 
     $(document).ready(function() {
       liff.getProfile().then(function (profile) {
-          alert(
-            "useridprofilefield:"+useridprofilefield;
-          );
           document.getElementById('useridprofilefield').textContent = profile.userId;
           document.getElementById('displaynamefield').textContent = profile.displayName;
         }).catch(function (error) {

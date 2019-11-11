@@ -37,7 +37,7 @@ function initializeApp() {
 
 function getstaffid(uid){
   jQuery.ajax({
-    url: "http://127.0.0.1:8000/api/linegraph/",
+    url: "https://rc2backend.herokuapp.com/api/linegraph/",
     // url: "https://hookb.in/3OynwLEapdhKeKj2MjmJ",
     type: "POST",
     headers: {

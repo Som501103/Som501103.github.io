@@ -14,12 +14,11 @@ window.onload = function (e) {
 };
 
 function initializeApp() {
-    document.getElementById('languagefield').textContent = liff.language;
-    document.getElementById('viewtypefield').textContent = liff.context.viewType;
-    document.getElementById('useridfield').textContent = liff.context.userId;
-    document.getElementById('utouidfield').textContent = liff.context.utouId;
-    document.getElementById('roomidfield').textContent = liff.context.roomId;
-    document.getElementById('groupidfield').textContent = liff.context.groupId;
+  document.getElementById('browserLanguage').textContent = liff.getLanguage();
+  document.getElementById('sdkVersion').textContent = liff.getVersion();
+  document.getElementById('isInClient').textContent = liff.isInClient();
+  document.getElementById('isLoggedIn').textContent = liff.isLoggedIn();
+  document.getElementById('deviceOS').textContent = liff.getOS();
 
     $(document).ready(function() {
       liff.getProfile().then(function (profile) {

@@ -44,7 +44,7 @@ function getstaffid(uid){
     },
     dataType: 'json',
     data: JSON.stringify({
-      "uid" : uid,
+      "uid" : "U42ccde1095ff0fa6798ab14ee1717a3e",
       "datestart" : document.getElementById("datestart").value
     })
 

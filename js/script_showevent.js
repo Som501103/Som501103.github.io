@@ -17,7 +17,6 @@ window.onload = function (e) {
 function initializeApp() {
 
   document.getElementById('browserLanguage').textContent = liff.getLanguage();
-  alert("browserLanguage:"+liff.getLanguage());
   document.getElementById('sdkVersion').textContent = liff.getVersion();
   document.getElementById('isInClient').textContent = liff.isInClient();
   document.getElementById('isLoggedIn').textContent = liff.isLoggedIn();
@@ -25,10 +24,8 @@ function initializeApp() {
 
       liff.getProfile().then(function (profile) {
           document.getElementById('useridprofilefield').textContent = profile.userId;
-          alert("uid:"+profile.userId);
-          getstaffid(profile.userId)
+          getstaffid(profile.userId);
           document.getElementById('displaynamefield').textContent = profile.displayName;
-
         }).catch(function (error) {
             window.alert("Error getting profile: " + error);
         });
@@ -36,6 +33,7 @@ function initializeApp() {
 }
 
 function getstaffid(uid){
+  console.log(document.getElementById("datestart").value);
   jQuery.ajax({
     url: "https://rc2backend.herokuapp.com/api/linegraph/",
     // url: "https://hookb.in/3OynwLEapdhKeKj2MjmJ",

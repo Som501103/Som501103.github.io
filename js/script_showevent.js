@@ -1,22 +1,32 @@
-var electrician;
-console.log(window.location.search);
-var urlParams = new URLSearchParams(window.location.search);
-console.log(urlParams.get('id'));
-var id = urlParams.get('id')
-console.log(id);
-document.getElementById("electrician").innerHTML = localStorage.getItem("electrician");
-document.getElementById("dept").innerHTML = localStorage.getItem("dept");
-document.getElementById("maincause").value = localStorage.getItem("maincause");
-document.getElementById("course").value = localStorage.getItem("course");
-document.getElementById("weather").value = localStorage.getItem("weather");
-document.getElementById("temp").value = localStorage.getItem("temp");
-document.getElementById("sitearea").value = localStorage.getItem("sitearea");
-var happenarea = localStorage.getItem("happenarea");
-document.getElementById("happenarea").value = happenarea;
-var subhappenarea = localStorage.getItem("subhappenarea");
-document.getElementById("subhappenarea").value = subhappenarea;
-var country =localStorage.getItem("causetype");
-document.getElementById("country").value = country;
-var subcause = localStorage.getItem("subcause");
-document.getElementById("city").value = subcause;
-// console.log(subcause);
+// var electrician;
+// console.log(window.location.search);
+// var urlParams = new URLSearchParams(window.location.search);
+// console.log(urlParams.get('id'));
+// var id = urlParams.get('id')
+// console.log(id);
+// document.getElementById("electrician").innerHTML = localStorage.getItem("electrician");
+// document.getElementById("dept").innerHTML = localStorage.getItem("dept");
+
+window.onload = function (e) {
+    liff.init({ liffId: "your-liff-id" }).then(() =>{
+        initializeApp();
+    });
+};
+
+function initializeApp() {
+    document.getElementById('languagefield').textContent = liff.language;
+    document.getElementById('viewtypefield').textContent = liff.context.viewType;
+    document.getElementById('useridfield').textContent = liff.context.userId;
+    document.getElementById('utouidfield').textContent = liff.context.utouId;
+    document.getElementById('roomidfield').textContent = liff.context.roomId;
+    document.getElementById('groupidfield').textContent = liff.context.groupId;
+
+    $(document).ready(function() {
+      liff.getProfile().then(function (profile) {
+          document.getElementById('useridprofilefield').textContent = profile.userId;
+          document.getElementById('displaynamefield').textContent = profile.displayName;
+        )}.catch(function (error) {
+            window.alert("Error getting profile: " + error);
+        });
+    }
+}

@@ -17,6 +17,7 @@ window.onload = function (e) {
 function initializeApp() {
 
   document.getElementById('browserLanguage').textContent = liff.getLanguage();
+  alert("browserLanguage:"+liff.getLanguage());
   document.getElementById('sdkVersion').textContent = liff.getVersion();
   document.getElementById('isInClient').textContent = liff.isInClient();
   document.getElementById('isLoggedIn').textContent = liff.isLoggedIn();

@@ -15,14 +15,12 @@ window.onload = function (e) {
 };
 
 function initializeApp() {
+  alert("uid:");
   document.getElementById('browserLanguage').textContent = liff.getLanguage();
   document.getElementById('sdkVersion').textContent = liff.getVersion();
   document.getElementById('isInClient').textContent = liff.isInClient();
   document.getElementById('isLoggedIn').textContent = liff.isLoggedIn();
   document.getElementById('deviceOS').textContent = liff.getOS();
-  alert(
-    "useridprofilefield:"useridprofilefield;
-  );
 
     $(document).ready(function() {
       liff.getProfile().then(function (profile) {

@@ -24,6 +24,7 @@ function initializeApp() {
       liff.getProfile().then(function (profile) {
           document.getElementById('electrician').value = profile.userId;
           alert(profile.userId);
+          getstaffid(profile.userId);
           document.getElementById('dept').value = profile.displayName;
         }).catch(function (error) {
             window.alert("Error getting profile: " + error);

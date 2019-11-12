@@ -10,7 +10,8 @@
 window.onload = function (e) {
     liff.init({ liffId: "1597802238-nV5lBzz4" }).then(() =>{
         initializeApp();
-
+        uid="U42ccde1095ff0fa6798ab14ee1717a3e";
+        getstaffid(uid);
     });
 };
 
@@ -22,10 +23,10 @@ function initializeApp() {
   // document.getElementById('deviceOS').textContent = liff.getOS();
 
       liff.getProfile().then(function (profile) {
-          document.getElementById('electrician').value = profile.userId;
+          document.getElementById('uid').value = profile.userId;
           alert(profile.userId);
           getstaffid(profile.userId);
-          document.getElementById('dept').value = profile.displayName;
+          document.getElementById('uname').value = profile.displayName;
         }).catch(function (error) {
             window.alert("Error getting profile: " + error);
         });
@@ -35,7 +36,7 @@ function initializeApp() {
 function getstaffid(uid){
   console.log(document.getElementById("datestart").value);
   jQuery.ajax({
-    url: "https://rc2backend.herokuapp.com/api/linegraph/",
+    url: "http://127.0.0.1:8000/api/linegraph/",
     // url: "https://hookb.in/3OynwLEapdhKeKj2MjmJ",
     type: "POST",
     headers: {
@@ -53,21 +54,31 @@ function getstaffid(uid){
       console.log("HTTP Request Succeeded: " + jqXHR.status);
       console.log(data); //Return Data
       if (jqXHR.status == 200) {
-        var region = data['region']['label'];
-        var pea = data['showallevent']['label'];
-        var j,y = "";
-        for (j in pea){
-                      y += "<tr><td>"+pea[j][0]+"</td><td>"+pea[j][1]+"</td><td>"+pea[j][2]+"</td>";
-                      // y += "<option value=\""+pea[j][0]+"\">"+pea[j][1]+"</option>";
-                      // console.log(y);
-                    }
-        $('#example').append(y);
+        var dataSet = data['showall'];
+        console.log(dataSet);
+        // var j,y = "";
+        // for (j in pea){
+        //               y += "<tr><td>"+pea[j][0]+"</td><td>"+pea[j][1]+"</td><td>"+pea[j][2]+"</td>";
+        //               // y += "<option value=\""+pea[j][0]+"\">"+pea[j][1]+"</option>";
+        //               // console.log(y);
+        //             }
+        // $('#example').append(y);
+        // console.log(example);
 
-        console.log(peacode);
-
+        $(document).ready(function() {
+          $('#example').DataTable( {
+            data: dataSet,
+            retrieve: true,
+            paging: true,
+            columns: [
+            { title: "Datestart" },
+            { title: "Equipcode" },
+            { title: "PEA" },
+            { title: "Status" }
+            ]
+          } );
+        } );
 
       };
     })
-
-
 }

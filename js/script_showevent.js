@@ -46,8 +46,8 @@ function getstaffid(uid){
     },
     dataType: 'json',
     data: JSON.stringify({
-      "uid" : "U42ccde1095ff0fa6798ab14ee1717a3e",
-      "datestart" : "2019-11-05"
+      "uid" : uid,
+      "datestart" : datestart
     })
 
   })
@@ -56,9 +56,10 @@ function getstaffid(uid){
       console.log(data); //Return Data
       if (jqXHR.status == 200) {
         var dataSet = data['showall'];
-        console.log(dataSet);
 
+        console.log(dataSet);
         $(document).ready(function() {
+
         var table = $('#example').DataTable( {
             data: dataSet,
             retrieve: true,
@@ -66,11 +67,12 @@ function getstaffid(uid){
             columns: [
             { title: "Timestart" },
             { title: "Equipcode" },
-            { title: "PEA" },
             { title: "Status" }
             ]
           } );
-
+          table.destroy();
+          // $('#example').empty();
+          table.draw();
         } );
 
       };

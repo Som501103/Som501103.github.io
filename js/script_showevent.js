@@ -35,6 +35,7 @@ function initializeApp() {
 
 function getstaffid(uid){
   console.log(document.getElementById("datestart").value);
+  var datestart = document.getElementById("datestart").value;
   jQuery.ajax({
     url: "http://127.0.0.1:8000/api/linegraph/",
     // url: "https://hookb.in/3OynwLEapdhKeKj2MjmJ",
@@ -46,7 +47,7 @@ function getstaffid(uid){
     dataType: 'json',
     data: JSON.stringify({
       "uid" : "U42ccde1095ff0fa6798ab14ee1717a3e",
-      "datestart" : document.getElementById("datestart").value
+      "datestart" : "2019-11-05"
     })
 
   })
@@ -56,27 +57,20 @@ function getstaffid(uid){
       if (jqXHR.status == 200) {
         var dataSet = data['showall'];
         console.log(dataSet);
-        // var j,y = "";
-        // for (j in pea){
-        //               y += "<tr><td>"+pea[j][0]+"</td><td>"+pea[j][1]+"</td><td>"+pea[j][2]+"</td>";
-        //               // y += "<option value=\""+pea[j][0]+"\">"+pea[j][1]+"</option>";
-        //               // console.log(y);
-        //             }
-        // $('#example').append(y);
-        // console.log(example);
 
         $(document).ready(function() {
-          $('#example').DataTable( {
+        var table = $('#example').DataTable( {
             data: dataSet,
             retrieve: true,
             paging: true,
             columns: [
-            { title: "Datestart" },
+            { title: "Timestart" },
             { title: "Equipcode" },
             { title: "PEA" },
             { title: "Status" }
             ]
           } );
+
         } );
 
       };

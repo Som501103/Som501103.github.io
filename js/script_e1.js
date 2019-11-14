@@ -46,42 +46,10 @@ jQuery.ajax({
     };
   })
 
-  // jQuery.ajax({
-  //   url: "https://rc2backend.herokuapp.com/api/getpeaid/",
-  //   // url: "https://hookb.in/3OynwLEapdhKeKj2MjmJ",
-  //   type: "POST",
-  //   headers: {
-  //     "Content-Type": "application/json",
-  //     "Authorization":"token 5a5410bf249b5ad186c80a015a8b93abaef18349",
-  //   },
-  //   dataType: 'json',
-  //   data: JSON.stringify({
-  //     "electrician" : document.getElementById("electrician").value,
-  //     "check": 'electrician'
-  //     })
-  //   })
-  //   .done(function(data, textStatus, jqXHR) {
-  //       console.log("HTTP Request Succeeded: " + jqXHR.status);
-  //       console.log(data); //Return Data
-  //       if (jqXHR.status == 200) {
-  //           var staffname = data['obj']['FirstName'];
-  //           var stafflastname = data['obj']['LastName'];
-  //           var staffdept = data['obj']['DepartmentShort'];
-  //           var stafftel = data['obj']['DepartmentShort'];
-  //           var subregion = data['obj']['SubRegionCode'];
-  //           var electrician1 = staffname + "  " + stafflastname;
-  //
-  //           console.log(staffname);
-  //           localStorage.setItem("electrician", electrician1);
-  //           localStorage.setItem("dept", staffdept);
-  //
-  //         }
-  //       })
-
 function validateForm(){
   jQuery.ajax({
+    // url: "http://127.0.0.1:8000/api/getupdate/",
     url: "https://rc2backend.herokuapp.com/api/getupdate/",
-    // url: "https://hookb.in/3OynwLEapdhKeKj2MjmJ",
     type: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -94,7 +62,10 @@ function validateForm(){
       "daterestore" : document.forms["form_e1"]["daterestore"].value,
       "timerestore" : document.forms["form_e1"]["timerestore"].value,
       "id" : id,
-      "page": document.getElementById("page").value
+      "page": "e1",
+      "image1": "image1:"+base64updte,
+      "image2": "image2:"+base64updte2,
+      "image3": "image3:"+base64updte3
       // "lat": ,
       // "lon": ,
 

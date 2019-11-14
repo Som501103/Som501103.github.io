@@ -59,7 +59,6 @@ function getstaffid(uid){
 
         console.log(dataSet);
         $(document).ready(function() {
-
         var table = $('#example').DataTable( {
             data: dataSet,
             retrieve: true,

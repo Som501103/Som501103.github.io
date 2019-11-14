@@ -77,6 +77,36 @@
 
                 var image1 = document.getElementById('image1');
                 image1.src = URL.createObjectURL(event.target.files[0]);
+                var selectedFile = document.getElementById("file-input1").files;
+                console.log(selectedFile);
+                console.log(selectedFile[0]['name'])
+                if (selectedFile.length > 0) {
+    // RUN A LOOP TO CHECK EACH SELECTED FILE.
+                for (var i = 0; i <= selectedFile.length - 1; i++) {
+
+                  var fsize = selectedFile.item(i).size; // THE SIZE OF THE FILE.
+                  }
+                }
+                if (selectedFile.length > 0) {
+                // Select the very first file from list
+                var fileToLoad = selectedFile[0];
+                // FileReader function for read the file.
+                var fileReader = new FileReader();
+                var base64;
+                // Onload of file read the file content
+                fileReader.onload = function(fileLoadedEvent) {
+                  base64 = fileLoadedEvent.target.result;
+                  // console.log(base64);
+                  var fields = base64.split(',');
+                  base64updte = fields[1];
+                  console.log('###########base64#########');
+                  console.log(base64updte);
+                };
+                // Convert data to base64
+                fileReader.readAsDataURL(fileToLoad);
+              } else {
+                alert("Please attach image.");
+              }
             };
           </script>
           <script>
@@ -86,6 +116,38 @@
                   image2.src = URL.createObjectURL(event.target.files[0]);
                   console.log("2"+event.target.name);
 
+                  image2.src = URL.createObjectURL(event.target.files[0]);
+                  var selectedFile = document.getElementById("file-input2").files;
+                  console.log(selectedFile);
+                  console.log(selectedFile[0]['name'])
+                  if (selectedFile.length > 0) {
+      // RUN A LOOP TO CHECK EACH SELECTED FILE.
+                  for (var i = 0; i <= selectedFile.length - 1; i++) {
+
+                    var fsize = selectedFile.item(i).size; // THE SIZE OF THE FILE.
+                    }
+                  }
+                  if (selectedFile.length > 0) {
+                  // Select the very first file from list
+                  var fileToLoad = selectedFile[0];
+                  // FileReader function for read the file.
+                  var fileReader = new FileReader();
+                  var base64;
+                  // Onload of file read the file content
+                  fileReader.onload = function(fileLoadedEvent) {
+                    base64 = fileLoadedEvent.target.result;
+                    // console.log(base64);
+                    var fields = base64.split(',');
+                    base64updte2 = fields[1];
+                    console.log('###########base64#########');
+                    console.log(base64updte2);
+                  };
+                  // Convert data to base64
+                  fileReader.readAsDataURL(fileToLoad);
+                } else {
+                  alert("Please attach image.");
+                }
+
             };
           </script>
           <script>
@@ -94,6 +156,38 @@
               var image3 = document.getElementById('image3');
                   image3.src = URL.createObjectURL(event.target.files[0]);
                   console.log("3"+event.target.name);
+
+                  image3.src = URL.createObjectURL(event.target.files[0]);
+                  var selectedFile = document.getElementById("file-input3").files;
+                  console.log(selectedFile);
+                  console.log(selectedFile[0]['name'])
+                  if (selectedFile.length > 0) {
+      // RUN A LOOP TO CHECK EACH SELECTED FILE.
+                  for (var i = 0; i <= selectedFile.length - 1; i++) {
+
+                    var fsize = selectedFile.item(i).size; // THE SIZE OF THE FILE.
+                    }
+                  }
+                  if (selectedFile.length > 0) {
+                  // Select the very first file from list
+                  var fileToLoad = selectedFile[0];
+                  // FileReader function for read the file.
+                  var fileReader = new FileReader();
+                  var base64;
+                  // Onload of file read the file content
+                  fileReader.onload = function(fileLoadedEvent) {
+                    base64 = fileLoadedEvent.target.result;
+                    // console.log(base64);
+                    var fields = base64.split(',');
+                    base64updte3 = fields[1];
+                    console.log('###########base64#########');
+                    console.log(base64updte3);
+                  };
+                  // Convert data to base64
+                  fileReader.readAsDataURL(fileToLoad);
+                } else {
+                  alert("Please attach image.");
+                }
 
             };
           </script>

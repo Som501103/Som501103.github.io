@@ -73,6 +73,7 @@ function FunctionIDinput(){
             jQuery.ajax({
               url: "https://rc2backend.herokuapp.com/api/scada/",
               // url: "https://hookb.in/3OynwLEapdhKeKj2MjmJ",
+              // url: "http://127.0.0.1:8000/api/scada/",
               type: "POST",
               headers: {
                 "Content-Type": "application/json",
@@ -420,7 +421,8 @@ function FunctionAutoinput() {
 function ComIDfilter(){
   jQuery.ajax({
     // url: "https://rc2backend.herokuapp.com/api/equipeodefilter/",
-    url: "https://e89704f8.ngrok.io/api/equipeodefilter/",
+    url: "http://127.0.0.1:8000/api/equipeodefilter/",
+    // url: "http://127.0.0.1:8000/api/equipeodefilter/",
     // url: "https://hookb.in/3OynwLEapdhKeKj2MjmJ",
     type: "POST",
     headers: {

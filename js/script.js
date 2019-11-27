@@ -126,6 +126,7 @@ function FunctionIDinput(){
                   document.getElementById("wind").value = wind;
                   document.getElementById("clouds").value = clouds;
                   document.getElementById("dt_weather").value = dt_weather;
+                  document.getElementById("weather_description").value = des;
 
                   console.log(peacode);
                    var fedder = data['fedder']['label'];
@@ -216,6 +217,7 @@ function validateForm() {
       "temp": document.forms["myForm"]["temp"].value,
       "weather_id": document.getElementById("weather_id").value,
       "weather_main": document.getElementById("weather_main").value,
+      "weather_description": document.getElementById("weather_description").value,
       "main_pressure": document.getElementById("main_pressure").value,
       "main_humidity": document.getElementById("main_humidity").value,
       "main_temp_min": document.getElementById("main_temp_min").value,
@@ -417,7 +419,8 @@ function FunctionAutoinput() {
 
 function ComIDfilter(){
   jQuery.ajax({
-    url: "https://rc2backend.herokuapp.com/api/equipeodefilter/",
+    // url: "https://rc2backend.herokuapp.com/api/equipeodefilter/",
+    url: "http://127.0.0.1:8000/api/equipeodefilter/",
     // url: "https://hookb.in/3OynwLEapdhKeKj2MjmJ",
     type: "POST",
     headers: {

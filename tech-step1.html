@@ -99,8 +99,8 @@
                   // console.log(base64);
                   var fields = base64.split(',');
                   base64updte = fields[1];
-                  console.log('###########base64#########');
-                  console.log(base64updte);
+                  // console.log('###########base64#########');
+                  // console.log(base64updte);
                 };
                 // Convert data to base64
                 fileReader.readAsDataURL(fileToLoad);
@@ -139,8 +139,8 @@
                     // console.log(base64);
                     var fields = base64.split(',');
                     base64updte2 = fields[1];
-                    console.log('###########base64#########');
-                    console.log(base64updte2);
+                    // console.log('###########base64#########');
+                    // console.log(base64updte2);
                   };
                   // Convert data to base64
                   fileReader.readAsDataURL(fileToLoad);
@@ -180,8 +180,8 @@
                     // console.log(base64);
                     var fields = base64.split(',');
                     base64updte3 = fields[1];
-                    console.log('###########base64#########');
-                    console.log(base64updte3);
+                    // console.log('###########base64#########');
+                    // console.log(base64updte3);
                   };
                   // Convert data to base64
                   fileReader.readAsDataURL(fileToLoad);
@@ -231,7 +231,9 @@
                 infoWindow.setContent('ตำแหน่งเหตุการณ์กระแสไฟฟ้าขัดข้อง');
                 infoWindow.open(map,marker);
                 console.log(pos.lat);
+                lat=pos.lat;
                 console.log(pos.lng);
+                lng=pos.lng;
                 }, function() {
                 handleLocationError(true, infoWindow, map.getCenter());
               });

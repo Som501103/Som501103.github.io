@@ -68,8 +68,8 @@ function validateForm(){
       "image1": "image1:"+base64updte,
       "image2": "image2:"+base64updte2,
       "image3": "image3:"+base64updte3,
-      "lat": pos.lat,
-      "lon": pos.lng
+      "lat": lat,
+      "lon": lng
 
     })
 

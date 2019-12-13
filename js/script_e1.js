@@ -49,9 +49,9 @@ jQuery.ajax({
 
 function validateForm(){
   jQuery.ajax({
-    url: "https://e89704f8.ngrok.io/api/getupdate/",
+    // url: "https://e89704f8.ngrok.io/api/getupdate/",
     // url: "http://127.0.0.1:8000/api/getupdate/",
-    // url: "https://rc2backend.herokuapp.com/api/getupdate/",
+    url: "https://rc2backend.herokuapp.com/api/getupdate/",
     type: "POST",
     headers: {
       "Content-Type": "application/json",

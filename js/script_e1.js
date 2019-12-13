@@ -6,9 +6,9 @@ console.log(id);
 
 
 jQuery.ajax({
-  // url: "https://rc2backend.herokuapp.com/api/getdatae1/",
+  url: "https://rc2backend.herokuapp.com/api/getdatae1/",
   // url: "https://hookb.in/3OynwLEapdhKeKj2MjmJ",
-  url: "https://e89704f8.ngrok.io/api/getdatae1/",
+  // url: "https://e89704f8.ngrok.io/api/getdatae1/",
   type: "POST",
   headers: {
     "Content-Type": "application/json",
@@ -49,8 +49,9 @@ jQuery.ajax({
 
 function validateForm(){
   jQuery.ajax({
+    url: "https://e89704f8.ngrok.io/api/getupdate/",
     // url: "http://127.0.0.1:8000/api/getupdate/",
-    url: "https://rc2backend.herokuapp.com/api/getupdate/",
+    // url: "https://rc2backend.herokuapp.com/api/getupdate/",
     type: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -66,9 +67,9 @@ function validateForm(){
       "page": "e1",
       "image1": "image1:"+base64updte,
       "image2": "image2:"+base64updte2,
-      "image3": "image3:"+base64updte3
-      // "lat": ,
-      // "lon": ,
+      "image3": "image3:"+base64updte3,
+      "lat": pos.lat,
+      "lon": pos.lng
 
     })
 

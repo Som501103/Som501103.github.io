@@ -1,9 +1,9 @@
 var electrician;
-console.log(window.location.search);
+// console.log(window.location.search);
 var urlParams = new URLSearchParams(window.location.search);
-console.log(urlParams.get('id'));
+// console.log(urlParams.get('id'));
 var id = urlParams.get('id')
-console.log(id);
+// console.log(id);
 document.getElementById("electrician").innerHTML = localStorage.getItem("electrician");
 document.getElementById("dept").innerHTML = localStorage.getItem("dept");
 document.getElementById("maincause").value = localStorage.getItem("maincause");
@@ -167,8 +167,8 @@ $("#city").append("<option value="+ arr[i].value + ">" + arr[i].display + "</opt
 });
 
 jQuery.ajax({
-  // url: "https://rc2backend.herokuapp.com/api/getdatae1/",
-  url: "https://e89704f8.ngrok.io/api/getdatae1/",
+  url: "https://rc2backend.herokuapp.com/api/getdatae1/",
+  // url: "https://e89704f8.ngrok.io/api/getdatae1/",
 
   type: "POST",
   headers: {
@@ -293,9 +293,9 @@ function functionRelation(){
   var happenarea = document.getElementById("happenarea").value;
   console.log(happenarea);
   jQuery.ajax({
-    // url: "https://rc2backend.herokuapp.com/api/getsubpeacode/",
+    url: "https://rc2backend.herokuapp.com/api/getsubpeacode/",
     // url: "https://hookb.in/3OynwLEapdhKeKj2MjmJ",
-    url:" https://e89704f8.ngrok.io/api/getsubpeacode/",
+    // url:" https://e89704f8.ngrok.io/api/getsubpeacode/",
     type: "POST",
     headers: {
       "Content-Type": "application/json",

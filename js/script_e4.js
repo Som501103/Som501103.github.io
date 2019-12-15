@@ -15,6 +15,10 @@ var happenarea = localStorage.getItem("happenarea");
 document.getElementById("happenarea").value = happenarea;
 var subhappenarea = localStorage.getItem("subhappenarea");
 document.getElementById("subhappenarea").value = subhappenarea;
+// console.log(subhappenarea);
+var detail = localStorage.getItem("detail");
+document.getElementById("detail").value = detail;
+
 var country =localStorage.getItem("causetype");
 document.getElementById("country").value = country;
 var subcause = localStorage.getItem("subcause");
@@ -163,8 +167,9 @@ $("#city").append("<option value="+ arr[i].value + ">" + arr[i].display + "</opt
 });
 
 jQuery.ajax({
-  url: "https://rc2backend.herokuapp.com/api/getdatae1/",
-  // url: "https://hookb.in/3OynwLEapdhKeKj2MjmJ",
+  // url: "https://rc2backend.herokuapp.com/api/getdatae1/",
+  url: "https://e89704f8.ngrok.io/api/getdatae1/",
+
   type: "POST",
   headers: {
     "Content-Type": "application/json",
@@ -185,12 +190,15 @@ jQuery.ajax({
       var pea = data['pea']['pea'];
       var subpea = data['pea']['subpea'];
       var i,j,x,y = "";
+      // document.getElementById("subhappenarea").value = subhappenarea;
       for (i in subpea){
                     x += "<option value=\""+subpea[i][0]+"\">"+subpea[i][1]+"</option>";
-                    // console.log(y);
+      //               console.log(x);
+                    console.log(subpea[i][0]);
                   }
       $('#subhappenarea').append(x);
       document.getElementById("subhappenarea").value = subhappenarea;
+      // console.log("kkk",subhappenarea);
 
       for (j in pea){
                     y += "<option value=\""+pea[j][0]+"\">"+pea[j][1]+"</option>";
@@ -198,7 +206,6 @@ jQuery.ajax({
                   }
       $('#happenarea').append(y);
       document.getElementById("happenarea").value = happenarea;
-
 
 
     };
@@ -286,8 +293,9 @@ function functionRelation(){
   var happenarea = document.getElementById("happenarea").value;
   console.log(happenarea);
   jQuery.ajax({
-    url: "https://rc2backend.herokuapp.com/api/getsubpeacode/",
+    // url: "https://rc2backend.herokuapp.com/api/getsubpeacode/",
     // url: "https://hookb.in/3OynwLEapdhKeKj2MjmJ",
+    url:" https://e89704f8.ngrok.io/api/getsubpeacode/",
     type: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -303,7 +311,6 @@ function functionRelation(){
         console.log(data); //Return Data
 
         if (jqXHR.status == 200) {
-
             var subarea = data['subpea']['label'];
             console.log(subarea);
             $("#subhappenarea").empty();
@@ -313,7 +320,6 @@ function functionRelation(){
             }
 
             $('#subhappenarea').append(y);
-
         };
       })
 }

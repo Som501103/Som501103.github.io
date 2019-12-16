@@ -10,8 +10,9 @@ document.getElementById("dept").innerHTML = localStorage.getItem("dept");
 
 
 jQuery.ajax({
-  url: "https://rc2backend.herokuapp.com/api/getdatae1/",
+  // url: "https://rc2backend.herokuapp.com/api/getdatae1/",
   // url: "https://hookb.in/3OynwLEapdhKeKj2MjmJ",
+  url: "https://e89704f8.ngrok.io/api/getdatae1/",
   type: "POST",
   headers: {
     "Content-Type": "application/json",

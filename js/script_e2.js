@@ -7,8 +7,9 @@ console.log(id);
 
 
 jQuery.ajax({
-  url: "https://rc2backend.herokuapp.com/api/getdatae1/",
+  // url: "https://rc2backend.herokuapp.com/api/getdatae1/",
   // url: "https://hookb.in/3OynwLEapdhKeKj2MjmJ",
+  url: "https://e89704f8.ngrok.io/api/getdatae1/",
   type: "POST",
   headers: {
     "Content-Type": "application/json",
@@ -31,14 +32,14 @@ jQuery.ajax({
       var fedderwork = data['fedderwork'];
       document.getElementById("fedderwork").value = fedderwork;
 
-      var equipcode = data['equipcode'];
-      document.getElementById("equipcode").value = equipcode;
+      // var equipcode = data['equipcode'];
+      // document.getElementById("equipcode").value = equipcode;
 
       var equipstrat = data['equipstrat'];
       document.getElementById("equipstrat").value = equipstrat;
 
-      var equipend = data['equipend'];
-      document.getElementById("equipend").value = equipend;
+      // var equipend = data['equipend'];
+      // document.getElementById("equipend").value = equipend;
 
       var relay = data['relay'];
       document.getElementById("relay").value = relay;
@@ -64,6 +65,10 @@ jQuery.ajax({
       var temp = data['temp'];
       var sitearea = data['sitearea'];
       var detail = data['detail'];
+      var happenarea = data['happenarea'];
+      var subhappenarea = data['subhappenarea'];
+      var causetype = data['causetype'];
+      var subcause = data['subcause'];
       // var pea = data['pea']['label'];
       var electrician1 = staffname + "  " + stafflastname;
       document.getElementById("electrician").innerHTML = electrician1;
@@ -76,6 +81,10 @@ jQuery.ajax({
       localStorage.setItem("temp",temp);
       localStorage.setItem("sitearea",sitearea);
       localStorage.setItem("detail",detail);
+      localStorage.setItem("happenarea",happenarea);
+      localStorage.setItem("subhappenarea",subhappenarea);
+      localStorage.setItem("causetype",causetype);
+      localStorage.setItem("subcause",subcause);
       /////////////////////////////////////////
       var i, x,j,y = "";
       for (i in region) {
@@ -220,6 +229,8 @@ function getFedder(){
          }
 
          $('#fedder').append(y);
+
+
          // var fedder_all = data['fedder_all']['label'];
          // for (j in fedder_all) {
          //               y += "<option value=\""+fedder_all[j]+"\">"+fedder_all[j]+"</option>";

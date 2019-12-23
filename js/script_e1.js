@@ -41,6 +41,8 @@ jQuery.ajax({
       document.getElementById("staffid").value = staffid;
 
       document.getElementById("image1").src = data['image1'];
+      document.getElementById("image2").src = data['image2'];
+      document.getElementById("image3").src = data['image3'];
       // var trip = data['trip'];
       // document.getElementById("trip").value = trip;
       console.log(staffid);

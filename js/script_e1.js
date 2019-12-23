@@ -45,7 +45,7 @@ jQuery.ajax({
       // document.getElementById("trip").value = trip;
       console.log(staffid);
       console.log(electrician);
-      console.log(data['image1']);
+      console.log(btoa(data['image1']));
 
 
 

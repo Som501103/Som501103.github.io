@@ -10,8 +10,9 @@
 window.onload = function (e) {
     liff.init({ liffId: "1597802238-nV5lBzz4" }).then(() =>{
         initializeApp();
-        uid="U42ccde1095ff0fa6798ab14ee1717a3e";
-        getstaffid(uid);
+        // uid="U42ccde1095ff0fa6798ab14ee1717a3e";
+        // uid=profile.userId;
+        // getstaffid(uid);
     });
 };
 

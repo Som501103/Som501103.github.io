@@ -39,11 +39,14 @@ jQuery.ajax({
       document.getElementById("electrician").value = electrician;
       var staffid = data['staffid'];
       document.getElementById("staffid").value = staffid;
+
+      document.getElementById("image1").src = "data:image/png;base64,"+data['image1'];
       // var trip = data['trip'];
       // document.getElementById("trip").value = trip;
       console.log(staffid);
       console.log(electrician);
       console.log(data['image1']);
+
 
 
     };

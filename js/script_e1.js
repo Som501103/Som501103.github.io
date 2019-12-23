@@ -40,7 +40,7 @@ jQuery.ajax({
       var staffid = data['staffid'];
       document.getElementById("staffid").value = staffid;
 
-      // document.getElementById("image1").src = "data:image/png;base64,"+btoa(data['image1']);
+      document.getElementById("image1").src = data['image1'];
       // var trip = data['trip'];
       // document.getElementById("trip").value = trip;
       console.log(staffid);

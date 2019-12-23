@@ -39,6 +39,8 @@ function getstaffid(uid){
   var datestart = document.getElementById("datestart").value;
   jQuery.ajax({
     url: "https://rc2backend.herokuapp.com/api/linegraph/",
+    // url: "https://e89704f8.ngrok.io/api/linegraph/",
+    // url: "http://127.0.0.1:8000/api/linegraph/",
     // url: "https://hookb.in/3OynwLEapdhKeKj2MjmJ",
     type: "POST",
     headers: {

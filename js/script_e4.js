@@ -167,8 +167,8 @@ $("#city").append("<option value="+ arr[i].value + ">" + arr[i].display + "</opt
 });
 
 jQuery.ajax({
-  // url: "https://rc2backend.herokuapp.com/api/getdatae1/",
-  url: "https://e89704f8.ngrok.io/api/getdatae1/",
+  url: "https://rc2backend.herokuapp.com/api/getdatae1/",
+  // url: "https://e89704f8.ngrok.io/api/getdatae1/",
 
   type: "POST",
   headers: {

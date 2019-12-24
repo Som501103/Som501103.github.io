@@ -286,6 +286,7 @@ function validateForm(){
     dataType: 'json',
     data: JSON.stringify({
       "datehappen" : document.forms["form_e1"]["datehappen"].value,
+      "timehappen" : document.forms["form_e1"]["timehappen"].value,
       "daterestore" : document.forms["form_e1"]["daterestore"].value,
       "timerestore" : document.forms["form_e1"]["timerestore"].value,
       "maincause" : document.forms["form_e1"]["maincause"].value,

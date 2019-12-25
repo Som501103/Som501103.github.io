@@ -311,8 +311,8 @@ function validateForm(){
       console.log(data); //Return Data
       if (jqXHR.status == 200) {
 
-
-       window.location.replace("https://som501103.github.io/tech-step2.html?id="+id)
+      alert("ระบบได้บันทึกข้อมูลเรียบร้อยแล้ว");
+       window.location.replace("https://som501103.github.io/tech-confirm.html")
 
       };
     })

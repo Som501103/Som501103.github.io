@@ -161,13 +161,7 @@ function validateForm() {
   //   }
   // }
 
-  $(document).ready(function(){
-    $("#btnsub").hide();
-    $("#btnsub1").click(function(){
-    $("#btnsub1").hide();
-    $("#btnsub").show();
-    
-  });
+  
   var maincausetype = document.forms['myForm'].elements['maincause'];
   var maincause = "";
   var i;
@@ -187,7 +181,9 @@ function validateForm() {
   }
   jQuery.ajax({
     // url สำหรับ server ใหม่
-      url:"http://127.0.0.1:8004/api/lineevent/",
+      // url:"http://127.0.0.1:8004/api/lineevent/",
+      url:"https://safe-springs-29853.herokuapp.com/api/lineevent/",
+
     //url:"https://safe-springs-29853.herokuapp.com/api/lineevent/",
     // url: "https://rc2backend.herokuapp.com/api/lineliff/",
     // url: "https://hookb.in/3OynwLEapdhKeKj2MjmJ",
@@ -258,12 +254,12 @@ function validateForm() {
 
       //   //window.location = "p11searchp.html"
       
-  });
+  };
 
        window.location.replace("https://som501103.github.io/")
 
-      };
-    })
+      });
+  
 
 
     return false;

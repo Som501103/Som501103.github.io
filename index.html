@@ -22,11 +22,11 @@
 
   <link href="icons/webclip.png" rel="apple-touch-icon">
   <!-- bootstrap4 -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/@coreui/coreui/dist/js/coreui.min.js"></script>
+  <script src="https://unpkg.com/@coreui/coreui/dist/js/coreui.min.js"></script> -->
   
 </head>
 
@@ -267,13 +267,13 @@
             <!-- <label for="name-7" class="field-label subhead _2">อุปกรณ์ต้นเหตุ</label> -->
             <label for="name-7" class="field-label">รายละเอียดสาเหตุ</label>
             <input type="text" class="box-fill w-input" maxlength="100" name="detail" data-name="Name 2" id="detail">
-            <!-- <input type="submit" value="Submit" data-wait="Please wait..." class="submit-button-2 w-button"> -->
+            <input type="submit" value="Submit" data-wait="Please wait..." class="submit-button-2 w-button">
             <!-- <button class="btn btn-success btn-ladda" data-style="expand-left">Submit</button> -->
-            <button id=btnsub1 class="btn btn-success" type="button">submit</button>
+            <!-- <button id=btnsub1 class="btn btn-success" type="button">submit</button>
             <button id=btnsub class="btn btn-success" type="button" disabled>
               <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
               Loading...
-            </button>
+            </button> -->
       </form>
           <div class="w-form-done">
             <div>Thank you! Your submission has been received!</div>
@@ -292,8 +292,9 @@
         $("#btnsub1").click(function(){
         $("#btnsub1").hide();
         $("#btnsub").show();
-        
-  });
+        })
+      });
+
       var date = new Date();
 
       var day = date.getDate();

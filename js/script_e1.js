@@ -6,13 +6,14 @@ console.log(id);
 
 
 jQuery.ajax({
-  url: "https://rc2backend.herokuapp.com/api/getdatae1/",
+  url: "https://safe-springs-29853.herokuapp.com/api/lineevent/"+ id,
+  // url: "https://rc2backend.herokuapp.com/api/getdatae1/",
   // url: "https://hookb.in/3OynwLEapdhKeKj2MjmJ",
   // url: "https://e89704f8.ngrok.io/api/getdatae1/",
   type: "POST",
   headers: {
     "Content-Type": "application/json",
-    "Authorization":"token 5a5410bf249b5ad186c80a015a8b93abaef18349",
+    // "Authorization":"token 5a5410bf249b5ad186c80a015a8b93abaef18349",
   },
   dataType: 'json',
   data: JSON.stringify({
@@ -58,7 +59,8 @@ function validateForm(){
   jQuery.ajax({
     // url: "https://e89704f8.ngrok.io/api/getupdate/",
     // url: "http://127.0.0.1:8000/api/getupdate/",
-    url: "https://rc2backend.herokuapp.com/api/getupdate/",
+    // url: "https://rc2backend.herokuapp.com/api/getupdate/",
+    url: "https://safe-springs-29853.herokuapp.com/api/lineevent/"+ id,
     type: "POST",
     headers: {
       "Content-Type": "application/json",

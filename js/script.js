@@ -161,7 +161,13 @@ function validateForm() {
   //   }
   // }
 
-
+  $(document).ready(function(){
+    $("#btnsub").hide();
+    $("#btnsub1").click(function(){
+    $("#btnsub1").hide();
+    $("#btnsub").show();
+    
+  });
   var maincausetype = document.forms['myForm'].elements['maincause'];
   var maincause = "";
   var i;
@@ -179,18 +185,18 @@ function validateForm() {
       trip = trip + triptype[i].value;
     }
   }
-
-
-
   jQuery.ajax({
-    url: "https://rc2backend.herokuapp.com/api/lineliff/",
+    // url สำหรับ server ใหม่
+      url:"http://127.0.0.1:8004/api/lineevent/",
+    //url:"https://safe-springs-29853.herokuapp.com/api/lineevent/",
+    // url: "https://rc2backend.herokuapp.com/api/lineliff/",
     // url: "https://hookb.in/3OynwLEapdhKeKj2MjmJ",
     // url: "http://127.0.0.1:8000/api/lineliff/",
     // url: "https://e89704f8.ngrok.io/api/lineliff/",
     type: "POST",
     headers: {
       "Content-Type": "application/json",
-      "Authorization":"token 5a5410bf249b5ad186c80a015a8b93abaef18349",
+      // "Authorization":"token 5a5410bf249b5ad186c80a015a8b93abaef18349",
     },
     dataType: 'json',
     data: JSON.stringify({
@@ -251,6 +257,8 @@ function validateForm() {
       //   // }
 
       //   //window.location = "p11searchp.html"
+      
+  });
 
        window.location.replace("https://som501103.github.io/")
 

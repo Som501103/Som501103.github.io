@@ -3,25 +3,39 @@ var urlParams = new URLSearchParams(window.location.search);
 console.log(urlParams.get('id'));
 var id = urlParams.get('id')
 console.log(id);
-
+// var idd=3
+// var settings = {
+//   "url": "https://safe-springs-29853.herokuapp.com/api/lineevent/3",
+//   "method": "GET",
+//   "timeout": 0,
+//   "headers": {
+//     "Content-Type": "application/json",
+//     "Authorization": "token bc115d0ce7fa5b651a098d91a6cc00fc314d90ed"
+//   },
+// };
+// $.ajax(settings).done(function (response) {
+//   console.log(response);
+// });
 
 jQuery.ajax({
-  url: "https://safe-springs-29853.herokuapp.com/api/lineevent/"+ id,
+  url: "https://safe-springs-29853.herokuapp.com/api/lineevent/"+id,
   // url: "https://rc2backend.herokuapp.com/api/getdatae1/",
   // url: "https://hookb.in/3OynwLEapdhKeKj2MjmJ",
   // url: "https://e89704f8.ngrok.io/api/getdatae1/",
-  type: "POST",
+  type: "GET",
   headers: {
     "Content-Type": "application/json",
     // "Authorization":"token 5a5410bf249b5ad186c80a015a8b93abaef18349",
+    "Authorization":"token bc115d0ce7fa5b651a098d91a6cc00fc314d90ed"
   },
-  dataType: 'json',
-  data: JSON.stringify({
-    "id" : id
+  // dataType: 'json',
+  // data: JSON.stringify({
+  //   "id" : id
 
   })
 
-})
+// })
+
 .done(function(data, textStatus, jqXHR) {
     console.log("HTTP Request Succeeded: " + jqXHR.status);
     console.log(data); //Return Data
@@ -60,7 +74,8 @@ function validateForm(){
     // url: "https://e89704f8.ngrok.io/api/getupdate/",
     // url: "http://127.0.0.1:8000/api/getupdate/",
     // url: "https://rc2backend.herokuapp.com/api/getupdate/",
-    url: "https://safe-springs-29853.herokuapp.com/api/lineevent/"+ id,
+    url: "https://safe-springs-29853.herokuapp.com/api/lineevent/",
+
     type: "POST",
     headers: {
       "Content-Type": "application/json",

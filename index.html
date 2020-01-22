@@ -53,7 +53,7 @@
             <label for="email" class="field-label">วันที่จ่ายไฟคืน</label>
             <input type="date" class="box-fill w-input" maxlength="256" name="daterestore" data-name="Email 2" id="daterestore" >
             <label for="email" class="field-label">เวลาจ่ายไฟคืน</label>
-            <input type="time" class="box-fill w-input" maxlength="256" name="timerestore" data-name="Email 2" id="timerestore" >
+            <input type="time" class="box-fill w-input" maxlength="256" name="timerestore" data-name="Email 2" id="timerestore" value= NUll >
             <label for="name-3" class="field-label subhead _2">ข้อมูลรหัสอุปกรณ์</label>
             <fieldset>
               <label for="email-2" class="field-label">รหัสอุปกรณ์</label>
@@ -179,17 +179,17 @@
             <fieldset>
               <label for="name-7" class="field-label subhead">สาเหตุไฟดับ</label>
               <label class="w-checkbox checkbox-field">
-                <input type="radio" value="1" id="maincause" name="maincause" data-name="PEA 2" class="w-checkbox-input" checked>
+                <input type="radio" value="1" id="maincause" name="maincause" data-name="PEA 2" class="w-checkbox-input" >
                 <span for="PEA-2" class="checkbox-label w-form-label">ทราบสาเหตุ</span>
               </label>
               <label class="w-checkbox checkbox-field">
-                <input type="radio" value="0" id="maincause" name="maincause" data-name="PEA 2" class="w-checkbox-input">
+                <input type="radio" value="0" id="maincause" name="maincause" data-name="PEA 2" class="w-checkbox-input" checked>
                 <span for="PEA-3" class="checkbox-label w-form-label">สันนิษฐาน</span>
               </label>
             </fieldset>
             <label for="email-3" class="field-label">สาเหตุเกิดจาก</label>
                   <select name="course" id="course" required="" class="box-fill w-input" maxlength="256" name="course" data-name="Email 2">
-                    <option value="0">เลือกสาเหตุ</option>
+                    <!-- <option value="0">เลือกสาเหตุ</option> -->
                     <option value="PEA">กฟภ.</option>
                     <option value="EGAT">กฟผ.</option>
                   </select>

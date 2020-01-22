@@ -179,6 +179,58 @@ function validateForm() {
       trip = trip + triptype[i].value;
     }
   }
+  var timerestore = document.forms["myForm"]["timerestore"].value;
+  console.log(timerestore)
+  if (timerestore.length==0){
+      timerestore = null
+  }
+
+
+
+  console.log(JSON.stringify({
+    "created_by": document.getElementById("staffid").value,
+    "datehappen" : document.forms["myForm"]["datehappen"].value,
+    "timehappen" : document.forms["myForm"]["timehappen"].value,
+    "daterestore" : document.forms["myForm"]["daterestore"].value,
+    // "timerestore" : document.forms["myForm"]["timerestore"].value,
+    "timerestore":timerestore,
+    "trip": trip,
+    "peacode": document.forms["myForm"]["peacode"].value,
+    "equipcode": document.forms["myForm"]["equipcode"].value,
+    "fedder": document.forms["myForm"]["fedder"].value,
+    "fedderwork": document.forms["myForm"]["fedderwork"].value,
+    "relay": document.forms["myForm"]["relay"].value,
+    "load": document.forms["myForm"]["load"].value,
+    "equipstrat": document.forms["myForm"]["equipstrat"].value,
+    "equipend": document.forms["myForm"]["equipend"].value,
+    "Zone": document.forms["myForm"]["Zone"].value,
+    "load_A": document.forms["myForm"]["load_A"].value,
+    "load_B": document.forms["myForm"]["load_B"].value,
+    "load_C": document.forms["myForm"]["load_C"].value,
+    "load_G": document.forms["myForm"]["load_G"].value,
+    "distance": document.forms["myForm"]["distance"].value,
+    "maincause": maincause,
+    "course": document.forms["myForm"]["course"].value,
+    "weather": document.forms["myForm"]["weather"].value,
+    "temp": document.forms["myForm"]["temp"].value,
+    "weather_id": document.getElementById("weather_id").value,
+    "weather_main": document.getElementById("weather_main").value,
+    "weather_description": document.getElementById("weather_description").value,
+    "main_pressure": document.getElementById("main_pressure").value,
+    "main_humidity": document.getElementById("main_humidity").value,
+    "main_temp_min": document.getElementById("main_temp_min").value,
+    "main_temp_max": document.getElementById("main_temp_max").value,
+    "wind": document.getElementById("wind").value,
+    "clouds": document.getElementById("clouds").value,
+    "dt_weather": document.getElementById("dt_weather").value,
+    "sitearea":document.forms["myForm"]["sitearea"].value,
+    "area": document.forms["myForm"]["happenarea"].value,
+    "subhappenarea": document.forms["myForm"]["subhappenarea"].value,
+    "electrician": document.forms["myForm"]["electricianID"].value,
+    "causetype": document.forms["myForm"]["country"].value,
+    "subcause": document.forms["myForm"]["city"].value,
+    "detail": document.forms["myForm"]["detail"].value
+  }))
   jQuery.ajax({
     // url สำหรับ server ใหม่
       // url:"http://127.0.0.1:8004/api/lineevent/",
@@ -200,7 +252,7 @@ function validateForm() {
     },
     dataType: 'json',
     data: JSON.stringify({
-      "created_by": document.getElementById("staffid").value,
+      // "created_by": document.getElementById("staffid").value,
       "datehappen" : document.forms["myForm"]["datehappen"].value,
       "timehappen" : document.forms["myForm"]["timehappen"].value,
       "daterestore" : document.forms["myForm"]["daterestore"].value,

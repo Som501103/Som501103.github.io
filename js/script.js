@@ -150,6 +150,25 @@ function FunctionIDinput(){
         }
 }
 
+// function validateForm1() {
+//   var settings = {
+//     "url": "https://safe-springs-29853.herokuapp.com/api/lineevent/",
+//     "method": "POST",
+//     "timeout": 0,
+//     "headers": {
+//       "Content-Type": "application/json",
+//       "Authorization": "token 017968a39bf66a337b37313883190956b8c6db26"
+//     },
+//     "data": 
+//     ,
+//   };
+  
+//   $.ajax(settings).done(function (response) {
+//     console.log(response);
+
+//   });
+
+// }
 function validateForm() {
 
   // var groupchk = document.forms['myForm'].elements['group[]'];
@@ -234,7 +253,7 @@ function validateForm() {
   jQuery.ajax({
     // url สำหรับ server ใหม่
       // url:"http://127.0.0.1:8004/api/lineevent/",
-      url:"https://safe-springs-29853.herokuapp.com/api/lineevent/",
+    url:"https://safe-springs-29853.herokuapp.com/api/lineevent/",
 
     //url:"https://safe-springs-29853.herokuapp.com/api/lineevent/",
     // url: "https://rc2backend.herokuapp.com/api/lineliff/",
@@ -255,7 +274,8 @@ function validateForm() {
       "datehappen" : document.forms["myForm"]["datehappen"].value,
       "timehappen" : document.forms["myForm"]["timehappen"].value,
       "daterestore" : document.forms["myForm"]["daterestore"].value,
-      "timerestore" : document.forms["myForm"]["timerestore"].value,
+      // "timerestore" : document.forms["myForm"]["timerestore"].value,
+      "timerestore":timerestore,
       "trip": trip,
       "peacode": document.forms["myForm"]["peacode"].value,
       "equipcode": document.forms["myForm"]["equipcode"].value,
@@ -292,14 +312,12 @@ function validateForm() {
       "causetype": document.forms["myForm"]["country"].value,
       "subcause": document.forms["myForm"]["city"].value,
       "detail": document.forms["myForm"]["detail"].value
-    })
-
-  })
-  .done(function(data, textStatus, jqXHR) {
+    }),
+  success : function (data, textStatus, jqXHR) {
       console.log("HTTP Request Succeeded: " + jqXHR.status);
       console.log(jqXHR)
       console.log(data); //Return Data
-      if (jqXHR.status == 200) {
+      if (jqXHR.status == 201) {
 
       //   // TODO: Check condition Comp_type
       //   // if Comp_type == 1 || Comp_type == 2
@@ -309,24 +327,22 @@ function validateForm() {
       //   // }
 
       //   //window.location = "p11searchp.html"
-      
-     };
-
-       window.location.replace("https://som501103.github.io/")
-
+      window.location.replace("https://som501103.github.io/")
       }
-     )
-    .error(function(data, textStatus, jqXHR) {
+      },
+     
+  error: function(data, textStatus, jqXHR) {
       console.log("HTTP Request: " + jqXHR.responseText);
       console.log("HTTP Request: " + jqXHR);
       alert("ไม่สามารถบันทึกข้อมูลได้")
-    })
+    }
+  })
   
 
 
-    return false;
+    // return false;
 
-}
+  }
 
 function showMyImage(fileInput) {
         var files = fileInput.files;

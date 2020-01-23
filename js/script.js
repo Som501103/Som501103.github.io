@@ -245,8 +245,7 @@ function validateForm() {
     headers: {
       "Content-Type": "application/json",
       // "Authorization":"token 5a5410bf249b5ad186c80a015a8b93abaef18349",
-      // bc115d0ce7fa5b651a098d91a6cc00fc314d90ed
-      "Authorization":"token bc115d0ce7fa5b651a098d91a6cc00fc314d90ed",
+      "Authorization":"token 017968a39bf66a337b37313883190956b8c6db26",
 
 
     },
@@ -319,7 +318,7 @@ function validateForm() {
      )
     .error(function(data, textStatus, jqXHR) {
       console.log("HTTP Request: " + jqXHR.responseText);
-      console.log("HTTP Request: " + data);
+      console.log("HTTP Request: " + jqXHR);
       alert("ไม่สามารถบันทึกข้อมูลได้")
     })
   

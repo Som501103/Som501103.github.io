@@ -252,7 +252,7 @@ function validateForm() {
     },
     dataType: 'json',
     data: JSON.stringify({
-      // "created_by": document.getElementById("staffid").value,
+      "created_by": document.getElementById("staffid").value,
       "datehappen" : document.forms["myForm"]["datehappen"].value,
       "timehappen" : document.forms["myForm"]["timehappen"].value,
       "daterestore" : document.forms["myForm"]["daterestore"].value,
@@ -298,6 +298,7 @@ function validateForm() {
   })
   .done(function(data, textStatus, jqXHR) {
       console.log("HTTP Request Succeeded: " + jqXHR.status);
+      console.log(jqXHR)
       console.log(data); //Return Data
       if (jqXHR.status == 200) {
 
@@ -310,11 +311,17 @@ function validateForm() {
 
       //   //window.location = "p11searchp.html"
       
-  };
+     };
 
        window.location.replace("https://som501103.github.io/")
 
-      });
+      }
+     )
+    .error(function(data, textStatus, jqXHR) {
+      console.log("HTTP Request: " + jqXHR.responseText);
+      console.log("HTTP Request: " + data);
+      alert("ไม่สามารถบันทึกข้อมูลได้")
+    })
   
 
 

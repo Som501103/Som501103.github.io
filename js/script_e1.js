@@ -18,16 +18,16 @@ console.log(id);
 // });
 
 jQuery.ajax({
-  // url: "https://safe-springs-29853.herokuapp.com/api/lineevent/"+id,
+  url: "https://safe-springs-29853.herokuapp.com/api/lineevent/"+id,
   // url: "https://rc2backend.herokuapp.com/api/getdatae1/",
   // url: "https://hookb.in/3OynwLEapdhKeKj2MjmJ",
   // url: "https://e89704f8.ngrok.io/api/getdatae1/",
-  url:"http://127.0.0.1:8006/api/lineevent/28",
+  // url:"http://127.0.0.1:8006/api/lineevent/28",
   type: "GET",
   headers: {
     "Content-Type": "application/json",
-    "Authorization":"token ce50e82a4d3293dbb7d24970232877603282e197",
-    // "Authorization":"token 017968a39bf66a337b37313883190956b8c6db26"
+    // "Authorization":"token ce50e82a4d3293dbb7d24970232877603282e197",
+    "Authorization":"token 017968a39bf66a337b37313883190956b8c6db26"
   },
   // dataType: 'json',
   // data: JSON.stringify({
@@ -102,7 +102,7 @@ form.append("equipstrat", "LBB05B-01");
 form.append("equipend", "end");
 
 var settings = {
-  "url": "http://127.0.0.1:8006/api/lineevent/28",
+  "url": "http://127.0.0.1:8006/api/lineevent/",
   "method": "PUT",
   "timeout": 0,
   "headers": {
@@ -181,6 +181,7 @@ $.ajax(settings).done(function (response) {
 
 
 function validateForm(){
+  setTimeout(function(){ alert("กำลังบันทึกข้อมูล"); }, 4000);
   jQuery.ajax({
     // url: "https://e89704f8.ngrok.io/api/getupdate/",
     // url: "http://127.0.0.1:8000/api/getupdate/",
@@ -215,12 +216,13 @@ function validateForm(){
       console.log(data); //Return Data
       if (jqXHR.status == 200) {
 
-       alert("บันทึกข้อมูลแล้ว") 
+       alert("บันทึกข้อมูลได้แล้ว") 
        window.location.replace("https://som501103.github.io/tech-step2.html?id="+id)
 
       };
-    })
 
+    })
+    alert("ไม่สามารถบันทึกข้อมูลได้") 
 
     return false;
 

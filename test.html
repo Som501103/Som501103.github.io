@@ -1,0 +1,58 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.4.1.min.220afd743d.js" type="text/javascript" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+    <title>Document</title>
+</head>
+<body>
+   
+    <form enctype="multipart/form-data">
+        <input type="text" id="input1"/>
+        <input type="file" id="fileSelect"/>
+        <button type="button" onclick="doSubmit()">Submit</button>
+      </form>
+<script>
+            
+    function doSubmit(){
+    // Form Data
+    var formData = new FormData();
+    var fileSelect = document.getElementById("fileSelect");
+    if(fileSelect.files && fileSelect.files.length == 1){
+     var file = fileSelect.files[0]
+    //  formData.set("image3", file , file.name);
+    }
+
+    var input1 = document.getElementById("input1");
+    formData.set("datehappen", "2020-01-20")
+    formData.set("daterestore", "2020-01-13")
+    formData.set("timehappen", "12:56:29")
+    formData.set("timerestore", "12:56:29")
+    formData.set("course", "TC001")
+    formData.set("electrician", "486808")
+
+    // Http Request  
+    var settings = {
+    "url" : "http://127.0.0.1:8006/api/lineliff/2",
+    "method": "PUT",
+    "timeout": 0,
+    "headers": {
+    "Content-Type" : "multipart/form-data",
+    "Authorization": "Token ce50e82a4d3293dbb7d24970232877603282e197"
+    },
+    "processData": false,
+    "cache": false,
+    // "mimeType": "multipart/form-data",
+    "contentType": false,
+    "data": formData
+};
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});
+  }
+</script>
+</body>
+</html>

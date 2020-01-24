@@ -1,25 +1,29 @@
 // console.log(window.location.search);
 var urlParams = new URLSearchParams(window.location.search);
-// console.log(urlParams.get('id'));
+console.log(urlParams.get('id'));
 var id = urlParams.get('id')
-// console.log(id);
+console.log(id);
 
 
 jQuery.ajax({
-  url: "https://rc2backend.herokuapp.com/api/getlineliffdata/",
+  url: "https://safe-springs-29853.herokuapp.com/api/lineevent/"+id,
+  // url: "https://rc2backend.herokuapp.com/api/getlineliffdata/",
   // url: "https://hookb.in/3OynwLEapdhKeKj2MjmJ",
   // url: "https://a9107217.ngrok.io/api/getlineliffdata/",
   // url: "http://127.0.0.1:8000/api/getlineliffdata/",
-  type: "POST",
+  type: "GET",
   headers: {
     "Content-Type": "application/json",
-    "Authorization":"token 5a5410bf249b5ad186c80a015a8b93abaef18349",
+    "Authorization":"token 017968a39bf66a337b37313883190956b8c6db26",
+
+    // "Authorization":"token 5a5410bf249b5ad186c80a015a8b93abaef18349",
+
   },
   dataType: 'json',
-  data: JSON.stringify({
-    "id" : id
+  // data: JSON.stringify({
+  //   "id" : id
 
-  })
+  // })
 
 })
 .done(function(data, textStatus, jqXHR) {

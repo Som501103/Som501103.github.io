@@ -327,6 +327,7 @@ function validateForm() {
       //   // }
 
       //   //window.location = "p11searchp.html"
+      alert("บันทึกข้อมูลแล้ว")
       window.location.replace("https://som501103.github.io/")
       }
       },

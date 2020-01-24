@@ -181,7 +181,7 @@ $.ajax(settings).done(function (response) {
 
 
 function validateForm(){
-  setTimeout(function(){ alert("กำลังบันทึกข้อมูล"); }, 4000);
+  // setTimeout(function(){ alert("กำลังบันทึกข้อมูล"); }, 4000);
   jQuery.ajax({
     // url: "https://e89704f8.ngrok.io/api/getupdate/",
     // url: "http://127.0.0.1:8000/api/getupdate/",
@@ -222,7 +222,7 @@ function validateForm(){
       };
 
     })
-    alert("ไม่สามารถบันทึกข้อมูลได้") 
+    // alert("ไม่สามารถบันทึกข้อมูลได้") 
 
     return false;
 

@@ -170,6 +170,8 @@ function FunctionIDinput(){
 
 // }
 function validateForm() {
+    setTimeout(function(){ alert("กำลังบันทึกข้อมูลโปรดรอ"); }, 3000);
+
 
   // var groupchk = document.forms['myForm'].elements['group[]'];
   // var txt = "";

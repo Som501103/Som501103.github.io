@@ -55,8 +55,8 @@
           <input type="text" class="box-fill w-input" maxlength="256" name="equipcode" data-name="Email 2" id="equipcode" readonly>
           <label for="node-3" class="field-label">การทำงาน</label>
           <input type="text" class="box-fill w-input" maxlength="256" name="fedderwork" data-name="Email 2" id="fedderwork" readonly>
-          <label for="email-3" class="field-label">อุปกรณ์สิ้นสุด</label>
-          <input type="text" class="box-fill w-input" maxlength="256" name="equipend" data-name="Email 2" id="equipend" readonly>
+          <!-- <label for="email-3" class="field-label">อุปกรณ์สิ้นสุด</label>
+          <input type="text" class="box-fill w-input" maxlength="256" name="equipend" data-name="Email 2" id="equipend" readonly> -->
           <label for="email-3" class="field-label">โหลดหาย (MW)</label><input type="text" class="box-fill w-input" maxlength="256" name="load" data-name="Name 6" id="load" placeholder="0" onkeyup="return Checknumber()" readonly>
           <label for="email-3" class="field-label">กระแสลัดวงจร (A)</label><input type="text" class="box-fill w-input" maxlength="256" name="distance" data-name="Email 2" id="distance" placeholder="0" onkeyup="return Checknumber()" readonly>
         <!-- </div> -->
@@ -66,25 +66,25 @@
           <option value="1">ทราบสาเหตุ</option>
           <option value="0">สันนิษฐาน</option>
         </select>
-        <label for="email-3" class="field-label">สาเหตุเกิดจาก</label>
+        <label for="email-3" class="field-label">เกิดเหตุในระบบของ:</label>
           <select name="course" id="course" required="" class="box-fill w-input" maxlength="256" name="course" data-name="Email 2">
             <option value="0">เลือกสาเหตุ</option>
             <option value="PEA">กฟภ.</option>
             <option value="EGAT">กฟผ.</option>
           </select>
 
-          <label for="email-3" class="field-label">กฟภ.รับผิดชอบในจุดเกิดเหตุ</label>
+          <!-- <label for="email-3" class="field-label">กฟภ.รับผิดชอบในจุดเกิดเหตุ</label> -->
             <!-- <input type="email" class="box-fill w-input" maxlength="256" name="email-2" data-name="Email 2" id="email-2" required=""> -->
-            <hidden name="Br_code" id="Br_code" ></hidden>
+            <!-- <hidden name="Br_code" id="Br_code" ></hidden>
             <select class="box-fill w-input" maxlength="256" name="happenarea" data-name="Email 2" id="happenarea" onchange="functionRelation()">
               <option value="0">กรุณาเลือก</option>
 
             </select>
             <select class="box-fill w-input" maxlength="256" name="subhappenarea" data-name="Email 2" id="subhappenarea" >
               <option value="0">กรุณาเลือก</option>
-            </select>
-            <label for="name-7" class="field-label">ตัวกระทำ</label>
-            <select id="country" name="country" required="" maxlength="256" class="box-fill w-input" data-name="Email 2" >
+            </select> -->
+            <label for="name-7" class="field-label">สาเหตุหลัก</label>
+            <select id="causetype" name="causetype" required="" maxlength="256" class="box-fill w-input" data-name="Email 2" >
               <option value="0">เลือกสาเหตุ</option>
               <option value="TC001">ต้นไม้</option>
               <option value="TC002">อุปกรณ์</option>
@@ -100,10 +100,10 @@
               <option value="TC012">อื่นๆ</option>
             </select>
             <label for="name-7" class="field-label">ลักษณะสาเหตุ</label>
-              <select id="city" name="city" class="box-fill w-input">
+              <select id="subcause" name="subcause" class="box-fill w-input">
                   <!-- Dependent Select option field -->
               </select>
-            <label for="name-7" class="field-label subhead _2">อุปกรณ์ต้นเหตุ</label>
+            <!-- <label for="name-7" class="field-label subhead _2">อุปกรณ์ต้นเหตุ</label> -->
             <label for="name-7" class="field-label">รายละเอียดสาเหตุ</label>
               <input type="text" class="box-fill w-input" maxlength="100" name="detail" data-name="Name 2" id="detail">
 

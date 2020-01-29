@@ -91,6 +91,7 @@
                        <option value="0">เลือกประเภท</option>
                        <option value="TL">T/L</option>
                        <option value="TR">T/R</option>
+                       <option value="TR2">T/R2</option>
                        <option value="DF">D/F</option>
                     </select>
 
@@ -229,8 +230,8 @@
                   </select>
                   <select class="box-fill w-input" maxlength="256" name="subhappenarea" data-name="Email 2" id="subhappenarea" >
                     <option value="0">กรุณาเลือก</option>
-                  </select>
-              <label for="email-3" class="field-label">พนักงานที่รับผิดชอบในจุดเกิดเหตุ</label>
+                  </select> -->
+                <label for="email-3" class="field-label">พนักงานที่รับผิดชอบในจุดเกิดเหตุ</label>
                 <div class="w-col w-col-6"><label for="email-3" class="field-label">รหัสพนักงาน</label>
                   <input type="text" class="box-fill half w-input" maxlength="256" name="electricianID" data-name="Email 2" id="electricianID" ></div>
 
@@ -268,6 +269,9 @@
             <label for="name-7" class="field-label">รายละเอียดสาเหตุ</label>
             <input type="text" class="box-fill w-input" maxlength="100" name="detail" data-name="Name 2" id="detail">
             <input type="submit" value="Submit" data-wait="Please wait..." class="submit-button-2 w-button">
+            <button type="button" id="loading" data-loading-text="Loading..." class="btn btn-primary" autocomplete="">
+              
+            </button>
             <!-- <button class="btn btn-success btn-ladda" data-style="expand-left">Submit</button> -->
             <!-- <button id=btnsub1 class="btn btn-success" type="button">submit</button>
             <button id=btnsub class="btn btn-success" type="button" disabled>

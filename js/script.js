@@ -369,8 +369,8 @@ function showMyImage(fileInput) {
 
     $(document).ready(function() {
     // Initializing arrays with city names.
-    var TC001 = [{
-    display: "กิ่งไม้พลาดสาย",value: "CC01001"},
+    var TC001 = [
+    {display: "กิ่งไม้พลาดสาย",value: "CC01001"},
     {display: "กิ่งไม้โตมาแตะสาย", value: "CC01002"},
     {display: "ต้นไม้ล้มทับสาย",value: "CC01003"},
     {display: "ต้นไม้เลื้อยมาแตะสาย",value: "CC01004"},

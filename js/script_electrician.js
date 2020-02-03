@@ -3,7 +3,7 @@ var urlParams = new URLSearchParams(window.location.search);
 console.log(urlParams.get('id'));
 var id = urlParams.get('id')
 console.log(id);
-
+var id=23;
 jQuery.ajax({
     //  url: "http://127.0.0.1:8006/api/lineevent/"+id,
   url: "https://safe-springs-29853.herokuapp.com/api/lineevent/"+id,
@@ -331,7 +331,7 @@ $.ajax(settings)
 .done(function (response) {
   console.log(response);
   alert("ระบบได้บันทึกข้อมูลเรียบร้อยแล้ว");
-  window.close
+  window.close();
 })
 .fail(function (response) {
   alert("ไม่สามารถบันทึกข้อมูลได้ โปรดกรอกข้อมูลให้ครบ");

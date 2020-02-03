@@ -327,9 +327,16 @@ formData.set("lon", lng)
     "contentType": false,
     "data": formData
 };
-$.ajax(settings).done(function (response) {
+$.ajax(settings)
+.done(function (response) {
   console.log(response);
-});
+  alert("ระบบได้บันทึกข้อมูลเรียบร้อยแล้ว");
+  window.close
+})
+.fail(function (response) {
+  alert("ไม่สามารถบันทึกข้อมูลได้ โปรดกรอกข้อมูลให้ครบ");
+  //do something when any error occurs.
+});;
 
 } 
 

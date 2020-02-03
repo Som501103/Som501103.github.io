@@ -335,7 +335,7 @@ function validateForm() {
       },
      
   error: function(data, textStatus, jqXHR) {
-      console.log("HTTP Request: " + jqXHR.responseText);
+      // console.log("HTTP Request: " + jqXHR.responseText);
       console.log("HTTP Request: " + jqXHR);
       alert("ไม่สามารถบันทึกข้อมูลได้")
     }
